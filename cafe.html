@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiste Café | 5 Sentidos, uma xícara</title>
+    <!-- Tailwind CSS v4 via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS personalizado mínimo -->
+    <style>
+        /* Estilos mínimos necessários */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Animações personalizadas */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Efeito de hover para os cards de produtos */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Ajuste para o carrossel */
+        .carousel-slide {
+            transition: opacity 0.8s ease;
+        }
+        
+        .carousel-slide.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header/Navegação -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-red-600 rounded-full"></div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-black">Amiste <span class="text-red-600">Café</span></h1>
+                        <p class="text-xs text-gray-600">5 sentidos, uma xícara</p>
+                    </div>
+                </div>
+                
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-black hover:text-red-600 font-medium transition-colors">Início</a>
+                    <a href="#servicos" class="text-black hover:text-red-600 font-medium transition-colors">Serviços</a>
+                    <a href="#produtos" class="text-black hover:text-red-600 font-medium transition-colors">Produtos</a>
+                    <a href="#sobre" class="text-black hover:text-red-600 font-medium transition-colors">Sobre</a>
+                    <a href="#contato" class="text-black hover:text-red-600 font-medium transition-colors">Contato</a>
+                </nav>
+                
+                <!-- Botão WhatsApp -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/551634416988" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center space-x-2">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Fale Conosco</span>
+                    </a>
+                </div>
+                
+                <!-- Botão Menu Mobile -->
+                <button id="mobile-menu-button" class="md:hidden text-black text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Menu Mobile -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4 pb-4">
+                <a href="#inicio" class="block text-black hover:text-red-600 font-medium">Início</a>
+                <a href="#servicos" class="block text-black hover:text-red-600 font-medium">Serviços</a>
+                <a href="#produtos" class="block text-black hover:text-red-600 font-medium">Produtos</a>
+                <a href="#sobre" class="block text-black hover:text-red-600 font-medium">Sobre</a>
+                <a href="#contato" class="block text-black hover:text-red-600 font-medium">Contato</a>
+                <a href="https://wa.me/551634416988" target="_blank" class="block bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg text-center transition-colors">
+                    <i class="fab fa-whatsapp mr-2"></i> Fale Conosco
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="inicio" class="relative overflow-hidden">
+        <!-- Carrossel de imagens -->
+        <div class="carousel-container relative h-[500px] md:h-[600px]">
+            <div class="carousel-slide active absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-10"></div>
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            </div>
+            
+            <div class="carousel-slide hidden absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-10"></div>
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            </div>
+            
+            <div class="carousel-slide hidden absolute inset-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-10"></div>
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497515114629-f71d768fd07c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80');"></div>
+            </div>
+            
+            <!-- Conteúdo do Hero -->
+            <div class="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center">
+                <div class="max-w-2xl animate-fadeInUp">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 font-display">Amiste Café</h2>
+                    <p class="text-2xl md:text-3xl text-white mb-6">5 sentidos, uma xícara</p>
+                    <p class="text-xl text-white mb-8">Especialistas em locação e venda de máquinas, cafés especiais e assistência técnica.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#servicos" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">Nossos Serviços</a>
+                        <a href="https://wa.me/551634416988" target="_blank" class="bg-white hover:bg-gray-100 text-black font-bold py-3 px-6 rounded-lg transition-colors flex items-center">
+                            <i class="fab fa-whatsapp mr-2 text-green-500"></i> (16) 3441-6986
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controles do Carrossel -->
+            <button id="prev-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="next-btn" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Indicadores do Carrossel -->
+            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-colors active"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-colors"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-colors"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Serviços -->
+    <section id="servicos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fadeInUp">
+                <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">Nossos Serviços</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Oferecemos soluções completas para o seu negócio de café, desde equipamentos até assistência técnica especializada.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Serviço 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 product-card animate-fadeInUp" style="animation-delay: 0.1s">
+                    <div class="text-red-600 text-5xl mb-6">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Locação e Venda de Máquinas</h3>
+                    <p class="text-gray-600 mb-6">Oferecemos máquinas de café de alta qualidade para locação ou venda, com modelos que atendem desde pequenos negócios até grandes estabelecimentos.</p>
+                    <a href="https://wa.me/551634416988" target="_blank" class="text-red-600 font-medium hover:text-red-700 transition-colors">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Serviço 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 product-card animate-fadeInUp" style="animation-delay: 0.2s">
+                    <div class="text-red-600 text-5xl mb-6">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Cafés Especiais e Acessórios</h3>
+                    <p class="text-gray-600 mb-6">Selecionamos os melhores grãos de café especial e oferecemos uma linha completa de acessórios para preparar a xícara perfeita.</p>
+                    <a href="https://wa.me/551634416988" target="_blank" class="text-red-600 font-medium hover:text-red-700 transition-colors">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Serviço 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 product-card animate-fadeInUp" style="animation-delay: 0.3s">
+                    <div class="text-red-600 text-5xl mb-6">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-black mb-4">Assistência Técnica</h3>
+                    <p class="text-gray-600 mb-6">Nossa equipe especializada oferece manutenção e reparo para máquinas de café, garantindo o funcionamento ideal do seu equipamento.</p>
+                    <a href="https://wa.me/551634416988" target="_blank" class="text-red-600 font-medium hover:text-red-700 transition-colors">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Produtos -->
+    <section id="produtos" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fadeInUp">
+                <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">Nossos Produtos</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Descubra nossa seleção cuidadosa de produtos para os verdadeiros apreciadores de café.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Produto 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card animate-fadeInUp" style="animation-delay: 0.1s">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Máquinas Profissionais</h3>
+                        <p class="text-gray-600 mb-4">Equipamentos de alta performance para estabelecimentos comerciais.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">Consulte valores</span>
+                            <a href="https://wa.me/551634416988" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                Solicitar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produto 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card animate-fadeInUp" style="animation-delay: 0.2s">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1587734195503-904137cec4e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Cafés Especiais</h3>
+                        <p class="text-gray-600 mb-4">Grãos selecionados das melhores regiões produtoras do Brasil e do mundo.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">A partir de R$ 24,90</span>
+                            <a href="https://wa.me/551634416988" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produto 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card animate-fadeInUp" style="animation-delay: 0.3s">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Acessórios</h3>
+                        <p class="text-gray-600 mb-4">Moedores, filtros, xícaras e tudo o que você precisa para o café perfeito.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">Consulte catálogo</span>
+                            <a href="https://wa.me/551634416988" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                Ver mais
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Produto 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden product-card animate-fadeInUp" style="animation-delay: 0.4s">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-black mb-2">Manutenção Preventiva</h3>
+                        <p class="text-gray-600 mb-4">Serviços de limpeza e manutenção para prolongar a vida útil do seu equipamento.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-red-600 font-bold">Planos mensais</span>
+                            <a href="https://wa.me/551634416988" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+                                Contratar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 animate-fadeInUp">
+                    <div class="relative">
+                        <div class="w-full h-96 bg-cover bg-center rounded-2xl shadow-xl" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2047&q=80');"></div>
+                        <div class="absolute -bottom-6 -right-6 bg-red-600 text-white p-8 rounded-2xl shadow-xl w-64">
+                            <p class="text-4xl font-bold">+15</p>
+                            <p class="text-lg">Anos de experiência</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 lg:pl-12 animate-fadeInUp">
+                    <h2 class="text-3xl md:text-4xl font-bold text-black mb-6">Sobre a Amiste Café</h2>
+                    <p class="text-lg text-gray-600 mb-6">Somos uma empresa especializada no universo do café, com mais de 15 anos de experiência no mercado. Nosso compromisso é oferecer produtos e serviços de alta qualidade que envolvam todos os 5 sentidos em cada xícara.</p>
+                    <p class="text-lg text-gray-600 mb-6">Acreditamos que o café vai além de uma simples bebida - é uma experiência sensorial completa. Por isso, selecionamos cuidadosamente cada grão, equipamento e acessório que oferecemos aos nossos clientes.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-black">Qualidade Garantida</p>
+                                <p class="text-sm text-gray-600">Produtos selecionados</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shipping-fast text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-black">Entrega Rápida</p>
+                                <p class="text-sm text-gray-600">Para toda região</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fadeInUp">
+                <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">Entre em Contato</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Estamos prontos para atender você e oferecer a melhor solução para suas necessidades.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Informações de contato -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.1s">
+                    <h3 class="text-2xl font-bold text-black mb-6">Nossos Contatos</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-black">Telefone/WhatsApp</p>
+                                <p class="text-gray-600">(16) 3441-6986</p>
+                                <a href="https://wa.me/551634416988" target="_blank" class="text-red-600 hover:text-red-700 font-medium transition-colors">
+                                    <i class="fab fa-whatsapp mr-1"></i> Enviar mensagem
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-black">Endereço</p>
+                                <p class="text-gray-600">Rua do Café, 123 - Centro</p>
+                                <p class="text-gray-600">Ribeirão Preto - SP</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-red-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-black">Horário de Atendimento</p>
+                                <p class="text-gray-600">Segunda a Sexta: 8h às 18h</p>
+                                <p class="text-gray-600">Sábado: 8h às 13h</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Redes Sociais -->
+                    <div class="mt-10">
+                        <h4 class="text-xl font-bold text-black mb-4">Siga-nos nas redes sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-instagram text-white"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-facebook-f text-white"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-colors">
+                                <i class="fab fa-twitter text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formulário de contato -->
+                <div class="animate-fadeInUp" style="animation-delay: 0.2s">
+                    <h3 class="text-2xl font-bold text-black mb-6">Envie sua mensagem</h3>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nome completo *</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Telefone/WhatsApp *</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">E-mail</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Mensagem *</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                            Enviar Mensagem
+                        </button>
+                        
+                        <p class="text-sm text-gray-500">* Campos obrigatórios. Entraremos em contato em até 24 horas.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-red-600 rounded-full"></div>
+                        <div>
+                            <h2 class="text-2xl font-bold">Amiste <span class="text-red-600">Café</span></h2>
+                            <p class="text-xs text-gray-400">5 sentidos, uma xícara</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 max-w-md">Especialistas em locação e venda de máquinas, cafés especiais e acessórios, com assistência técnica especializada.</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-xl font-bold mb-2">(16) 3441-6986</p>
+                    <a href="https://wa.me/551634416988" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-lg transition-colors mb-4">
+                        <i class="fab fa-whatsapp mr-2"></i> Fale no WhatsApp
+                    </a>
+                    <p class="text-gray-400">© 2025 Amiste Café. Todos os direitos reservados.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>Desenvolvido com paixão pelo café e pela tecnologia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/551634416988" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-xl transition-all hover:scale-110 z-40">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu mobile toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Fechar menu mobile ao clicar em um link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Carrossel
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            // Remove a classe active de todos os slides e indicadores
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Adiciona overflow hidden durante a transição
+            slides.forEach(slide => slide.classList.add('hidden'));
+            
+            // Adiciona a classe active ao slide atual e ao indicador correspondente
+            slides[index].classList.remove('hidden');
+            setTimeout(() => {
+                slides[index].classList.add('active');
+            }, 50);
+            
+            indicators[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+        
+        function prevSlide() {
+            let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
+        }
+        
+        // Event listeners para os controles do carrossel
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Event listeners para os indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto-play do carrossel
+        let carouselInterval = setInterval(nextSlide, 5000);
+        
+        // Pausar auto-play ao interagir com o carrossel
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Formulário de contato
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui normalmente enviaríamos os dados para um servidor
+            // Para demonstração, apenas mostramos um alerta
+            alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+            contactForm.reset();
+            
+            // Em uma implementação real, aqui faríamos uma requisição AJAX
+            // para um arquivo PHP que processaria o formulário
+        });
+        
+        // Animações ao scroll
+        function checkScrollAnimations() {
+            const elements = document.querySelectorAll('.animate-fadeInUp');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Inicializar animações
+        window.addEventListener('scroll', checkScrollAnimations);
+        window.addEventListener('load', checkScrollAnimations);
+        
+        // Inicializar estado das animações
+        document.querySelectorAll('.animate-fadeInUp').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+        
+        // Verificar animações após o carregamento
+        setTimeout(checkScrollAnimations, 100);
+    </script>
+</body>
+</html>
