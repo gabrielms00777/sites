@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Mente Mestra de Marketing | Direção Estratégica para Sua Empresa</title>
+    <meta name="description"
+        content="Instale um cérebro de marketing de alto nível na sua empresa, por uma fração do custo de um executivo em tempo integral.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d5ff40;
+            --dark-color: #111111;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F8F8;
+            color: #111111;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-manrope {
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .bg-dark {
+            background-color: var(--dark-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .shadow-primary {
+             box-shadow: 0px 12px 40px 0px rgba(132, 255, 31, 0.32);
+        }
+        
+        /* --- Appear Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Ticker Animation --- */
+        .ticker-track {
+            animation: scroll 40s linear infinite;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-wrapper {
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+        }
+    </style>
+</head>
+
+<body class="text-[#2f2f2f]">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 transition-all duration-300 bg-transparent" id="header">
+        <div class="container mx-auto px-6 md:px-8 py-4">
+            <div class="flex justify-between items-center max-w-7xl mx-auto">
+                <a href="#">
+                    <h1 class="text-xl font-bold font-manrope">Mente Mestra</h1>
+                </a>
+                <a href="#apply" class="bg-dark text-white px-6 py-2 rounded-full hover:bg-opacity-80 transition-colors">
+                    Aplicar para Sessão
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- HERO -->
+        <section class="py-20 md:py-32">
+             <div class="container mx-auto px-6 md:px-8 max-w-7xl">
+                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                    <div class="lg:col-span-1 reveal">
+                        <div class="flex items-center gap-4">
+                             <img src="https://placehold.co/90x90/d5ff40/111111?text=CG" alt="Cristiano Gomes" class="w-24 h-24 rounded-full object-cover shadow-lg">
+                             <div>
+                                 <h2 class="text-2xl font-bold font-manrope">Cristiano Gomes</h2>
+                                 <p class="text-gray-500">Diretor de Marketing</p>
+                             </div>
+                        </div>
+                    </div>
+                     <div class="lg:col-span-2 text-left">
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight font-manrope reveal">
+                           Sua empresa não precisa de "mais marketing". <br> Ela precisa de uma <span class="text-primary">direção.</span>
+                        </h1>
+                        <p class="mt-8 text-lg md:text-xl text-gray-500 max-w-3xl reveal" data-delay="100">
+                            O que acontece quando o melhor piloto do carro (você) também precisa ser o mecânico, o engenheiro e o chefe de equipe... tudo ao mesmo tempo.
+                        </p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- TICKER -->
+        <section class="bg-dark py-6 relative overflow-hidden">
+            <div class="ticker-wrapper">
+                <div class="ticker-track flex gap-12 items-center w-max">
+                    <!-- Duplicated for seamless scroll -->
+                    <div class="flex gap-12 items-center text-lg font-manrope font-bold tracking-wider whitespace-nowrap">
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">+130 /</span> <span class="text-gray-400">clientes satisfeitos</span></span>
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">+250 /</span> <span class="text-gray-400">lançamentos</span></span>
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">15+ /</span> <span class="text-gray-400">anos de experiência</span></span>
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">98% /</span> <span class="text-gray-400">avaliações positivas</span></span>
+                    </div>
+                    <div class="flex gap-12 items-center text-lg font-manrope font-bold tracking-wider whitespace-nowrap">
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">+130 /</span> <span class="text-gray-400">clientes satisfeitos</span></span>
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">+250 /</span> <span class="text-gray-400">lançamentos</span></span>
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">15+ /</span> <span class="text-gray-400">anos de experiência</span></span>
+                        <span class="text-primary">*</span>
+                        <span><span class="text-primary">98% /</span> <span class="text-gray-400">avaliações positivas</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEM -->
+        <section id="problem" class="bg-dark text-white py-20 md:py-32">
+            <div class="container mx-auto px-6 md:px-8 max-w-7xl space-y-24">
+                <div class="reveal text-left max-w-4xl">
+                    <h2 class="text-4xl md:text-6xl font-manrope">Vamos falar a real.</h2>
+                    <div class="mt-8 text-lg md:text-xl text-gray-400 space-y-6">
+                        <p>Você é excelente no que faz. Seu serviço é impecável, sua clínica é referência, seu trabalho impressiona os clientes.</p>
+                        <p>Aí você olha para o seu marketing e vê o caos.</p>
+                        <p>Um freelancer fazendo posts que não viram cliente. Uma campanha de anúncio que gasta e não volta. Um monte de "especialista" te mandando DM com promessa de agenda cheia. Você até já comprou um curso para tentar fazer sozinho nas madrugadas.</p>
+                        <p class="text-white font-semibold">O resultado é sempre o mesmo: muito esforço, pouco resultado e a sensação de que você está apagando incêndio o dia todo.</p>
+                    </div>
+                </div>
+
+                 <div class="reveal text-left max-w-4xl">
+                    <h3 class="text-3xl md:text-5xl font-manrope">O problema é que você está diagnosticando a <span class="text-primary">causa errada.</span></h3>
+                    <div class="mt-8 text-lg md:text-xl text-gray-400 space-y-6">
+                        <p>A questão não é a qualidade do seu serviço, nem sua dedicação.</p>
+                        <p class="text-white font-semibold">O problema é que sua empresa tem músculos, mas falta um cérebro para comandá-los.</p>
+                        <p>Pense comigo: marketing que gera crescimento de verdade não é sobre "fazer mais". Não é sobre postar 3 vezes por dia ou ter o site mais bonito do bairro.</p>
+                        <p class="text-2xl text-white font-semibold">É sobre PENSAR MELHOR.</p>
+                        <p>É sobre ter uma estratégia. Uma direção clara. Um plano que conecta cada centavo investido em marketing a um resultado real no faturamento da sua empresa.</p>
+                        <p class="font-semibold text-white">Enquanto você estiver preso na trincheira, executando as tarefas do dia a dia, quem está no comando, olhando o mapa e definindo a rota?</p>
+                        <p>Ninguém.</p>
+                        <p>E é por isso que você patina, mesmo trabalhando 20 horas por dia.</p>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTION -->
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6 md:px-8 max-w-4xl text-center">
+                <p class="text-lg md:text-xl text-gray-600 reveal">Foi para resolver essa falta de comando que eu criei a...</p>
+                <div class="my-10 bg-dark text-white p-10 md:p-16 rounded-3xl reveal">
+                    <h2 class="text-4xl md:text-6xl font-manrope font-extrabold text-primary">A Mente Mestra de Marketing</h2>
+                    <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">O primeiro e único serviço de direção estratégica que instala um cérebro de marketing de alto nível na sua empresa, por uma fração do custo de um executivo em tempo integral.</p>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-6 text-lg md:text-xl text-gray-600 reveal text-left">
+                    <p class="font-semibold text-gray-800"><b class="font-bold text-red-500">NÃO</b> é uma agência que vai te entregar um pacote de posts bonitinhos.</p>
+                    <p class="font-semibold text-gray-800"><b class="font-bold text-red-500">NÃO</b> é uma consultoria que te entrega um PDF de 50 páginas e te deseja "boa sorte".</p>
+                    <p class="font-semibold text-gray-800"><b class="font-bold text-red-500">NÃO</b> é um curso que vai te entulhar de mais tarefas para fazer.</p>
+                    <p class="text-2xl text-dark font-semibold mt-10">A Mente Mestra de Marketing é um serviço de <span class="text-primary">PARCERIA E COMANDO.</span></p>
+                    <p class="text-gray-600">Eu entro na sua empresa como seu Diretor de Marketing Fracionado, assumindo a responsabilidade de pensar, planejar e liderar toda a sua estratégia de crescimento.</p>
+                    <p class="font-semibold text-dark">Em outras palavras: você continua sendo o especialista no seu serviço. Eu me torno o estrategista que vai construir o caminho para os clientes chegarem até você.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME -->
+        <section class="bg-dark text-white py-20 md:py-32">
+             <div class="container mx-auto px-6 md:px-8 max-w-7xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="lg:col-span-1 text-center reveal">
+                        <img src="https://placehold.co/400x400/111111/FFFFFF?text=Cristiano" alt="Cristiano Gomes" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover mx-auto shadow-2xl shadow-primary/20 border-4 border-gray-700">
+                    </div>
+                     <div class="lg:col-span-1 text-gray-300 text-lg space-y-6 reveal" data-delay="100">
+                         <h2 class="text-3xl md:text-4xl text-white font-manrope">Mas por que você deveria confiar em mim para essa missão?</h2>
+                        <p>Meu nome é Cristiano Gomes, e minha carreira foi uma jornada de mais de 15 anos dentro do marketing, mas não na teoria, e sim no campo de batalha.</p>
+                        <p>Eu estive na cadeira de Diretor de Marketing em grandes operações, no Brasil e na Europa. Fui responsável por liderar o marketing de empresas portuguesas como a 3uno Business e a Business Investments, além de ecossistemas de empresas no Brasil como o Jogroup (dono da Dental Gold, um dos maiores planos odontológicos do Nordeste).</p>
+                        <p>Em cada uma dessas posições, gerenciando orçamentos e equipes, eu percebi um padrão que se repetia: a desconexão. Ações de marketing eram feitas de forma isolada – um site aqui, um anúncio ali – sem uma inteligência central que unisse tudo em prol de um único objetivo: o crescimento do negócio.</p>
+                        <p>Foi essa clareza que me levou a empreender. Hoje, como Sócio Fundador da Gool Marketing e da Consult Medic, eu vivo na pele a realidade dos meus clientes. Na Consult Medic, por exemplo, nosso desafio diário é lotar a agenda de médicos e clínicas, um dos mercados mais competitivos que existem.</p>
+                        <p class="text-white font-semibold">Eu não vendo o que eu acho que funciona. Eu aplico e valido no campo de batalha, todos os dias.</p>
+                         <p class="text-primary text-xl font-semibold">A "Mente Mestra de Marketing" não é um serviço que eu inventei. É a soma de tudo que aprendi, organizada de uma forma que entrega o que toda empresa precisa para crescer: uma direção estratégica clara.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="bg-dark text-white py-20 md:py-32">
+            <div class="container mx-auto px-6 md:px-8 max-w-7xl">
+                <div class="max-w-3xl reveal">
+                    <h2 class="text-4xl md:text-6xl font-manrope">Como A Mente Mestra Funciona na Prática?</h2>
+                    <p class="mt-6 text-lg text-gray-400">É um programa de aceleração de 90 dias, onde arrumamos a casa e construímos juntos o motor de crescimento do seu negócio.</p>
+                </div>
+
+                <div class="mt-16 space-y-12">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-4 border-t border-gray-800 pt-8 reveal">
+                        <div class="md:col-span-3"><span class="bg-[#1C1C1C] border border-gray-800 text-sm px-4 py-2 rounded-full">Diagnóstico</span></div>
+                        <div class="md:col-span-1"><span class="text-primary font-bold text-4xl font-manrope">/01</span></div>
+                        <div class="md:col-span-4"><h3 class="text-3xl font-semibold text-white">MÊS 1: O DIAGNÓSTICO E O MAPA DA MINA</h3></div>
+                        <div class="md:col-span-4 text-lg text-gray-400 space-y-4">
+                           <p><span class="text-primary font-semibold">*</span> Vamos fazer um raio-x completo do seu negócio. Quem é seu cliente, quem são seus concorrentes, o que já funciona e o que é perda de tempo. No final, eu te entrego o <b>Plano de Batalha de 90 Dias</b>: um documento claro com metas, orçamento e as alavancas exatas que vamos puxar para o seu negócio crescer.</p>
+                        </div>
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-4 border-t border-gray-800 pt-8 reveal">
+                        <div class="md:col-span-3"><span class="bg-[#1C1C1C] border border-gray-800 text-sm px-4 py-2 rounded-full">Construção</span></div>
+                        <div class="md:col-span-1"><span class="text-primary font-bold text-4xl font-manrope">/02</span></div>
+                        <div class="md:col-span-4"><h3 class="text-3xl font-semibold text-white">MÊS 2: A CONSTRUÇÃO DO MOTOR</h3></div>
+                        <div class="md:col-span-4 text-lg text-gray-400 space-y-4">
+                            <p><span class="text-primary font-semibold">*</span> Com o plano na mão, começamos a execução comandada. Vou gerenciar as equipes (suas ou minhas), supervisionar as campanhas, otimizar as landing pages e garantir que cada peça do quebra-cabeça esteja no lugar certo, funcionando em harmonia. Chega de ações isoladas.</p>
+                        </div>
+                    </div>
+                     <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-4 border-t border-gray-800 pt-8 reveal">
+                        <div class="md:col-span-3"><span class="bg-[#1C1C1C] border border-gray-800 text-sm px-4 py-2 rounded-full">Otimização</span></div>
+                        <div class="md:col-span-1"><span class="text-primary font-bold text-4xl font-manrope">/03</span></div>
+                        <div class="md:col-span-4"><h3 class="text-3xl font-semibold text-white">MÊS 3 EM DIANTE: PILOTAGEM E OTIMIZAÇÃO</h3></div>
+                        <div class="md:col-span-4 text-lg text-gray-400 space-y-4">
+                            <p><span class="text-primary font-semibold">*</span> Com o motor funcionando, o jogo vira pilotagem. Análise de dados semanal, reuniões estratégicas mensais (e rápidas) e otimização contínua para garantir que o ROI (retorno sobre o investimento) seja cada vez maior. Você finalmente terá clareza e previsibilidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO IS IT FOR? -->
+        <section class="bg-white py-20 md:py-32">
+             <div class="container mx-auto px-6 md:px-8 max-w-7xl">
+                <div class="text-center reveal">
+                    <h2 class="text-4xl md:text-6xl font-manrope text-dark">Para quem é A Mente Mestra?</h2>
+                    <p class="mt-4 text-lg text-gray-500">Eu sou muito transparente aqui. Não é para todo mundo.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl reveal">
+                        <h3 class="text-2xl font-semibold text-green-600 flex items-center gap-3">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            É PRA VOCÊ SE:
+                        </h3>
+                        <ul class="mt-6 space-y-4 list-disc list-inside text-gray-600 text-lg">
+                             <li>Você já tem um negócio estabelecido e com clientes (ex: acima de R$10k/mês).</li>
+                            <li>Você está sobrecarregado e sabe que é o gargalo do seu próprio crescimento.</li>
+                            <li>Você vê marketing como um investimento estratégico, não como um custo.</li>
+                            <li>Você está pronto para ter um parceiro de negócios, não um simples fornecedor.</li>
+                        </ul>
+                    </div>
+                     <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl reveal" data-delay="100">
+                        <h3 class="text-2xl font-semibold text-red-500 flex items-center gap-3">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-red-500"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                            NÃO É PRA VOCÊ SE:
+                        </h3>
+                        <ul class="mt-6 space-y-4 list-disc list-inside text-gray-600 text-lg">
+                            <li>Você está começando do zero e ainda não validou seu serviço.</li>
+                            <li>Você está procurando uma "fórmula mágica" ou resultados sem esforço.</li>
+                            <li>Você quer pagar barato por "mais posts" ou "mais seguidores".</li>
+                            <li>Você não está disposto a seguir um plano estratégico e confiar no processo.</li>
+                        </ul>
+                    </div>
+                </div>
+             </div>
+        </section>
+         
+    </main>
+
+    <!-- FOOTER CTA -->
+    <footer class="bg-dark text-white" id="apply">
+        <div class="container mx-auto px-6 md:px-8 max-w-4xl py-20 md:py-32 text-center">
+             <h2 class="text-4xl md:text-6xl font-extrabold leading-tight font-manrope reveal">
+                Chega de ser o <span class="text-primary">faz-tudo</span> da sua própria empresa.
+            </h2>
+            <p class="mt-8 text-lg text-gray-400 reveal" data-delay="100">Se você está pronto para ter um parceiro estratégico que vai tirar o peso do marketing das suas costas e colocar sua empresa na rota do crescimento previsível, eu quero conversar com você.</p>
+            <p class="mt-6 text-gray-400 reveal" data-delay="150">A Mente Mestra de Marketing é um serviço exclusivo e de alta proximidade. Por isso, eu só aceito um número limitado de clientes por trimestre.</p>
+            <p class="mt-8 text-gray-300 reveal" data-delay="200">O próximo passo não é um "comprar agora". É uma aplicação para uma <b>Sessão de Diagnóstico Estratégico</b> comigo. Nessa chamada, vamos mapear seu negócio e, se eu sentir que posso genuinamente te ajudar, eu te explico como a Mente Mestra funciona em detalhes. Se não, te dou insights valiosos do mesmo jeito.</p>
+             <p class="mt-8 text-xl font-semibold text-white reveal" data-delay="250">Você não tem nada a perder. A não ser que considere continuar apagando incêndio uma boa estratégia.</p>
+
+             <a href="#" class="group inline-flex items-center gap-4 mt-12 bg-primary text-dark px-10 py-5 rounded-full font-semibold shadow-primary hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 reveal" data-delay="300">
+                <span class="text-lg uppercase font-bold">Quero aplicar para a sessão de diagnóstico</span>
+                <span class="bg-white text-dark p-2 rounded-full transition-transform duration-300 group-hover:rotate-45">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+            </a>
+        </div>
+        <div class="border-t border-gray-800">
+            <div class="container mx-auto px-6 md:px-8 max-w-7xl py-6 text-center text-sm text-gray-500">
+                 <p>Mente Mestra de Marketing | © Copyright 2025. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // --- Header Background on Scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white/80', 'backdrop-blur-sm', 'shadow-sm');
+                    header.classList.remove('bg-transparent');
+                } else {
+                    header.classList.remove('bg-white/80', 'backdrop-blur-sm', 'shadow-sm');
+                    header.classList.add('bg-transparent');
+                }
+            });
+            
+            // --- Reveal on Scroll ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                revealElements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const elementVisible = 100; // px from bottom to trigger
+                    
+                    const delay = el.dataset.delay || 0;
+
+                    if (elementTop < windowHeight - elementVisible) {
+                        setTimeout(() => {
+                            el.classList.add('visible');
+                        }, delay);
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Initial check
+        });
+
+    </script>
+</body>
+
+</html>
+
+
+
+

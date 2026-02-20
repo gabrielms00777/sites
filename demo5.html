@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ello Infinity - Clínica de Estética e Odontologia</title>
+    <meta name="description" content="Ello Infinity: um estúdio de excelência em odontologia e estética facial. Onde a precisão da ciência encontra a alma da arte para resultados atemporais.">
+    
+    <link rel="icon" href="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/favicon.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #242221;
+            --bg-light: #F5F3F0;
+            --text-light: #EAE6E1;
+            --text-dark: #3D3B3A;
+            --accent: #B99D75;
+            --accent-light: #d1c0a8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-track {
+            animation: scroll 40s linear infinite;
+        }
+        
+        @keyframes scroll-results-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-track-results {
+            animation: scroll-results-left 60s linear infinite;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease-in-out, padding 0.5s ease;
+            opacity: 0;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            transition: max-height 1s cubic-bezier(1, 0, 1, 0), opacity 0.7s ease-in-out, padding 0.5s ease;
+        }
+
+        .accordion-item .icon-plus {
+            transform: rotate(0deg);
+            transition: transform 0.4s ease;
+        }
+        .accordion-item.active .icon-plus {
+            transform: rotate(45deg);
+        }
+        
+        /* SOLUÇÃO DEFINITIVA PARA O TAMANHO DA LOGO */
+        header#header .header-logo {
+            max-width: 160px !important; /* Ajuste este valor em pixels para o tamanho desejado */
+            height: auto !important;
+            width: 100%;
+        }
+
+        footer .footer-logo {
+            max-width: 150px !important; /* Ajuste este valor para o tamanho da logo no rodapé */
+            height: auto !important;
+            width: 100%;
+        }
+
+        /* Correção para imagem da seção Filosofia */
+        .philosophy-image {
+            max-width: 450px !important; /* Ajuste este valor para o tamanho desejado */
+            width: 100% !important;
+            height: auto !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Correção definitiva para o FAQ no Elementor */
+        .accordion-item {
+            border-color: #e5e7eb !important; /* Cor cinza claro (gray-200) */
+        }
+        .accordion-header, .accordion-header:hover, .accordion-item.active .accordion-header {
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            color: var(--text-dark) !important; /* Garante que o texto não fique branco */
+        }
+
+        /* Correção para o ícone do menu hamburger no Elementor */
+        .hamburger, .hamburger:hover, .hamburger:focus {
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-light);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-[--bg-light] text-[--text-dark]">
+
+    <!-- ===== HEADER ===== -->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/logo-preta.webp" alt="Logo Ello Infinity" class="header-logo opacity-0 absolute" id="logo-light">
+                <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/logo-branca.webp" alt="Logo Ello Infinity" class="header-logo" id="logo-dark">
+            </div>
+            
+            <div id="desktop-nav-links" class="hidden lg:flex items-center space-x-8 text-white">
+                <a href="#filosofia" class="text-sm tracking-wider hover:text-[--accent] transition-colors">Filosofia</a>
+                <a href="#especialidades" class="text-sm tracking-wider hover:text-[--accent] transition-colors">Especialidades</a>
+                <a href="#resultados" class="text-sm tracking-wider hover:text-[--accent] transition-colors">Resultados</a>
+                <a href="#contato" class="text-sm tracking-wider hover:text-[--accent] transition-colors">Contato</a>
+            </div>
+
+            <div class="hidden lg:block">
+                <a href="https://wa.me/5583000000000" target="_blank" rel="noopener noreferrer" class="bg-[--accent] text-white px-6 py-3 text-sm rounded-full hover:bg-[--accent-light] transition-all duration-300 transform hover:scale-105">
+                    Solicitar Avaliação
+                </a>
+            </div>
+
+            <div class="lg:hidden">
+                <button id="menu-btn" class="z-50 block hamburger lg:hidden focus:outline-none">
+                    <span class="hamburger-top"></span>
+                    <span class="hamburger-middle"></span>
+                    <span class="hamburger-bottom"></span>
+                </button>
+            </div>
+        </nav>
+        
+        <div id="menu" class="lg:hidden fixed inset-0 z-40 flex-col items-center self-end w-full h-full m-h-screen px-6 py-1 pt-24 pb-4 tracking-widest text-white uppercase divide-y divide-gray-500 opacity-0 bg-black/80 backdrop-blur-sm hidden transition-opacity duration-300">
+             <div class="w-full py-3 text-center">
+                <a href="#filosofia" class="block hover:text-[--accent-light]">Filosofia</a>
+            </div>
+             <div class="w-full py-3 text-center">
+                <a href="#especialidades" class="block hover:text-[--accent-light]">Especialidades</a>
+            </div>
+             <div class="w-full py-3 text-center">
+                <a href="#resultados" class="block hover:text-[--accent-light]">Resultados</a>
+            </div>
+             <div class="w-full py-3 text-center">
+                <a href="#contato" class="block hover:text-[--accent-light]">Contato</a>
+            </div>
+             <div class="w-full py-3 text-center">
+                <a href="https://wa.me/5583000000000" target="_blank" rel="noopener noreferrer" class="bg-[--accent] text-white px-6 py-3 text-sm rounded-full hover:bg-[--accent-light] transition-all duration-300">
+                    Solicitar Avaliação
+                </a>
+            </div>
+        </div>
+
+        <style>
+            .hamburger { cursor: pointer; width: 24px; height: 24px; transition: all 0.25s; position: relative; }
+            .hamburger-top, .hamburger-middle, .hamburger-bottom { position: absolute; top: 0; left: 0; width: 24px; height: 2px; background: var(--text-light); transition: all 0.5s; }
+            .hamburger-middle { transform: translateY(7px); }
+            .hamburger-bottom { transform: translateY(14px); }
+            .open { transform: rotate(90deg); }
+            .open .hamburger-top { transform: rotate(45deg) translateY(6px) translateX(6px); background: #fff;}
+            .open .hamburger-middle { display: none; }
+            .open .hamburger-bottom { transform: rotate(-45deg) translateY(6px) translateX(-6px); background: #fff;}
+        </style>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="h-screen min-h-[700px] flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/30 z-10"></div>
+        <!-- Imagem para Desktop -->
+        <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/banner.webp" 
+             alt="Mulher com expressão serena e confiante"
+             class="hero-bg-img hidden lg:block absolute inset-0 w-full h-full object-cover object-center scale-110 transition-transform duration-1000">
+        <!-- Imagem para Mobile -->
+        <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/banner-mobile.webp" 
+             alt="Mulher com expressão serena e confiante"
+             class="hero-bg-img block lg:hidden absolute inset-0 w-full h-full object-cover object-top scale-110 transition-transform duration-1000">
+        <div class="container mx-auto px-6 z-20 text-[--text-light]">
+            <div class="grid lg:grid-cols-2">
+                <div class="text-center lg:text-left fade-in-up">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-medium leading-tight">A harmonia entre quem você é<br> e como se apresenta ao mundo.</h1>
+                    <p class="max-w-xl mx-auto lg:mx-0 mt-6 text-base md:text-lg leading-relaxed">
+                        Em um mundo de excessos, defendemos a elegância do que é autêntico. Acreditamos que a verdadeira sofisticação reside na sutileza.
+                    </p>
+                    <a href="https://wa.me/5583000000000" target="_blank" rel="noopener noreferrer" class="inline-block bg-[--accent] text-white px-10 py-4 mt-10 rounded-full hover:bg-[--accent-light] transition-all duration-300 transform hover:scale-105">
+                        Solicitar uma Avaliação Privativa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TICKER SECTION ===== -->
+    <section class="bg-[--bg-dark] text-[--text-light] py-10 overflow-hidden">
+        <div class="flex ticker-track whitespace-nowrap">
+            <div class="flex items-center space-x-16 px-8 text-xl tracking-widest animate-scroll">
+                <span>EXCELÊNCIA</span><span class="text-[--accent]">&bull;</span>
+                <span>SOFISTICAÇÃO</span><span class="text-[--accent]">&bull;</span>
+                <span>RESULTADOS NATURAIS</span><span class="text-[--accent]">&bull;</span>
+                <span>ARTE E CIÊNCIA</span><span class="text-[--accent]">&bull;</span>
+                <span>BEM-ESTAR</span><span class="text-[--accent]">&bull;</span>
+                <span>EXCELÊNCIA</span><span class="text-[--accent]">&bull;</span>
+                <span>SOFISTICAÇÃO</span><span class="text-[--accent]">&bull;</span>
+                <span>RESULTADOS NATURAIS</span><span class="text-[--accent]">&bull;</span>
+                <span>ARTE E CIÊNCIA</span><span class="text-[--accent]">&bull;</span>
+                <span>BEM-ESTAR</span><span class="text-[--accent]">&bull;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FILOSOFIA SECTION ===== -->
+    <section id="filosofia" class="py-20 md:py-32 bg-[--bg-light]">
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-up">
+                <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/clinica2.webp" 
+                     alt="Detalhe do interior acolhedor da clínica Ello Infinity"
+                     class="philosophy-image rounded-lg shadow-xl">
+            </div>
+            <div class="fade-in-up" style="transition-delay: 200ms;">
+                <h2 class="text-4xl md:text-5xl font-semibold leading-tight mb-6">Onde a precisão da ciência<br>encontra a alma da arte.</h2>
+                <p class="text-lg mb-4 leading-relaxed">O rosto humano é a mais complexa das telas. O sorriso, sua mais poderosa assinatura. Compreender essa dinâmica exige mais do que conhecimento técnico; exige sensibilidade, um olhar apurado para proporções e um profundo respeito pela individualidade.</p>
+                <p class="leading-relaxed">Na Ello Infinity, cada plano de tratamento é uma obra de curadoria. Iniciamos com um diagnóstico profundo para entender sua história, seu estilo de vida e suas aspirações. Somente então, desenhamos uma jornada de tratamento personalizada, com resultados atemporais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ESPECIALIDADES SECTION ===== -->
+    <section id="especialidades" class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-semibold">Nossas Especialidades</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-gray-600">A união sinérgica entre a estética facial e o design de sorriso para criar um resultado coeso e harmônico.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[--bg-light] p-8 rounded-lg shadow-lg fade-in-up">
+                    <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/sorriso2.webp" alt="Ilustração de um sorriso perfeito" class="rounded-md mb-6">
+                    <h3 class="text-2xl font-semibold mb-3">Design de Sorriso Autoral</h3>
+                    <p class="text-gray-600 leading-relaxed">Realizamos uma arquitetura oral onde cada detalhe – cor, forma e alinhamento – é meticulosamente planejado para um sorriso perfeitamente integrado e autêntico.</p>
+                </div>
+                <div class="bg-[--bg-light] p-8 rounded-lg shadow-lg fade-in-up" style="transition-delay: 200ms;">
+                    <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/harmonizacao.webp" alt="Ilustração do contorno facial" class="rounded-md mb-6">
+                    <h3 class="text-2xl font-semibold mb-3">Arquitetura Facial</h3>
+                    <p class="text-gray-600 leading-relaxed">Tratamos a face como uma estrutura tridimensional que merece ser restaurada. Devolvemos o contorno, a firmeza e a vitalidade da pele de forma sutil e natural.</p>
+                </div>
+                <div class="bg-[--bg-light] p-8 rounded-lg shadow-lg fade-in-up md:col-span-2 lg:col-span-1" style="transition-delay: 400ms;">
+                    <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/pele.webp" alt="Ilustração de pele saudável" class="rounded-md mb-6">
+                    <h3 class="text-2xl font-semibold mb-3">Revitalização e Saúde da Pele</h3>
+                    <p class="text-gray-600 leading-relaxed">Oferecemos protocolos avançados para otimizar a qualidade da sua pele, tratando-a a nível celular para devolver seu viço, uniformidade e resiliência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESULTADOS CAROUSEL ===== -->
+    <section id="resultados" class="py-20 md:py-32 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-semibold">Resultados que Inspiram Confiança</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-gray-600">Veja o poder da nossa abordagem artística e científica através de transformações reais.</p>
+            </div>
+        </div>
+        <div class="w-full relative fade-in-up">
+            <div id="results-container" class="w-full overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide">
+                <div class="flex ticker-track-results" id="results-track">
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/ccc/3D3B3A?text=Antes+1" alt="Resultado Antes 1" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/B99D75/FFFFFF?text=Depois+1" alt="Resultado Depois 1" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/ccc/3D3B3A?text=Antes+2" alt="Resultado Antes 2" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/B99D75/FFFFFF?text=Depois+2" alt="Resultado Depois 2" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/ccc/3D3B3A?text=Antes+3" alt="Resultado Antes 3" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/B99D75/FFFFFF?text=Depois+3" alt="Resultado Depois 3" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/ccc/3D3B3A?text=Antes+4" alt="Resultado Antes 4" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="flex-shrink-0 w-80 mx-4 snap-center">
+                        <img src="https://placehold.co/400x500/B99D75/FFFFFF?text=Depois+4" alt="Resultado Depois 4" class="w-full h-full object-cover rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+            <button id="prev-btn" class="absolute top-1/2 left-4 md:left-8 transform -translate-y-1/2 bg-white/50 hover:bg-white rounded-full p-3 transition duration-300 shadow-md z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[--text-dark]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button id="next-btn" class="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 bg-white/50 hover:bg-white rounded-full p-3 transition duration-300 shadow-md z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[--text-dark]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===== DEPOIMENTOS SECTION ===== -->
+    <section class="py-20 md:py-32 bg-[--bg-dark] text-[--text-light]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-semibold">A Experiência de Nossos Clientes</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/5 p-8 rounded-lg border border-white/10 fade-in-up">
+                    <p class="italic mb-6">"A Ello Infinity transformou não apenas meu sorriso, mas minha confiança. O atendimento é impecável e os resultados superaram todas as minhas expectativas."</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/F5F3F0/3D3B3A?text=C1" alt="Foto do cliente 1" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold">Juliana R.</p>
+                            <p class="text-sm text-white/60">Cliente de Odontologia Estética</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-8 rounded-lg border border-white/10 fade-in-up" style="transition-delay: 200ms;">
+                    <p class="italic mb-6">"O resultado da harmonização foi extremamente natural e elegante. A equipe demonstrou um profissionalismo e uma sensibilidade artística admiráveis."</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/F5F3F0/3D3B3A?text=C2" alt="Foto do cliente 2" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold">Marcos P.</p>
+                            <p class="text-sm text-white/60">Cliente de Estética Facial</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-8 rounded-lg border border-white/10 fade-in-up" style="transition-delay: 400ms;">
+                    <p class="italic mb-6">"Um ambiente acolhedor e uma equipe que realmente escuta. Me senti segura e cuidada do início ao fim do tratamento. Recomendo de olhos fechados."</p>
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/50x50/F5F3F0/3D3B3A?text=C3" alt="Foto do cliente 3" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold">Clara S.</p>
+                            <p class="text-sm text-white/60">Cliente de Revitalização da Pele</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="py-20 md:py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-semibold">Perguntas Frequentes</h2>
+            </div>
+            <div class="space-y-4 fade-in-up">
+                <div class="accordion-item border-b border-gray-200 pb-4">
+                    <button class="accordion-header w-full flex justify-between items-center text-left text-xl font-medium py-4">
+                        <span>Como funciona a primeira avaliação?</span>
+                        <span class="icon-plus text-2xl text-[--accent]">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-gray-600">Nossa primeira avaliação é uma conversa aprofundada para entendermos seus objetivos. Realizamos uma análise detalhada e criamos um plano de tratamento 100% personalizado para você.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border-b border-gray-200 pb-4">
+                    <button class="accordion-header w-full flex justify-between items-center text-left text-xl font-medium py-4">
+                        <span>Os procedimentos de estética facial<br> são dolorosos?</span>
+                        <span class="icon-plus text-2xl text-[--accent]">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-gray-600">Priorizamos o seu conforto. Utilizamos as técnicas mais avançadas e anestésicos tópicos para garantir que a experiência seja a mais tranquila e indolor possível.</p>
+                    </div>
+                </div>
+                <div class="accordion-item border-b border-gray-200 pb-4">
+                    <button class="accordion-header w-full flex justify-between items-center text-left text-xl font-medium py-4">
+                        <span>A clínica aceita convênios?</span>
+                        <span class="icon-plus text-2xl text-[--accent]">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-gray-600">Para alguns serviços de Odontologia, atendemos pelo convênio Dental Gold. Para estética, não atendemos convênios diretamente, mas fornecemos toda a documentação necessária (nota fiscal) para que você possa solicitar o reembolso ao seu plano de saúde.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL CTA SECTION ===== -->
+    <section id="contato" class="bg-[--bg-light] py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <div class="fade-in-up">
+                <h2 class="text-4xl md:text-6xl font-medium leading-tight">A conversa que pode mudar<br>como você se encara.</h2>
+                <p class="max-w-2xl mx-auto mt-6 text-lg text-gray-700">Chega de adiar. Chega de se sentir "mais ou menos". A avaliação na Ello Infinity é um diagnóstico, uma conversa sincera sobre o que é possível e o que podemos construir juntos.</p>
+                <a href="https://wa.me/5583000000000" target="_blank" rel="noopener noreferrer" class="inline-block bg-[--accent] text-white px-10 py-4 mt-10 rounded-full hover:bg-[--accent-light] transition-all duration-300 transform hover:scale-105">
+                    Sim, Quero Agendar Meu Diagnóstico
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-[--bg-dark] text-[--text-light]">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <img src="https://ello.gooldigital.com.br/wp-content/uploads/2025/09/logo-branca.webp" alt="Logo Ello Infinity" class="footer-logo mx-auto md:mx-0 mb-4">
+                    <p class="text-sm text-white/60">Onde a precisão da ciência<br>encontra a alma da arte.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold tracking-wider uppercase mb-4">Endereço</h4>
+                    <p class="text-sm text-white/60">Rua Maria Facunda de Oliveira Dias, nº 92<br>Brisamar, João Pessoa, PB</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold tracking-wider uppercase mb-4">Funcionamento</h4>
+                    <p class="text-sm text-white/60">Segunda a Sexta: 08:00 às 18:00</p>
+                    <p class="text-sm text-white/60">Sábado: 08:00 às 12:00</p>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-12 pt-8 text-center text-sm text-white/50">
+                <p>&copy; 2025 Ello Infinity. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== Animações de Scroll =====
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const elementsToAnimate = document.querySelectorAll('.fade-in-up');
+            elementsToAnimate.forEach(el => observer.observe(el));
+            
+            // ===== Header com fundo ao rolar =====
+            const header = document.getElementById('header');
+            const logoLight = document.getElementById('logo-light');
+            const logoDark = document.getElementById('logo-dark');
+            const hamburgerLines = document.querySelectorAll('.hamburger span');
+            const desktopNavLinks = document.getElementById('desktop-nav-links');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white/80', 'backdrop-blur-sm', 'shadow-md');
+                    logoLight.classList.remove('opacity-0');
+                    logoDark.classList.add('opacity-0');
+                    desktopNavLinks.classList.remove('text-white');
+                    desktopNavLinks.classList.add('text-[--text-dark]');
+                    hamburgerLines.forEach(line => line.style.backgroundColor = 'var(--text-dark)');
+                } else {
+                    header.classList.remove('bg-white/80', 'backdrop-blur-sm', 'shadow-md');
+                    logoLight.classList.add('opacity-0');
+                    logoDark.classList.remove('opacity-0');
+                    desktopNavLinks.classList.add('text-white');
+                    desktopNavLinks.classList.remove('text-[--text-dark]');
+                    hamburgerLines.forEach(line => line.style.backgroundColor = 'var(--text-light)');
+                }
+            });
+
+            // ===== Menu Mobile Toggle =====
+            const btn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
+            const menuLinks = menu.querySelectorAll('a');
+
+            const toggleMenu = () => {
+                btn.classList.toggle('open');
+                menu.classList.toggle('hidden');
+                setTimeout(() => {
+                    menu.classList.toggle('opacity-0');
+                }, 10);
+                document.body.classList.toggle('overflow-hidden');
+            };
+
+            btn.addEventListener('click', toggleMenu);
+            menuLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+            
+            // ===== Efeito Parallax no Hero =====
+            const heroBgImgs = document.querySelectorAll('.hero-bg-img');
+            window.addEventListener('scroll', () => {
+                const scrollValue = window.scrollY;
+                heroBgImgs.forEach(img => {
+                    img.style.transform = `scale(1.1) translateY(${scrollValue * 0.3}px)`;
+                });
+            });
+
+            // ===== Accordion do FAQ =====
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.accordion-item.active');
+                    if(currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                    }
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Forçar reavaliação do header no carregamento
+            window.dispatchEvent(new Event('scroll'));
+
+            // ===== Carrossel de Resultados com Setas =====
+            const resultsContainer = document.getElementById('results-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const resultsTrack = document.getElementById('results-track');
+
+            // Duplicar imagens para o efeito de loop infinito
+            const resultsItems = Array.from(resultsTrack.children);
+            resultsItems.forEach(item => {
+                const clone = item.cloneNode(true);
+                resultsTrack.appendChild(clone);
+            });
+            
+            if (resultsContainer && prevBtn && nextBtn) {
+                const scrollAmount = resultsContainer.querySelector('div').offsetWidth + 32; // width (w-80) + margin (mx-4)
+
+                const pauseAnimation = () => {
+                    resultsTrack.style.animationPlayState = 'paused';
+                };
+
+                nextBtn.addEventListener('click', () => {
+                    pauseAnimation();
+                    resultsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    pauseAnimation();
+                    resultsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPL da Gool™ - Pague por Leads Qualificados</title>
+    <meta name="description" content="Pare de pagar por promessas. Com o modelo PPL, nós construímos seu funil completo e você só paga por clientes qualificados. O risco é nosso.">
+    
+    <!-- Meta Tags for Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PPL da Gool™ - Pague por Leads Qualificados">
+    <meta property="og:description" content="O primeiro serviço onde nós construímos seu funil de vendas e você só paga pelos leads qualificados que entregamos.">
+    <meta property="og:image" content="https://placehold.co/1200x630/04070d/d5dbe6?text=PPL+da+Gool">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PPL da Gool™ - Pague por Leads Qualificados">
+    <meta name="twitter:description" content="O primeiro serviço onde nós construímos seu funil de vendas e você só paga pelos leads qualificados que entregamos.">
+    <meta name="twitter:image" content="https://placehold.co/1200x630/04070d/d5dbe6?text=PPL+da+Gool">
+
+    <!-- Favicon -->
+    <link href="https://framerusercontent.com/images/krwAtKQ96qQhxYx1oblE2eo70.svg" rel="icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles adapted for the PPL service */
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #04070d;
+            color: #d5dbe6;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-instrument-serif { font-family: 'Instrument Serif', serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .font-italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        .heading-gradient { background-image: linear-gradient(138deg, #d5dbe6 50%, #04070d 160%); }
+        
+        /* New accent color for a more corporate feel */
+        .accent-color { color: #2563eb; } /* Blue-600 */
+        .bg-accent-color { background-color: #2563eb; }
+        .border-accent-color { border-color: #2563eb; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-button[aria-expanded="true"] .accordion-icon { transform: rotate(45deg); }
+        
+        .card-border {
+            border: 1px solid rgba(216, 231, 242, 0.07);
+            box-shadow: inset 0 1px 2px rgba(207, 231, 255, 0.1);
+        }
+        
+        .bg-radial-glow { background: radial-gradient(50% 50% at 50% 50%, rgba(37, 99, 235, 0.15) 0%, rgba(4, 7, 13, 0) 100%); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Top Banner -->
+    <div class="bg-accent-color text-white py-3 px-6 flex items-center justify-center text-center text-sm md:text-base font-bold">
+        <p>VAGAS LIMITADAS: Atendemos um número limitado de clientes por mês para garantir a máxima performance.</p>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen w-full flex flex-col justify-end md:justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center center;">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#04070d] via-[#04070d]/90 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 p-6 pb-24 md:p-10 md:pb-10 lg:p-20 lg:pb-20 text-center">
+            <div class="max-w-5xl mx-auto">
+                <div class="reveal">
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight tracking-tighter">
+                        Pare de Pagar por Promessas. <br> Comece a <span class="font-italic text-gradient" style="background-image: linear-gradient(138deg, #3b82f6 50%, #d5dbe6 160%);">Pagar por Clientes.</span>
+                    </h1>
+                    <h2 class="mt-6 max-w-4xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed font-manrope">
+                        Apresentamos o modelo PPL (Pague Por Lead): o primeiro serviço de captação onde nós construímos seu funil de vendas completo e você só paga pelos leads qualificados que entregamos. **O risco é 100% nosso.**
+                    </h2>
+                </div>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal" style="transition-delay: 0.2s;">
+                    <a href="https://wa.me/5583986656241?text=Ol%C3%A1%2C%20quero%20agendar%20a%20sess%C3%A3o%20de%20qualifica%C3%A7%C3%A3o%20para%20o%20Modelo%20PPL%20(Pague%20por%20Lead)." class="bg-accent-color text-white font-bold text-lg py-4 px-10 rounded-full flex justify-center text-center hover:opacity-90 transition-opacity btn-pulse">
+                        QUERO RECEBER LEADS QUALIFICADOS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 md:py-28 px-6 bg-[#04070d]">
+        <div class="max-w-6xl mx-auto text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">O modelo tradicional de marketing <span class="font-italic">não funciona mais.</span></h2>
+            <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">Se você está cansado de pagar caro por poucos resultados, você não está sozinho.</p>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <!-- Card 1 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal">
+                    <h3 class="text-xl font-bold text-white">Mensalidades Fixas, Retorno Incerto</h3>
+                    <p class="mt-2 text-gray-400">Pagar um valor fixo a gestores de tráfego sem garantia de que o investimento trará faturamento real.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-xl font-bold text-white">Leads Curiosos, Vendas Raras</h3>
+                    <p class="mt-2 text-gray-400">Seu WhatsApp lotado de pessoas desqualificadas que gastam o tempo da sua equipe e nunca compram.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">Métricas que Não Pagam Contas</h3>
+                    <p class="mt-2 text-gray-400">Receber relatórios cheios de cliques e curtidas, mas ver a agenda e o caixa da empresa vazios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 md:py-28 px-6 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 w-full h-full bg-radial-glow opacity-40"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    O Fim do Risco no Marketing Digital. <br> Bem-vindo à Era da <span class="font-instrument-serif italic font-normal">Performance Real.</span>
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">
+                    Com o **PPL (Pague Por Lead)**, nós viramos o jogo. Nós não gerenciamos seus anúncios. Nós construímos e executamos seu **funil de captação de ponta a ponta** e assumimos toda a responsabilidade. Você só paga pelo resultado final: o lead qualificado, pronto para conversar com sua equipe de vendas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section id="method" class="py-20 md:py-28 px-6 bg-[#04070d]">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    Nós não apertamos botões. <br> Nós construímos a sua <span class="font-italic">máquina de vendas.</span>
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">Veja o que está incluso na construção do seu funil completo:</p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                <!-- Item 1 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal">
+                    <h3 class="text-xl font-bold text-white">🧠 Estratégia e Copywriting</h3>
+                    <p class="mt-2 text-gray-400">Mapeamos seu cliente ideal e desenvolvemos a mensagem persuasiva que o atrai.</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-xl font-bold text-white">🎨 Desenvolvimento de Criativos</h3>
+                    <p class="mt-2 text-gray-400">Criamos os roteiros e as imagens dos anúncios que irão capturar a atenção do seu público.</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">💻 Landing Pages de Alta Conversão</h3>
+                    <p class="mt-2 text-gray-400">Construímos páginas focadas em qualificar o interesse do lead e capturar seus dados.</p>
+                </div>
+                 <!-- Item 4 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.3s;">
+                    <h3 class="text-xl font-bold text-white">🎯 Campanhas de Atração</h3>
+                    <p class="mt-2 text-gray-400">Colocamos os anúncios no ar no Google e Meta, segmentando com precisão o público comprador.</p>
+                </div>
+                <!-- Item 5 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.4s;">
+                    <h3 class="text-xl font-bold text-white">🔄 Automação e Remarketing</h3>
+                    <p class="mt-2 text-gray-400">Criamos fluxos para reengajar os leads que não converteram de primeira, maximizando seu resultado.</p>
+                </div>
+                 <!-- Item 6 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.5s;">
+                    <h3 class="text-xl font-bold text-white">✅ Entrega de Leads Qualificados</h3>
+                    <p class="mt-2 text-gray-400">Você não se preocupa com nada. Apenas recebe os leads prontos para comprar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section class="py-20 md:py-28 px-6 bg-black">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">Por que o PPL é <span class="font-italic">superior?</span></h2>
+            <div class="mt-12 overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="p-4 border-b border-gray-700 text-lg font-bold text-white">Gestor de Tráfego Tradicional</th>
+                            <th class="p-4 border-b border-blue-400 text-lg font-bold text-blue-400">Nosso Modelo PPL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 text-gray-400">❌ Paga uma taxa fixa + investimento</td>
+                            <td class="p-4 text-white font-semibold">✅ Você só paga pelos leads qualificados</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 text-gray-400">❌ Risco 100% seu</td>
+                            <td class="p-4 text-white font-semibold">✅ Risco 100% nosso</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 text-gray-400">❌ Foco em métricas (cliques, views)</td>
+                            <td class="p-4 text-white font-semibold">✅ Foco no resultado (leads prontos)</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4 text-gray-400">❌ Entrega apenas o tráfego</td>
+                            <td class="p-4 text-white font-semibold">✅ Entrega o funil completo</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-gray-400">❌ Leads chegam frios e desqualificados</td>
+                            <td class="p-4 text-white font-semibold">✅ Leads chegam quentes e qualificados</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Who is it for Section -->
+    <section id="for-whom" class="py-20 md:py-28 px-6 bg-[#04070d] relative overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    <span class="font-instrument-serif italic font-normal">Desenhado para negócios</span> que querem previsibilidade.
+                </h2>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- For You -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal">
+                    <h3 class="text-2xl font-bold text-green-400">ISTO É PARA VOCÊ SE:</h3>
+                    <ul class="mt-6 space-y-4 text-left text-gray-300">
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você vende um serviço ou produto de alto valor.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você entende que um lead qualificado vale ouro.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você quer escalar suas vendas de forma segura e previsível.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você está pronto para ter uma equipe comercial ocupada.</span></li>
+                    </ul>
+                </div>
+                <!-- Not For You -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-bold text-red-400">ISTO NÃO É PARA VOCÊ SE:</h3>
+                    <ul class="mt-6 space-y-4 text-left text-gray-300">
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você vende produtos de baixíssimo ticket.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você não tem um processo comercial para atender os leads.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você procura uma fórmula mágica sem nenhum envolvimento.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você não está preparado para o crescimento.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA and FAQ Section -->
+    <section id="cta" class="py-20 md:py-28 px-6 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 w-full h-full bg-radial-glow opacity-60"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    Pronto para ter uma fonte previsível de clientes sem arriscar seu dinheiro?
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">
+                    Vamos agendar uma conversa rápida de 15 minutos para eu entender seu negócio e avaliarmos se o modelo PPL é a solução ideal para você.
+                </p>
+            </div>
+            <div class="mt-16 flex flex-col lg:flex-row items-start justify-center gap-8">
+                <!-- CTA Card -->
+                <div class="w-full max-w-md card-border bg-[#0c1019] rounded-2xl p-8 text-left reveal">
+                    <h3 class="text-lg font-semibold text-white">Garanta sua vaga de qualificação:</h3>
+                    <p class="mt-2 text-gray-400">Como assumimos todo o risco e dedicamos nossa equipe à construção do funil, abrimos um número limitado de vagas por mês.</p>
+                    <a href="https://wa.me/5583986656241?text=Ol%C3%A1%2C%20quero%20agendar%20a%20sess%C3%A3o%20de%20qualifica%C3%A7%C3%A3o%20para%20o%20Modelo%20PPL%20(Pague%20por%20Lead)." class="mt-8 w-full bg-accent-color text-white font-bold text-lg py-4 px-8 rounded-full flex items-center justify-center text-center hover:opacity-90 transition-opacity btn-pulse">
+                        AGENDAR SESSÃO DE QUALIFICAÇÃO
+                    </a>
+                    <div class="mt-8 text-center p-4 bg-blue-900/50 border border-blue-500/50 rounded-lg">
+                        <p class="font-bold text-blue-300">🔒 VAGAS LIMITADAS.</p>
+                        <p class="font-bold text-blue-300">⏰ AGENDE ANTES QUE ENCERRE.</p>
+                    </div>
+                </div>
+                <!-- FAQ -->
+                <div class="w-full max-w-lg text-left reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-3xl font-semibold text-white mb-6">Perguntas Frequentes:</h3>
+                    <div class="space-y-4">
+                        <!-- Accordion Item 1 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="flex-1 text-base sm:text-lg font-medium text-gray-300 mr-4">Quem paga o investimento em anúncios?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">O investimento em tráfego é feito por nós. Você não se preocupa com o gerenciamento de contas de anúncio ou com o valor investido. Seu único custo é o valor fixo por cada lead qualificado que entregamos.</p>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 2 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="flex-1 text-base sm:text-lg font-medium text-gray-300 mr-4">O que é considerado um "lead qualificado"?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">Definimos juntos, em contrato, os critérios exatos de qualificação. Geralmente, é um contato que forneceu seus dados, confirmou interesse no seu serviço/produto e atende a pré-requisitos específicos (como localização, orçamento mínimo, etc.). Chega de curiosos!</p>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 3 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="flex-1 text-base sm:text-lg font-medium text-gray-300 mr-4">Existe algum contrato de fidelidade?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">Não. Nosso maior interesse é que você tenha resultados, pois só ganhamos se você ganhar. Você pode pausar ou cancelar o serviço a qualquer momento, sem multas. A parceria se baseia na performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 px-6 border-t border-white/10">
+        <p class="text-gray-500 text-sm">&copy; 2025 PPL da Gool™. Todos os direitos reservados. Um serviço de Cristiano Gomes.</p>
+    </footer>
+
+    <script>
+        // JavaScript for reveal on scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Accordion functionality
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const expanded = button.getAttribute('aria-expanded') === 'true' || false;
+                
+                button.setAttribute('aria-expanded', !expanded);
+                content.style.maxHeight = expanded ? null : content.scrollHeight + 'px';
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

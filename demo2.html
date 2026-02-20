@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsenal de Criativos IA™</title>
+    <meta name="description" content="Crie anúncios em vídeo e imagem que vendem milhões em menos de 10 minutos. Garantido ou nós te pagamos o DOBRO.">
+    
+    <!-- Meta Tags for Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Arsenal de Criativos IA™">
+    <meta property="og:description" content="Crie anúncios em vídeo e imagem que vendem milhões em menos de 10 minutos. Garantido ou nós te pagamos o DOBRO.">
+    <meta property="og:image" content="https://framerusercontent.com/images/Ts7U7DGYZG7jnqIJsIjeHegt0o.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arsenal de Criativos IA™">
+    <meta name="twitter:description" content="Crie anúncios em vídeo e imagem que vendem milhões em menos de 10 minutos. Garantido ou nós te pagamos o DOBRO.">
+    <meta name="twitter:image" content="https://framerusercontent.com/images/Ts7U7DGYZG7jnqIJsIjeHegt0o.jpg">
+
+    <!-- Favicon -->
+    <link href="https://framerusercontent.com/images/krwAtKQ96qQhxYx1oblE2eo70.svg" rel="icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles to match the original design */
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #04070d;
+            color: #d5dbe6;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-instrument-serif { font-family: 'Instrument Serif', serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .font-italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-gradient { background-image: radial-gradient(150% 90% at 50% 50%, #d5dbe6 30%, #04070d 100%); }
+        .heading-gradient { background-image: linear-gradient(138deg, #d5dbe6 50%, #04070d 160%); }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(253, 55, 116, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(253, 55, 116, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(253, 55, 116, 0); }
+        }
+        .btn-pulse { animation: pulse 2s infinite; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .accordion-icon { transition: transform 0.3s ease; }
+        .accordion-button[aria-expanded="true"] .accordion-icon { transform: rotate(45deg); }
+        
+        .card-border {
+            border: 1px solid rgba(216, 231, 242, 0.07);
+            box-shadow: inset 0 2px 1px rgba(207, 231, 255, 0.2);
+        }
+        
+        .guarantee-border {
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .bg-radial-glow { background: radial-gradient(50% 50% at 50% 50%, rgba(213, 219, 230, 0.7) 0%, rgba(4, 7, 13, 0) 100%); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Top Banner -->
+    <div class="bg-[#fd3774] text-white py-3 px-6 flex items-center justify-center text-center text-sm md:text-base font-bold">
+        <p>Oferta para a Turma Fundadora, apenas 200 vagas</p>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/lq4ZM63IwqhMLyxVeCWLfM8OiA.mp4" autoplay loop muted playsinline></video>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#04070d] via-[#04070d]/90 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 p-6 md:p-10 lg:p-20 text-center">
+            <div class="max-w-5xl mx-auto">
+                <div class="reveal">
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight tracking-tighter">
+                        CRIE ANÚNCIOS EM VÍDEO E IMAGEM QUE VENDEM MILHÕES EM MENOS DE 10 MINUTOS...
+                    </h1>
+                    <h2 class="mt-6 max-w-4xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed font-manrope">
+                    Finalmente, o primeiro sistema "tudo-em-um" que gera a Copy, os Roteiros e os Criativos <span class="font-bold text-white">(Vídeos, Imagens e Carrosséis)</span> que realmente convertem, mesmo que você nunca tenha escrito uma linha ou desenhado um círculo.</span>
+                    </h2>
+                </div>
+                <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6 reveal" style="transition-delay: 0.2s;">
+                    <a href="https://go.perfectpay.com.br/PPU38CPUM8M" class="bg-[#fd3774] text-white font-bold text-lg py-4 px-10 rounded-full flex items-center gap-3 hover:opacity-90 transition-opacity btn-pulse">
+                        QUERO MEU ARSENAL IA AGORA
+                    </a>
+                </div>
+                <!-- Progress Bar -->
+                <div class="w-full max-w-sm mx-auto mt-6 reveal" style="transition-delay: 0.3s;">
+                    <div class="w-full bg-gray-700 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                    <p class="mt-2 text-xs text-gray-400">Vagas da Turma Fundadora Quase Esgotadas!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Section -->
+    <section class="py-20 md:py-28 px-6 bg-[#04070d]">
+        <div class="max-w-6xl mx-auto text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">A peça secreta não é um truque de mágica. <span class="font-italic">É um sistema.</span></h2>
+            <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">E se, em vez de adivinhar, você tivesse uma verdadeira Fábrica de Criativos que trabalha para você?</p>
+            
+            <!-- Laptop Mockup -->
+            <div class="mt-12 max-w-4xl mx-auto">
+                <div class="bg-[#1f2937] p-2 sm:p-3 rounded-t-2xl shadow-2xl shadow-black/50">
+                    <img src="https://gooldigital.com.br/wp-content/uploads/2025/08/arsenal-criativos-ia.jpg" alt="Demonstração do sistema em um laptop" class="rounded-lg w-full">
+                </div>
+                <div class="relative h-4 sm:h-5 bg-[#111827] rounded-b-2xl mx-auto w-[98%]">
+                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-1 bg-gray-600/50 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 md:py-28 px-6 bg-black relative overflow-hidden">
+        <div class="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[793px] h-[499px] bg-radial-glow opacity-10 rounded-lg"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    A Era do "Trabalho Duro" ACABOU.<br> Bem-vindo à Era da <span class="font-instrument-serif italic font-normal">Dominação Inteligente.</span>
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">
+                    Esqueça "processo criativo" e "inspiração". Os vencedores de hoje não são os mais criativos. São os mais <strong class="text-white">RÁPIDOS</strong> e os mais <strong class="text-white">LETAIS</strong>. Apresentamos o sistema de combate que te entrega o poder de uma agência de Hollywood, 24/7, sem salário e sem ego.
+                </p>
+            </div>
+            <div class="mt-12 reveal">
+                <div class="inline-block bg-[#04070d] p-8 rounded-2xl card-border text-center">
+                    <p class="text-gray-400 text-sm tracking-widest">APRESENTANDO:</p>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mt-2">O Sistema "Arsenal de Criativos IA"</h3>
+                    <p class="text-lg text-[#fd3774] font-semibold mt-1">Sua Máquina de Anúncios Lucrativos em 24 Horas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Monetization Section -->
+    <section id="monetization" class="py-20 md:py-28 px-6 bg-black relative overflow-hidden">
+        <div class="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[793px] h-[499px] bg-radial-glow opacity-10 rounded-lg"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    Sua Nova Máquina de Fazer Dinheiro
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">
+                    O Arsenal te entrega uma habilidade de altíssimo valor. Veja como transformar isso em múltiplas fontes de renda:
+                </p>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <!-- Card 1: Services -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-[#fd3774]/10 border border-[#fd3774]/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#fd3774]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mt-6">Prestando Serviços de Alto Valor</h3>
+                    <p class="mt-2 text-gray-400">Venda criativos para negócios locais, agências de marketing e lançamentos de infoprodutos. Torne-se a "fábrica" de anúncios que toda empresa precisa.</p>
+                </div>
+                <!-- Card 2: Own Projects -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.1s;">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-[#fd3774]/10 border border-[#fd3774]/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#fd3774]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v-1m0-1V4m0 2.01v.01M12 14c-1.657 0-3-.895-3-2s1.343-2 3-2 3-.895 3-2 1.343-2 3-2m0 8c1.11 0 2.08-.402 2.599-1M12 14v1m0-1v-.01M12 16v1m0 1v1m0-2.01v-.01M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mt-6">Lucrando com Seus Próprios Projetos</h3>
+                    <p class="mt-2 text-gray-400">Domine o jogo do e-commerce, dropshipping e marketing de afiliados criando anúncios que esmagam a concorrência e geram vendas todos os dias.</p>
+                </div>
+                <!-- Card 3: Social Media -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.2s;">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-[#fd3774]/10 border border-[#fd3774]/30">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#fd3774]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mt-6">Monetizando Perfis e Audiência</h3>
+                    <p class="mt-2 text-gray-400">Crie conteúdo viral para perfis de nicho no Instagram e TikTok. Construa uma audiência gigante e monetize com publicidade, afiliados e venda de produtos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-28 px-6 bg-[#04070d] relative overflow-hidden">
+        <div class="absolute -bottom-60 left-1/2 -translate-x-1/2 w-[793px] h-[499px] bg-radial-glow opacity-10 rounded-lg -rotate-12"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 py-2 px-4 border border-white/10 bg-[#04070d] rounded-full text-xs text-gray-300">
+                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 16L1.5 12.25V4.75L8.5 1L15.5 4.75V12.25L8.5 16Z" stroke="#D5DBE6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.5 12.25L8.5 8.5" stroke="#D5DBE6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 12.25L8.5 8.5" stroke="#D5DBE6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 1V8.5" stroke="#D5DBE6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>POR DENTRO DO PRODUTO</span>
+                </div>
+                <h2 class="mt-6 text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    Que tipo de criativo vou conseguir criar?
+                </h2>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden reveal">
+                    <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/HH9D48NW0LfostK5GR9FsAZXak.mp4" loop autoplay muted playsinline></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-white">Anúncios profissionais de produto físico</h3>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden reveal" style="transition-delay: 0.1s;">
+                    <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/KbHqMHQQJmlnq0OYKCDlhZVqro.mp4" loop autoplay muted playsinline></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-white">Conteúdo viral utilizando VEO 3</h3>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden reveal" style="transition-delay: 0.2s;">
+                    <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/Gwl9gkoi9i5OGhXMJAfuNABBISY.mp4" loop autoplay muted playsinline></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-white">Videos teaser para lançamentos/eventos</h3>
+                    </div>
+                </div>
+                 <!-- Card 4 -->
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden reveal" style="transition-delay: 0.3s;">
+                    <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/s0dDtgHjePp3ZlyRxBPbI7czgo.mp4" loop autoplay muted playsinline></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-white">Anúncios em video para venda de cursos</h3>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden reveal" style="transition-delay: 0.4s;">
+                    <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/yfrbENaoIU6g00m0tGdhbAj132I.mp4" loop autoplay muted playsinline></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-white">Conteúdo Ilustrativo de Alto Engajamento</h3>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden reveal" style="transition-delay: 0.5s;">
+                    <video class="w-full h-full object-cover" src="https://framerusercontent.com/assets/326tNMq1aMM43rL60GaSETVNqU.mp4" loop autoplay muted playsinline></video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-left">
+                        <h3 class="text-2xl font-semibold text-white">Videos de delivery & negócios locais</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Stack Section -->
+    <section id="offer-stack" class="py-20 md:py-28 px-6 bg-[#04070d]">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    EIS O ARSENAL COMPLETO que você receberá <span class="font-instrument-serif italic font-normal">imediatamente:</span>
+                </h2>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border text-left reveal">
+                    <h3 class="text-xl font-bold text-white">O Sistema "Arsenal de Criativos IA"</h3>
+                    <p class="mt-2 text-gray-400">O sistema que vai te fazer gerar criativos em vídeos e imagens com IA em 10 min </p>
+                    <p class="mt-4 text-lg font-semibold text-gray-500">Valor: R$ 997</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border text-left reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-xl font-bold text-white">Biblioteca de 100+ Prompts "Comando de Ataque"</h3>
+                    <p class="mt-2 text-gray-400">Para que pensar se você pode copiar e colar? Nossos melhores prompts, testados em batalha. Sua vantagem injusta.</p>
+                    <p class="mt-4 text-lg font-semibold text-gray-500">Valor: R$ 497</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border text-left reveal" style="transition-delay: 0.2s;">
+                    <h3 class="text-xl font-bold text-white">Gerador de Prompt "SUPER VEO3 PRO"</h3>
+                    <p class="mt-2 text-gray-400">Sua arma secreta para criar roteiros e estruturas de vídeo que hipnotizam. Gere a espinha dorsal de um vídeo de vendas em 30 segundos.</p>
+                    <p class="mt-4 text-lg font-semibold text-gray-500">Valor: R$ 397</p>
+                </div>
+                 <!-- Item 4 -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border text-left reveal" style="transition-delay: 0.3s;">
+                    <h3 class="text-xl font-bold text-white">Gerador de Prompt "IMAGENS PRO"</h3>
+                    <p class="mt-2 text-gray-400">Destrua a concorrência visual. Crie imagens impossíveis de serem ignoradas, que comunicam sua mensagem com força.</p>
+                    <p class="mt-4 text-lg font-semibold text-gray-500">Valor: R$ 397</p>
+                </div>
+                <!-- Item 5 (Bonus) -->
+                <div class="bg-[#1a1405] p-8 rounded-2xl border-2 border-dashed border-yellow-400/50 text-left reveal col-span-1 md:col-span-2 lg:col-span-1" style="transition-delay: 0.4s;">
+                    <span class="text-yellow-400 font-bold text-sm">BÔNUS DE LANÇAMENTO</span>
+                    <h3 class="text-xl font-bold text-white mt-1">O Agente "Mestre Copywriter"</h3>
+                    <p class="mt-2 text-gray-400">Seu copywriter pessoal treinado. Alimente-o com informações e receba textos de anúncio persuasivos em segundos.</p>
+                    <p class="mt-4 text-lg font-semibold text-gray-500">Valor: R$ 597</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who is it for Section -->
+    <section id="comparison" class="py-20 md:py-28 px-6 bg-[#04070d] relative overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    <span class="font-instrument-serif italic font-normal">AVISO BRUTAL:</span> Para quem é este Arsenal?
+                </h2>
+            </div>
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- For You -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal">
+                    <h3 class="text-2xl font-bold text-green-400">ISTO É PARA VOCÊ SE:</h3>
+                    <ul class="mt-6 space-y-4 text-left text-gray-300">
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você é empreendedor, infoprodutor ou gestor de tráfego e precisa de resultados AGORA.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você valoriza velocidade e eficiência acima de tudo.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você entende que um bom anúncio é a diferença entre o lucro e a falência.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-green-400 mt-1">✓</span><span>Você quer uma vantagem injusta e esmagadora sobre a concorrência.</span></li>
+                    </ul>
+                </div>
+                <!-- Not For You -->
+                <div class="bg-[#0c1019] p-8 rounded-2xl card-border reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-bold text-red-400">NÃO COMPRE ISTO SE:</h3>
+                    <ul class="mt-6 space-y-4 text-left text-gray-300">
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você ama passar horas ajustando pixels no Canva.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você acredita que a tecnologia é "muito complicada".</span></li>
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você procura uma fórmula mágica que não exija nenhuma ação.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-red-400 mt-1">✗</span><span>Você está confortável sendo medíocre e vendo seus concorrentes prosperarem.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA and FAQ Section -->
+    <section id="cta" class="py-20 md:py-28 px-6 bg-[#04070d] relative overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-medium text-gradient heading-gradient">
+                    O Relógio Está Correndo e as Vagas Estão Acabando.
+                </h2>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 leading-relaxed font-manrope">
+                    Esta oferta é uma estratégia para nossa <strong class="text-white">Turma Fundadora.</strong> Queremos os maiores casos de sucesso. Por isso, as regras são claras:
+                </p>
+            </div>
+            <div class="mt-16 flex flex-col lg:flex-row items-start justify-center gap-8">
+                <!-- Pricing Card -->
+                <div class="w-full max-w-md card-border bg-[#0c1019] rounded-2xl p-8 text-left reveal">
+                    <h3 class="text-lg font-semibold text-white">Resumo da sua Oportunidade Única:</h3>
+                    <div class="mt-6 flex items-end gap-2">
+                        <p class="text-6xl font-bold text-white leading-none">R$97</p>
+                         <span class="text-gray-400">ou 12x de R$9,78</span>
+                    </div>
+                    <p class="text-yellow-400 mt-2 font-semibold">Valor Total do Arsenal: <span class="line-through text-gray-500">R$ 2.885</span></p>
+                    <a href="https://go.perfectpay.com.br/PPU38CPUM8M" class="mt-8 w-full bg-[#fd3774] text-white font-bold text-lg py-4 px-8 rounded-full flex items-center justify-center gap-3 hover:opacity-90 transition-opacity btn-pulse">
+                        QUERO AGORA
+                    </a><br>
+                    <hr class="my-8 border-dashed border-white/10"><br>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-300"><span class="text-green-400">✓</span> Sistema "Arsenal de Criativos IA"</li>
+                        <li class="flex items-center gap-3 text-gray-300"><span class="text-green-400">✓</span> Biblioteca de 100+ Prompts</li>
+                        <li class="flex items-center gap-3 text-gray-300"><span class="text-green-400">✓</span> Gerador "SUPER VEO3 PRO"</li>
+                        <li class="flex items-center gap-3 text-gray-300"><span class="text-green-400">✓</span> Gerador "IMAGENS PRO"</li>
+                        <li class="flex items-center gap-3 text-yellow-400"><span class="text-yellow-400">✓</span> BÔNUS: Agente "Mestre Copywriter"</li>
+                        <li class="flex items-center gap-3 text-gray-300"><span class="text-green-400">✓</span> Acesso vitalício + Suporte direto</li>
+                    </ul>
+                     <div class="mt-8 text-center p-4 bg-red-900/50 border border-red-500/50 rounded-lg">
+                         <p class="font-bold text-red-300">🔒 APENAS 200 VAGAS NESTAS CONDIÇÕES.</p>
+                         <p class="font-bold text-red-300">⏰ PREÇO EXPIRA EM BREVE.</p>
+                     </div>
+                </div>
+                <!-- FAQ -->
+                <div class="w-full max-w-lg text-left reveal" style="transition-delay: 0.1s;">
+                    <h3 class="text-3xl font-semibold text-white mb-6">Perguntas Inteligentes:</h3>
+                    <div class="space-y-4">
+                        <!-- Accordion Item 1 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="text-lg font-medium text-gray-300">Preciso de alguma ferramenta paga de IA?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">Nós te mostraremos o caminho das armas, incluindo opções gratuitas e pagas de baixíssimo custo. O investimento nas ferramentas recomendadas se paga no primeiro dia com o tempo e dinheiro que você economiza.</p>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 2 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="text-lg font-medium text-gray-300">Isso funciona para o meu nicho?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">Sim. Vender é vender. Persuasão visual e textual é universal. Este sistema funciona para infoprodutos, e-commerce, negócios locais, serviços... qualquer coisa que precise de clientes para sobreviver.</p>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 3 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="text-lg font-medium text-gray-300">Em quanto tempo terei meu primeiro criativo?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">Se você seguir o protocolo, pode ter seu primeiro anúncio de alta qualidade rodando em menos de 1 hora após a compra.</p>
+                            </div>
+                        </div>
+                         <!-- Accordion Item 4 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="text-lg font-medium text-gray-300">E se eu for um completo iniciante?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">O sistema foi desenhado para ser à prova de iniciantes. Se você sabe clicar com o mouse e digitar, você está qualificado.</p>
+                            </div>
+                        </div>
+                         <!-- Accordion Item 5 -->
+                        <div>
+                            <button class="accordion-button w-full flex justify-between items-center text-left p-4 rounded-lg card-border bg-[#0c1019]" aria-expanded="false">
+                                <span class="text-lg font-medium text-gray-300">O acesso é vitalício?</span>
+                                <svg class="accordion-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 text-gray-400">Sim, o acesso ao curso e às ferramentas (geradores de prompt) é seu para sempre. Uma vez dentro, você é parte da elite.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 px-6 border-t border-white/10">
+        <p class="text-gray-500 text-sm">&copy; 2025 Arsenal de Criativos IA™. Todos os direitos reservados. Este não é um produto do Facebook, Google ou qualquer uma de suas afiliadas.</p>
+    </footer>
+
+    <script>
+        // JavaScript for reveal on scroll animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Accordion functionality
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const expanded = button.getAttribute('aria-expanded') === 'true' || false;
+                
+                button.setAttribute('aria-expanded', !expanded);
+                content.style.maxHeight = expanded ? null : content.scrollHeight + 'px';
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
