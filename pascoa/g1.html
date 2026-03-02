@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caramella Maria · Menu Páscoa 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --color-caramel: #b45f3b;
+            --color-cream: #fdfaf5;
+            --color-gold: #d4a373;
+        }
+
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: var(--color-cream);
+        }
+        
+        .title-serif { font-family: 'Playfair Display', serif; }
+        
+        .card-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .price-badge {
+            background: linear-gradient(135deg, #b45f3b, #8d4a2e);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4a373, transparent);
+            margin: 2rem 0;
+        }
+
+        .floating-contact {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="text-stone-800 antialiased selection:bg-amber-200">
+
+    <!-- Hero Header -->
+    <header class="relative overflow-hidden pt-12 pb-16 px-4">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="uppercase tracking-[0.3em] text-amber-700 text-sm mb-4">Doceria Artesanal</h2>
+            <h1 class="title-serif text-6xl md:text-8xl font-bold text-stone-900 mb-2">
+                Caramella <span class="text-[#b45f3b]">Maria</span>
+            </h1>
+            <div class="flex flex-col items-center justify-center gap-2 mt-6">
+                <span class="h-[1px] w-20 bg-amber-400"></span>
+                <p class="title-serif italic text-2xl text-amber-800">Menu de Páscoa 2026</p>
+                <span class="h-[1px] w-20 bg-amber-400"></span>
+            </div>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm font-medium text-stone-600">
+                <a href="tel:+5516992400835" class="hover:text-amber-700 transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    (16) 99240-0835
+                </a>
+                <a href="tel:+5516992879275" class="hover:text-amber-700 transition flex items-center gap-2">
+                    (16) 99287-9275
+                </a>
+                <span class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                    Ribeirão Preto / Online
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 pb-24 space-y-20">
+
+        <!-- Seção 01: Ovos de Colher -->
+        <section>
+            <div class="text-center mb-12">
+                <h3 class="title-serif text-4xl text-stone-800 mb-2">Ovos de Colher</h3>
+                <p class="text-stone-500 italic">Recheios generosos e finalização artesanal</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Tradicionais -->
+                <div class="card-glass rounded-[2rem] p-8 shadow-sm">
+                    <h4 class="title-serif text-2xl text-amber-800 border-b border-amber-200 pb-4 mb-6">Sabores Tradicionais</h4>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end group">
+                            <div>
+                                <p class="font-semibold text-lg">Ninho · Brigadeiro · Prestígio</p>
+                                <p class="text-sm text-stone-500">Maracujá · Torta de Limão</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-3 gap-4 pt-4">
+                            <div class="text-center p-3 bg-white/50 rounded-2xl border border-amber-100">
+                                <p class="text-xs uppercase tracking-wider text-stone-400">150g</p>
+                                <p class="font-bold text-caramel">R$ 60</p>
+                            </div>
+                            <div class="text-center p-3 bg-white/50 rounded-2xl border border-amber-100">
+                                <p class="text-xs uppercase tracking-wider text-stone-400">250g</p>
+                                <p class="font-bold text-caramel">R$ 85</p>
+                            </div>
+                            <div class="text-center p-3 bg-white/50 rounded-2xl border border-amber-100">
+                                <p class="text-xs uppercase tracking-wider text-stone-400">350g</p>
+                                <p class="font-bold text-caramel">R$ 95</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Especiais -->
+                <div class="card-glass rounded-[2rem] p-8 shadow-sm border-2 border-amber-100">
+                    <h4 class="title-serif text-2xl text-amber-800 border-b border-amber-200 pb-4 mb-6">Sabores Especiais</h4>
+                    <ul class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-8">
+                        <li class="flex items-center gap-2">• Oreo</li>
+                        <li class="flex items-center gap-2">• Kit Kat</li>
+                        <li class="flex items-center gap-2">• Floresta Branca</li>
+                        <li class="flex items-center gap-2">• Ninho Brownie</li>
+                        <li class="flex items-center gap-2">• Kinder Bueno</li>
+                        <li class="flex items-center gap-2">• Ferrero Rocher</li>
+                        <li class="flex items-center gap-2">• Ninho c/ Nutella</li>
+                        <li class="flex items-center gap-2">• Pistache</li>
+                        <li class="flex items-center gap-2">• Ninho c/ Geleia</li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center p-3 bg-amber-50 rounded-2xl border border-amber-200">
+                            <p class="text-xs uppercase tracking-wider text-amber-700">150g</p>
+                            <p class="font-bold text-caramel">R$ 70</p>
+                        </div>
+                        <div class="text-center p-3 bg-amber-50 rounded-2xl border border-amber-200">
+                            <p class="text-xs uppercase tracking-wider text-amber-700">250g</p>
+                            <p class="font-bold text-caramel">R$ 105</p>
+                        </div>
+                        <div class="text-center p-3 bg-amber-50 rounded-2xl border border-amber-200">
+                            <p class="text-xs uppercase tracking-wider text-amber-700">350g</p>
+                            <p class="font-bold text-caramel">R$ 120</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 02: Ovos Trufados (Novidade Fiel ao PDF) -->
+        <section>
+            <div class="text-center mb-12">
+                <h3 class="title-serif text-4xl text-stone-800 mb-2">Ovos Trufados</h3>
+                <p class="text-stone-500 italic">Casca recheada com cremosidade</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border-l-4 border-amber-400">
+                        <span class="text-2xl">🥥</span>
+                        <div>
+                            <p class="font-bold">Maracujá · Abacaxi Cremoso</p>
+                            <p class="text-sm text-stone-500">Ferrero · Ninho c/ Nutella</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-sm border-l-4 border-amber-400">
+                        <span class="text-2xl">🥜</span>
+                        <div>
+                            <p class="font-bold">Pistache · Prestígio</p>
+                            <p class="text-sm text-stone-500">Dentre outros sob consulta</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-stone-800 text-white p-6 rounded-3xl text-center">
+                        <p class="text-xs opacity-70 uppercase mb-1">250g</p>
+                        <p class="text-3xl font-bold">R$ 90</p>
+                        <p class="text-[10px] mt-1 opacity-60">Peso final aprox. 480g</p>
+                    </div>
+                    <div class="bg-amber-600 text-white p-6 rounded-3xl text-center">
+                        <p class="text-xs opacity-80 uppercase mb-1">350g</p>
+                        <p class="text-3xl font-bold">R$ 110</p>
+                        <p class="text-[10px] mt-1 opacity-70">Peso final aprox. 670g</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 03: Outras Delícias -->
+        <section class="bg-amber-50/50 -mx-4 px-4 py-16 rounded-[3rem]">
+            <div class="max-w-5xl mx-auto">
+                <h3 class="title-serif text-4xl text-center text-stone-800 mb-12">Pequenos Mimos & Presentes</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Barra Recheada -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-md transition">
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">🍫</div>
+                        <h4 class="font-bold text-xl mb-1">Barra Recheada</h4>
+                        <p class="text-sm text-stone-500 mb-4">Ninho, Nutella ou Brigadeiro</p>
+                        <p class="text-2xl font-bold text-caramel">R$ 25,00</p>
+                    </div>
+
+                    <!-- Brownie -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-md transition border-2 border-transparent hover:border-amber-200">
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">🧁</div>
+                        <h4 class="font-bold text-xl mb-1">Caixinha Brownie</h4>
+                        <p class="text-sm text-stone-500 mb-4">Recheada de muito sabor</p>
+                        <p class="text-2xl font-bold text-caramel">R$ 30,00</p>
+                    </div>
+
+                    <!-- Cartão Biscoito (Novo do PDF) -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-md transition">
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">🏷️</div>
+                        <h4 class="font-bold text-xl mb-1">Cartão Biscoito</h4>
+                        <p class="text-sm text-stone-500 mb-4">Acompanha biscoito decorado</p>
+                        <p class="text-2xl font-bold text-caramel">R$ 25,00</p>
+                    </div>
+
+                    <!-- Lata Decorada (Novo do PDF) -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-md transition">
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">🎁</div>
+                        <h4 class="font-bold text-xl mb-1">Lata Decorada</h4>
+                        <p class="text-sm text-stone-500 mb-4">Opções: Biscoito ou Brownie</p>
+                        <p class="text-2xl font-bold text-caramel">R$ 40,00</p>
+                    </div>
+
+                    <!-- Duo de Ovos -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm hover:shadow-md transition">
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4">🐣</div>
+                        <h4 class="font-bold text-xl mb-1">Duo de Ovos</h4>
+                        <p class="text-sm text-stone-500 mb-2">2 metades a sua escolha</p>
+                        <div class="text-sm font-bold text-amber-800">
+                            300g: R$ 120 | 500g: R$ 180
+                        </div>
+                    </div>
+
+                    <!-- Ovo Kids -->
+                    <div class="bg-amber-600 text-white p-6 rounded-[2rem] shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-xl mb-2 underline decoration-amber-300">Ovo Kids</h4>
+                            <p class="text-xs opacity-90 leading-relaxed">
+                                Recheio trufado, Ferrero, Kinder, Marshmallow e Fini.
+                            </p>
+                        </div>
+                        <p class="text-3xl font-black mt-4 italic">R$ 90,00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informações de Pedido -->
+        <section class="max-w-3xl mx-auto border-2 border-dashed border-amber-300 rounded-[3rem] p-10 text-center">
+            <h3 class="title-serif text-3xl mb-6">Como encomendar?</h3>
+            <div class="grid md:grid-cols-2 gap-8 text-left">
+                <div class="space-y-4">
+                    <p class="flex items-center gap-3">
+                        <span class="bg-amber-100 p-2 rounded-full">📅</span>
+                        <span>Encomendas até <strong>01/04/2026</strong></span>
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="bg-amber-100 p-2 rounded-full">💳</span>
+                        <span>Até <strong>10x sem juros</strong> no cartão</span>
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="bg-amber-100 p-2 rounded-full">⚡</span>
+                        <span>Pix: <strong>33561752896</strong></span>
+                    </p>
+                </div>
+                <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                    <p class="text-xs uppercase tracking-widest text-stone-400 mb-2">Visite nosso site</p>
+                    <a href="https://caramellamaria.gcmsoftware.com.br/" target="_blank" class="text-amber-700 font-bold break-all hover:underline">
+                        caramellamaria.gcmsoftware.com.br
+                    </a>
+                    <div class="mt-4 pt-4 border-t border-stone-200">
+                        <p class="text-xs text-stone-500 italic">Siga-nos no Instagram:</p>
+                        <p class="font-bold">@caramellamariaa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Fixo Mobile -->
+    <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md z-50">
+        <div class="bg-stone-900 text-white p-4 rounded-full shadow-2xl flex items-center justify-between px-8 floating-contact">
+            <div class="text-left">
+                <p class="text-[10px] uppercase opacity-60">Falar com Maria</p>
+                <p class="font-bold text-sm">(16) 99240-0835</p>
+            </div>
+            <a href="https://wa.me/5516992400835" class="bg-[#25D366] p-3 rounded-full hover:scale-110 transition active:scale-95">
+                <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.006.332.013c.101.007.238-.038.374.29.136.328.468 1.144.509 1.23.041.086.068.187.01.303s-.086.187-.172.288c-.086.1-.181.223-.259.3-.087.087-.178.182-.077.354.101.173.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.144.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.405-.1.81z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Alerts -->
+    <div id="msgModal" class="modal">
+        <div class="bg-white p-8 rounded-[2rem] max-w-xs w-full mx-4 shadow-2xl text-center">
+            <p class="text-4xl mb-4">🐰</p>
+            <h5 class="title-serif text-2xl mb-2">Reserva Confirmada?</h5>
+            <p class="text-stone-600 text-sm mb-6">Para garantir sua doçura, envie uma mensagem no WhatsApp ou realize o Pix!</p>
+            <button onclick="closeModal()" class="w-full bg-caramel text-white py-3 rounded-xl font-bold">Entendido!</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('msgModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('msgModal').style.display = 'none';
+        }
+
+        // Interação nos preços
+        document.querySelectorAll('.font-bold.text-caramel').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', openModal);
+        });
+
+        console.log("Menu Caramella Maria 2026 - Versão Premium Carregada");
+    </script>
+</body>
+</html>
