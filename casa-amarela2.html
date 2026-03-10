@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Casinha Amarela 123 | Miniaturas Exclusivas e Artesanais</title>
+    <meta name="description" content="Descubra as casinhas minúsculas mais charmosas do Brasil. Feitas à mão, 100% amarelas e cheias de personalidade. Envio imediato para todo país.">
+    <meta name="keywords" content="casinha amarela, miniatura decorativa, casinha decorativa, presente criativo, decoração amarela, artesanato">
+    <meta name="author" content="Casinha Amarela 123">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://casinhaamarela123.com.br">
+    <meta property="og:title" content="Casinha Amarela 123 - Miniaturas Exclusivas">
+    <meta property="og:description" content="Casinhas minúsculas amarelas feitas com amor e dedicação. Perfeitas para colecionadores e apaixonados por decoração.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://casinhaamarela123.com.br">
+    <meta property="twitter:title" content="Casinha Amarela 123 - Miniaturas Exclusivas">
+    <meta property="twitter:description" content="Casinhas minúsculas amarelas feitas com amor e dedicação. Perfeitas para colecionadores e apaixonados por decoração.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FACC15'%3E%3Cpath d='M12 3L4 9v12h16V9l-8-6z'/%3E%3C/svg%3E">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://casinhaamarela123.com.br">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#FEF9E7',
+                            100: '#FEF3D0',
+                            200: '#FDE7A1',
+                            300: '#FCDB72',
+                            400: '#FBCF43',
+                            500: '#FACC15',
+                            600: '#E6B80D',
+                            700: '#C29A0A',
+                            800: '#9E7C07',
+                            900: '#7A5E05',
+                        },
+                        dark: {
+                            50: '#F7F7F8',
+                            100: '#EEEFF1',
+                            200: '#D5D7DD',
+                            300: '#BCC0C9',
+                            400: '#8A909F',
+                            500: '#586075',
+                            600: '#4F5669',
+                            700: '#3A4050',
+                            800: '#262B36',
+                            900: '#1A1E26',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shine': 'shine 8s infinite',
+                        'wave': 'wave 25s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        shine: {
+                            '0%': { backgroundPosition: '200% 0' },
+                            '100%': { backgroundPosition: '-200% 0' },
+                        },
+                        wave: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    },
+                    backgroundSize: {
+                        '300%': '300%',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Custom Animations */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(135deg, rgba(31, 41, 55, 0.92), rgba(250, 204, 21, 0.85)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(250, 204, 21, 0.2);
+        }
+
+        /* Smooth hover effects */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        /* Image overlay effect */
+        .image-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-overlay::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(250, 204, 21, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-overlay:hover::after {
+            opacity: 1;
+        }
+
+        /* Shine effect */
+        .shine-effect {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background-size: 200% 100%;
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Wave animation */
+        .wave-animation {
+            animation: wave 20s linear infinite;
+        }
+
+        /* Loading bar */
+        .loading-bar {
+            height: 3px;
+            background: linear-gradient(90deg, #FACC15, #EAB308, #FACC15);
+            background-size: 200% 100%;
+            animation: loading 1.5s ease infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Scroll progress bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FACC15, #EAB308);
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="bg-dark-50 text-dark-900 antialiased flex flex-col min-h-screen">
+
+    <!-- Loading Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-brand-500 z-[100]"></div>
+
+    <!-- Navbar -->
+    <header class="fixed w-full z-50 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="glass rounded-2xl px-6 py-3 transition-all duration-500" id="navbar-content">
+                <div class="flex justify-between items-center">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                        <div class="w-12 h-12 bg-brand-500 rounded-xl flex items-center justify-center text-dark-900 text-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-dark-900 tracking-tight">Casinha Amarela <span class="text-brand-500">123</span></span>
+                    </div>
+
+                    <!-- Desktop Menu -->
+                    <nav class="hidden md:flex space-x-1 items-center">
+                        <a href="#sobre" class="nav-link px-4 py-2 text-dark-700 hover:text-brand-500 hover:bg-brand-50 rounded-xl transition-all duration-300 font-medium">Nossa História</a>
+                        <a href="#diferenciais" class="nav-link px-4 py-2 text-dark-700 hover:text-brand-500 hover:bg-brand-50 rounded-xl transition-all duration-300 font-medium">Diferenciais</a>
+                        <a href="#produtos" class="nav-link px-4 py-2 text-dark-700 hover:text-brand-500 hover:bg-brand-50 rounded-xl transition-all duration-300 font-medium">Modelos</a>
+                        <a href="https://wa.me/5516992247881?text=Olá!%20Vim%20pelo%20site%20e%20quero%20minha%20casinha%20amarela." target="_blank" class="ml-4 bg-brand-500 hover:bg-brand-600 text-dark-900 font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group hover-lift">
+                            <i class="fa-brands fa-whatsapp text-lg group-hover:rotate-12 transition-transform"></i> 
+                            <span>Fale Conosco</span>
+                        </a>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-dark-700 hover:text-brand-500 focus:outline-none p-2 hover:bg-brand-50 rounded-xl transition-all duration-300">
+                            <i class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
+                <div class="glass rounded-2xl p-4">
+                    <div class="space-y-2">
+                        <a href="#sobre" class="mobile-link block px-4 py-3 text-base font-medium text-dark-700 hover:text-brand-500 hover:bg-brand-50 rounded-xl transition-all duration-300">Nossa História</a>
+                        <a href="#diferenciais" class="mobile-link block px-4 py-3 text-base font-medium text-dark-700 hover:text-brand-500 hover:bg-brand-50 rounded-xl transition-all duration-300">Diferenciais</a>
+                        <a href="#produtos" class="mobile-link block px-4 py-3 text-base font-medium text-dark-700 hover:text-brand-500 hover:bg-brand-50 rounded-xl transition-all duration-300">Modelos</a>
+                        <a href="https://wa.me/5516992247881?text=Olá!%20Vim%20pelo%20site%20e%20quero%20minha%20casinha%20amarela." target="_blank" class="block mt-4 text-center bg-brand-500 hover:bg-brand-600 text-dark-900 font-bold py-3 px-4 rounded-xl transition-all duration-300">
+                            <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-32">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-20 left-10 w-72 h-72 bg-brand-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+                <div class="absolute bottom-20 right-10 w-96 h-96 bg-yellow-300/10 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="text-center max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="inline-block mb-6 relative" data-aos="fade-down" data-aos-delay="200">
+                        <span class="relative inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-semibold tracking-wider uppercase">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
+                            </span>
+                            A cor da alegria no tamanho perfeito
+                        </span>
+                    </div>
+                    
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="300">
+                        Casinhas minúsculas. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-yellow-300 animate-gradient">
+                            Paixão gigante pelo amarelo.
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-300 mb-12 font-light max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                        Se você busca uma casinha e ama a cor amarela, você chegou ao lugar certo. Construímos miniaturas que trazem vida e estilo para o seu espaço.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center" data-aos="fade-up" data-aos-delay="500">
+                        <a href="https://wa.me/5516992247881?text=Olá!%20Gostaria%20de%20encomendar%20minha%20casinha%20amarela." target="_blank" class="group bg-brand-500 hover:bg-brand-600 text-dark-900 font-bold text-lg py-4 px-10 rounded-full shadow-2xl hover:shadow-brand-500/50 transition-all duration-500 hover-lift flex items-center justify-center gap-3 relative overflow-hidden">
+                            <span class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                            <i class="fa-brands fa-whatsapp text-2xl relative z-10 group-hover:rotate-12 transition-transform"></i>
+                            <span class="relative z-10">Encomende Agora</span>
+                        </a>
+                        <a href="#produtos" class="group relative overflow-hidden border-2 border-white text-white hover:text-dark-900 font-bold text-lg py-4 px-10 rounded-full transition-all duration-500 hover-link">
+                            <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                            <span class="relative z-10">Ver Modelos</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animated Wave -->
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="relative block w-full h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.85,130.32,194.31,121.78,243.6,115.1,286.9,89.5,321.39,56.44Z" fill="white" fill-opacity="1"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Sobre a Empresa -->
+        <section id="sobre" class="py-32 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-20">
+                    <div class="lg:w-1/2 relative" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="absolute -inset-4 bg-brand-500/10 rounded-3xl transform rotate-3"></div>
+                        <div class="absolute -inset-4 bg-brand-500/5 rounded-3xl transform -rotate-3"></div>
+                        
+                        <div class="relative group image-overlay">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800" 
+                                 alt="Casinha Amarela Decorativa" 
+                                 class="rounded-3xl shadow-2xl object-cover h-[500px] w-full border-4 border-white group-hover:scale-105 transition-transform duration-700">
+                        </div>
+                        
+                        <div class="absolute -bottom-10 -right-10 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 hidden md:block animate-float">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-brand-500 p-3 rounded-full text-dark-900">
+                                    <i class="fa-solid fa-clock text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-dark-900 text-xl">Tradição de</p>
+                                    <p class="text-brand-500 font-black text-2xl">20 Minutos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-12 h-1 bg-brand-500 block rounded"></span>
+                            <h2 class="text-brand-500 font-bold uppercase tracking-widest text-sm">Nossa História</h2>
+                        </div>
+                        
+                        <h3 class="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-8 leading-tight">
+                            Uma empresa que nasceu faz exatos 
+                            <span class="text-brand-500 relative inline-block">
+                                20 minutos
+                                <span class="absolute -bottom-2 left-0 w-full h-1 bg-brand-500/30 rounded"></span>
+                            </span>
+                        </h3>
+                        
+                        <p class="text-dark-600 text-lg mb-8 leading-relaxed">
+                            Pode parecer pouco tempo, mas nossa paixão é proporcional à cor que escolhemos: <strong class="text-brand-500">vibrante e intensa!</strong> A Casinha Amarela 123 foi criada com um único e claro propósito: fabricar as casinhas minúsculas mais incríveis e, claro, exclusivamente amarelas.
+                        </p>
+                        
+                        <div class="flex gap-6 mb-8">
+                            <div class="flex flex-col items-center p-6 bg-gradient-to-br from-brand-50 to-white rounded-2xl shadow-lg border border-brand-100 flex-1 hover-lift">
+                                <span class="text-4xl font-black text-brand-500 mb-2">100%</span>
+                                <span class="text-sm text-dark-500 font-medium text-center">Foco no Amarelo</span>
+                            </div>
+                            <div class="flex flex-col items-center p-6 bg-gradient-to-br from-brand-50 to-white rounded-2xl shadow-lg border border-brand-100 flex-1 hover-lift">
+                                <span class="text-4xl font-black text-brand-500 mb-2">Zero</span>
+                                <span class="text-sm text-dark-500 font-medium text-center">Outras cores</span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-dark-600 text-lg leading-relaxed">
+                            Seja para decoração, colecionadores ou amantes da estética amarela, nós garantimos que cada miniatura carrega nossa (recente, porém forte) essência.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferenciais -->
+        <section id="diferenciais" class="py-32 bg-gradient-to-b from-dark-50 to-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                    <h2 class="text-brand-500 font-bold uppercase tracking-widest text-sm mb-4">Por que nós?</h2>
+                    <h3 class="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-6">Nossos Principais Diferenciais</h3>
+                    <p class="text-dark-600 text-lg">Apesar da fundação recente, nossos processos são impecáveis. Conheça o que nos destaca.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Diferencial 1 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-500 to-yellow-300 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                        <div class="relative bg-white rounded-2xl p-8 hover-lift shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                            <div class="w-20 h-20 bg-gradient-to-br from-brand-500 to-yellow-300 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                <i class="fa-solid fa-truck-fast text-3xl text-dark-900"></i>
+                            </div>
+                            <h4 class="text-2xl font-display font-bold text-dark-900 mb-4">Rapidez nas Entregas</h4>
+                            <p class="text-dark-600 leading-relaxed">Entendemos a sua ansiedade. Nossas casinhas saem da produção direto para a sua casa em tempo recorde.</p>
+                        </div>
+                    </div>
+
+                    <!-- Diferencial 2 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-500 to-yellow-300 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                        <div class="relative bg-white rounded-2xl p-8 hover-lift shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                            <div class="w-20 h-20 bg-gradient-to-br from-brand-500 to-yellow-300 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                <i class="fa-solid fa-hand-holding-heart text-3xl text-dark-900"></i>
+                            </div>
+                            <h4 class="text-2xl font-display font-bold text-dark-900 mb-4">Atendimento Humanizado</h4>
+                            <p class="text-dark-600 leading-relaxed">Aqui você fala com pessoas reais que são verdadeiramente apaixonadas por casinhas e pela cor amarela.</p>
+                        </div>
+                    </div>
+
+                    <!-- Diferencial 3 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="600">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-500 to-yellow-300 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                        <div class="relative bg-white rounded-2xl p-8 hover-lift shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100">
+                            <div class="w-20 h-20 bg-gradient-to-br from-brand-500 to-yellow-300 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                <i class="fa-solid fa-shield-halved text-3xl text-dark-900"></i>
+                            </div>
+                            <h4 class="text-2xl font-display font-bold text-dark-900 mb-4">Local Limpo e Seguro</h4>
+                            <p class="text-dark-600 leading-relaxed">Nossa linha de produção em Ribeirão Preto, Guarulhos e Sergipe opera sob os mais rígidos padrões de limpeza.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produtos/Serviços -->
+        <section id="produtos" class="py-32 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6" data-aos="fade-up">
+                    <div class="max-w-2xl">
+                        <h2 class="text-brand-500 font-bold uppercase tracking-widest text-sm mb-4">O que fazemos</h2>
+                        <h3 class="text-4xl md:text-5xl font-display font-bold text-dark-900">Nossas Casinhas Amarelas</h3>
+                    </div>
+                    <a href="https://wa.me/5516992247881?text=Quero%20ver%20o%20catálogo%20completo" target="_blank" class="group flex items-center gap-3 text-dark-700 hover:text-brand-500 font-semibold transition-all duration-300">
+                        <span class="relative overflow-hidden">
+                            Ver catálogo completo no WhatsApp
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-brand-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+                        </span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Produto 1 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="h-80 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=600" 
+                                     alt="Miniatura Clássica" 
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            
+                            <div class="absolute top-4 right-4 z-20">
+                                <span class="px-4 py-2 bg-brand-500 text-dark-900 text-sm font-bold rounded-full shadow-lg">Clássico</span>
+                            </div>
+                            
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-display font-bold text-white mb-2">Modelo Clássico</h4>
+                                <p class="text-gray-300 mb-4">Design tradicional, 100% amarela</p>
+                                <a href="https://wa.me/5516992247881?text=Gostaria%20de%20saber%20o%20preço%20do%20Modelo%20Clássico" 
+                                   target="_blank" 
+                                   class="inline-block w-full text-center bg-brand-500 hover:bg-brand-600 text-dark-900 font-bold py-3 px-4 rounded-xl transition-all duration-300 hover-lift">
+                                    Consultar Preço
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 2 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+                        <div class="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="h-80 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="https://images.unsplash.com/photo-1522050212171-61b01dd24579?auto=format&fit=crop&q=80&w=600" 
+                                     alt="Miniatura Moderna" 
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            
+                            <div class="absolute top-4 right-4 z-20">
+                                <span class="px-4 py-2 bg-brand-500 text-dark-900 text-sm font-bold rounded-full shadow-lg">Mais Vendido</span>
+                            </div>
+                            
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-display font-bold text-white mb-2">Modelo Moderna</h4>
+                                <p class="text-gray-300 mb-4">Linhas retas, tom mostarda</p>
+                                <a href="https://wa.me/5516992247881?text=Gostaria%20de%20saber%20o%20preço%20do%20Modelo%20Moderna" 
+                                   target="_blank" 
+                                   class="inline-block w-full text-center bg-brand-500 hover:bg-brand-600 text-dark-900 font-bold py-3 px-4 rounded-xl transition-all duration-300 hover-lift">
+                                    Consultar Preço
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="600">
+                        <div class="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                            <div class="h-80 overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&q=80&w=600" 
+                                     alt="Miniatura Rústica" 
+                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            </div>
+                            
+                            <div class="absolute top-4 right-4 z-20">
+                                <span class="px-4 py-2 bg-brand-500 text-dark-900 text-sm font-bold rounded-full shadow-lg">Rústico</span>
+                            </div>
+                            
+                            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent z-20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                                <h4 class="text-2xl font-display font-bold text-white mb-2">Modelo Rústico</h4>
+                                <p class="text-gray-300 mb-4">Acabamento em madeira pintada</p>
+                                <a href="https://wa.me/5516992247881?text=Gostaria%20de%20saber%20o%20preço%20do%20Modelo%20Rústico" 
+                                   target="_blank" 
+                                   class="inline-block w-full text-center bg-brand-500 hover:bg-brand-600 text-dark-900 font-bold py-3 px-4 rounded-xl transition-all duration-300 hover-lift">
+                                    Consultar Preço
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-32 relative overflow-hidden bg-gradient-to-r from-brand-500 to-yellow-300">
+            <!-- Animated Background -->
+            <div class="absolute inset-0">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/20 rounded-full blur-3xl animate-pulse-slow"></div>
+                <div class="absolute bottom-0 left-0 w-80 h-80 bg-dark-900/10 rounded-full blur-3xl animate-pulse-slow animation-delay-1000"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="text-4xl md:text-6xl font-display font-black text-dark-900 mb-8">
+                        Pronto para ter a sua
+                        <span class="relative inline-block">
+                            Casinha Amarela?
+                            <span class="absolute -bottom-2 left-0 w-full h-2 bg-white/30 rounded"></span>
+                        </span>
+                    </h2>
+                    
+                    <p class="text-dark-900/80 text-xl mb-12 font-medium max-w-2xl mx-auto">
+                        Entre em contato agora pelo WhatsApp e garanta envio imediato. Atendimento rápido, humano e 100% focado no que importa: a sua satisfação.
+                    </p>
+                    
+                    <div class="flex flex-col items-center gap-6">
+                        <a href="https://wa.me/5516992247881?text=Olá!%20Vi%20a%20oferta%20no%20site%20e%20quero%20minha%20casinha%20amarela." 
+                           target="_blank" 
+                           class="group relative inline-flex items-center justify-center gap-4 bg-dark-900 hover:bg-dark-800 text-brand-500 font-bold text-2xl py-6 px-12 rounded-full shadow-2xl hover:shadow-dark-900/30 transition-all duration-500 hover-lift overflow-hidden">
+                            <span class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                            <i class="fa-brands fa-whatsapp text-3xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"></i>
+                            <span class="relative z-10">(16) 99224-7881</span>
+                        </a>
+                        <p class="text-sm font-medium text-dark-900/70 bg-white/20 px-6 py-2 rounded-full backdrop-blur-sm">
+                            <i class="fa-regular fa-clock mr-2"></i>
+                            Atendemos das 9h às 22h
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 text-white pt-20 pb-10 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-12 h-12 bg-brand-500 rounded-xl flex items-center justify-center text-dark-900 text-xl">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <span class="font-display font-bold text-2xl text-white">Casinha Amarela 123</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
+                        Especialistas em criar as mais belas e bem construídas casinhas minúsculas amarelas. Uma tradição de 20 minutos de pura excelência.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-dark-900 transition-all duration-300 hover-lift">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-dark-900 transition-all duration-300 hover-lift">
+                            <i class="fa-brands fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-dark-900 transition-all duration-300 hover-lift">
+                            <i class="fa-brands fa-tiktok text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contato -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-lg font-display font-bold text-white mb-8 relative inline-block">
+                        Contato
+                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-brand-500 rounded"></span>
+                    </h4>
+                    <ul class="space-y-5">
+                        <li class="flex items-start gap-4 text-gray-400 hover:text-brand-500 transition-colors group">
+                            <i class="fa-brands fa-whatsapp mt-1 text-brand-500 group-hover:scale-110 transition-transform"></i>
+                            <a href="https://wa.me/5516992247881" target="_blank" class="hover:text-brand-500 transition-colors">(16) 99224-7881</a>
+                        </li>
+                        <li class="flex items-start gap-4 text-gray-400 group">
+                            <i class="fa-regular fa-envelope mt-1 text-brand-500 group-hover:scale-110 transition-transform"></i>
+                            <a href="mailto:contato@casinhaamarela123.com.br" class="hover:text-brand-500 transition-colors">contato@casinhaamarela123.com.br</a>
+                        </li>
+                        <li class="flex items-start gap-4 text-gray-400">
+                            <i class="fa-regular fa-clock mt-1 text-brand-500"></i>
+                            <div>
+                                <p>Segunda a Sexta: 9h às 18h</p>
+                                <p>Sábado: 9h às 13h</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div class="lg:col-span-2">
+                    <h4 class="text-lg font-display font-bold text-white mb-8 relative inline-block">
+                        Links
+                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-brand-500 rounded"></span>
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="#sobre" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-brand-500 transition-all"></span>Sobre Nós</a></li>
+                        <li><a href="#diferenciais" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-brand-500 transition-all"></span>Diferenciais</a></li>
+                        <li><a href="#produtos" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-brand-500 transition-all"></span>Modelos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-brand-500 transition-colors flex items-center gap-2 group"><span class="w-0 group-hover:w-2 h-0.5 bg-brand-500 transition-all"></span>Política de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Endereço -->
+                <div class="lg:col-span-3">
+                    <h4 class="text-lg font-display font-bold text-white mb-8 relative inline-block">
+                        Onde Estamos
+                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-brand-500 rounded"></span>
+                    </h4>
+                    <div class="flex items-start gap-4 text-gray-400 mb-6">
+                        <i class="fa-solid fa-location-dot mt-1 text-brand-500"></i>
+                        <div>
+                            <p class="font-medium text-white mb-1">Matriz: Ribeirão Preto/SP</p>
+                            <p>Rua dos Amarelos, 123 - Jardim das Cores</p>
+                            <p class="mt-2 text-sm">Unidades também em Guarulhos/SP e Sergipe</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.google.com/?q=Ribeirão+Preto" 
+                       target="_blank" 
+                       class="inline-flex items-center gap-3 bg-white/10 hover:bg-brand-500 text-white hover:text-dark-900 py-3 px-6 rounded-xl transition-all duration-300 group">
+                        <i class="fa-solid fa-map-location-dot group-hover:scale-110 transition-transform"></i>
+                        <span>Abrir no Google Maps</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 mt-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2023 Casinha Amarela 123. Todos os direitos reservados.
+                </p>
+                <p class="text-gray-500 text-sm flex items-center gap-2">
+                    Feito com <i class="fa-solid fa-heart text-brand-500 animate-pulse"></i> por um Senior Frontend
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-14 h-14 bg-brand-500 rounded-full shadow-2xl flex items-center justify-center text-dark-900 opacity-0 invisible transition-all duration-500 hover-lift z-50">
+        <i class="fa-solid fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out'
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const navbarContent = document.getElementById('navbar-content');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbarContent.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-2xl');
+                navbarContent.classList.remove('bg-white/10');
+            } else {
+                navbarContent.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-2xl');
+                navbarContent.classList.add('bg-white/10');
+            }
+        });
+
+        // Mobile menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Progress bar
+        const progressBar = document.getElementById('progress-bar');
+        
+        window.addEventListener('scroll', () => {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-brand-500', 'bg-brand-50');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-brand-500', 'bg-brand-50');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Casinha Amarela 123",
+        "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800",
+        "description": "Fabricante de casinhas minúsculas amarelas para decoração e colecionadores.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua dos Amarelos, 123",
+            "addressLocality": "Ribeirão Preto",
+            "addressRegion": "SP",
+            "postalCode": "14000-000",
+            "addressCountry": "BR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-21.1775",
+            "longitude": "-47.8108"
+        },
+        "url": "https://casinhaamarela123.com.br",
+        "telephone": "+5516992247881",
+        "priceRange": "R$",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "13:00"
+            }
+        ],
+        "sameAs": [
+            "https://www.instagram.com/casinhaamarela123",
+            "https://www.facebook.com/casinhaamarela123"
+        ]
+    }
+    </script>
+</body>
+</html>
