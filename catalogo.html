@@ -74,9 +74,14 @@
         
         /* Ajuste do offset âncora para não ficar escondido pelo header/categorias fixos */
         section { scroll-margin-top: 130px; }
+        
+        /* Custom Checkbox/Radio accents */
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: var(--cor-primaria);
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased pb-24">
 
     <!-- HEADER FIXED -->
     <header class="bg-surface shadow-sm sticky top-0 z-40 w-full h-16 flex items-center justify-between px-4 md:px-8">
@@ -228,20 +233,30 @@
                 <div class="p-5">
                     <h3 id="modal-title" class="text-xl font-bold text-text mb-1">Nome do Produto</h3>
                     <p id="modal-desc" class="text-text-light text-sm mb-4 leading-relaxed">Descrição detalhada</p>
-                    <div class="mb-6 flex items-center gap-2">
+                    <div class="mb-4 flex items-center gap-2">
                         <span id="modal-price" class="text-xl font-bold text-primary">R$ 0,00</span>
                         <span id="modal-old-price" class="text-sm font-medium text-text-light line-through hidden"></span>
                     </div>
 
+                    <!-- Container para Variações (Tamanhos/Opções obrigatórias) -->
+                    <div id="modal-variations-container" class="mb-6 hidden">
+                        <!-- Gerado por JS -->
+                    </div>
+
+                    <!-- Container para Adicionais (Opções Extras) -->
+                    <div id="modal-addons-container" class="mb-6 hidden">
+                        <!-- Gerado por JS -->
+                    </div>
+
                     <div class="mb-2">
-                        <label class="block text-sm font-semibold text-text mb-2">Alguma observação?</label>
+                        <label class="block text-sm font-bold text-text mb-2">Alguma observação?</label>
                         <textarea id="modal-obs" rows="2" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-400" placeholder="Ex: Tirar cebola, maionese à parte..."></textarea>
                     </div>
                 </div>
             </div>
 
             <!-- Botões Fixos no Rodapé do Modal -->
-            <div class="p-4 border-t border-gray-100 bg-surface shrink-0">
+            <div class="p-4 border-t border-gray-100 bg-surface shrink-0 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] relative z-20">
                 <div class="flex items-center gap-4">
                     <div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-1">
                         <button onclick="updateModalQty(-1)" class="w-10 h-10 flex items-center justify-center text-primary font-bold text-xl hover:bg-gray-200 rounded-md transition-colors">-</button>
@@ -309,14 +324,39 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // DADOS MOCK (Simulando API) com suporte a desconto (oldPrice)
+        // DADOS MOCK (Simulando API) agora com Variations e Addons
         const catalogData = [
             {
                 id: "cat-destaques",
                 name: "Destaques",
                 items: [
-                    { id: 1, name: "Super Smash Burger", desc: "Pão brioche artesanal, 2x burger de 90g, cheddar derretido e bacon.", price: 28.90, oldPrice: 35.90, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop" },
-                    { id: 2, name: "Pizza Pepperoni (Média)", desc: "Massa de longa fermentação, molho de tomate pelati e pepperoni.", price: 45.00, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop" },
+                    { 
+                        id: 1, 
+                        name: "Super Smash Burger", 
+                        desc: "Pão brioche artesanal, 2x burger de 90g, cheddar derretido e bacon.", 
+                        price: 28.90, 
+                        oldPrice: 35.90, 
+                        img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop",
+                        addons: [
+                            { id: "a1", name: "Bacon Extra", price: 5.00 },
+                            { id: "a2", name: "Hambúrguer Extra", price: 8.00 },
+                            { id: "a3", name: "Cheddar Cremoso", price: 4.50 },
+                            { id: "a4", name: "Cebola Caramelizada", price: 3.00 }
+                        ]
+                    },
+                    { 
+                        id: 2, 
+                        name: "Pizza Artesanal (Tamanhos)", 
+                        desc: "Massa de longa fermentação, molho de tomate pelati e ingredientes frescos selecionados.", 
+                        price: 0, // Preço será definido pela variação
+                        img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop",
+                        variationsName: "Escolha o Tamanho",
+                        variations: [
+                            { id: "v1", name: "Pequena (4 fatias)", price: 35.00 },
+                            { id: "v2", name: "Média (6 fatias)", price: 48.00 },
+                            { id: "v3", name: "Grande (8 fatias)", price: 65.00 }
+                        ]
+                    },
                 ]
             },
             {
@@ -349,6 +389,10 @@
         let currentProduct = null;
         let currentQty = 1;
         let isManualScrolling = false;
+        
+        // Estados para controle de customização do Modal
+        let selectedVariation = null;
+        let selectedAddons = [];
 
         const formatMoney = (value) => {
             return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -419,9 +463,16 @@
                     card.className = "bg-surface p-4 rounded-xl shadow-sm border border-gray-100 flex gap-4 cursor-pointer hover:shadow-md hover:border-gray-200 transition-all active:scale-[0.98]";
                     card.onclick = () => openModal(product.id);
                     
-                    // Lógica para preço com desconto
+                    // Lógica para exibição do preço na vitrine (com ou sem variação)
                     let priceHtml = '';
-                    if (product.oldPrice) {
+                    if (product.variations && product.variations.length > 0) {
+                        // Se tem variação, mostra "A partir de" com o menor preço
+                        const minPrice = Math.min(...product.variations.map(v => v.price));
+                        priceHtml = `<div class="flex flex-col">
+                                        <span class="text-text-light text-[10px] uppercase">A partir de</span>
+                                        <span class="font-bold text-text">${formatMoney(minPrice)}</span>
+                                     </div>`;
+                    } else if (product.oldPrice) {
                         priceHtml = `<div class="flex flex-col">
                                         <span class="text-text-light text-xs line-through">${formatMoney(product.oldPrice)}</span>
                                         <span class="font-bold text-primary">${formatMoney(product.price)}</span>
@@ -457,7 +508,7 @@
             });
         };
 
-        // SCROLLSPY (Destaca categoria ao rolar)
+        // SCROLLSPY
         const setupScrollSpy = () => {
             const sections = document.querySelectorAll('.category-section');
             const navLinks = document.querySelectorAll('.category-link');
@@ -470,7 +521,7 @@
                 const scrollY = window.pageYOffset;
 
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 150; // Offset considerando header e menu sticky
+                    const sectionTop = section.offsetTop - 150; 
                     const sectionHeight = section.clientHeight;
                     
                     if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
@@ -478,7 +529,6 @@
                     }
                 });
 
-                // Se passou do topo mas não encontrou, seleciona a primeira
                 if(!current && scrollY < sections[0].offsetTop) current = sections[0].getAttribute('id');
 
                 navLinks.forEach(link => {
@@ -489,7 +539,6 @@
                         link.classList.add('bg-primary', 'text-white', 'border-primary');
                         link.classList.remove('bg-surface', 'text-text-light', 'border-transparent');
                         
-                        // Scroll horizontal suave do menu de categorias para focar o item ativo
                         const linkLeft = link.offsetLeft;
                         const containerHalfWidth = navContainer.clientWidth / 2;
                         navContainer.scrollTo({
@@ -501,12 +550,11 @@
             });
         };
 
-        // BUSCA E SCROLL SUAVE
+        // BUSCA
         const setupSearch = () => {
             const input = document.getElementById('search-input');
             const resultsBox = document.getElementById('search-results');
             
-            // Reúne todos os produtos em uma lista plana para facilitar a busca
             const allProducts = [];
             catalogData.forEach(cat => {
                 cat.items.forEach(item => {
@@ -529,12 +577,18 @@
                     matches.forEach(match => {
                         const item = document.createElement('div');
                         item.className = "p-3 border-b border-gray-50 hover:bg-gray-50 cursor-pointer flex justify-between items-center";
+                        
+                        let displayPrice = formatMoney(match.price);
+                        if(match.variations) {
+                             displayPrice = 'A partir de ' + formatMoney(Math.min(...match.variations.map(v => v.price)));
+                        }
+
                         item.innerHTML = `
                             <div>
                                 <h4 class="font-semibold text-sm text-text">${match.name}</h4>
                                 <span class="text-[10px] text-text-light uppercase bg-gray-100 px-1.5 py-0.5 rounded">${match.catName}</span>
                             </div>
-                            <span class="text-primary font-bold text-sm">${formatMoney(match.price)}</span>
+                            <span class="text-primary font-bold text-sm">${displayPrice}</span>
                         `;
                         
                         item.onclick = () => {
@@ -542,10 +596,8 @@
                             input.value = '';
                             const targetEl = document.getElementById(`prod-${match.id}`);
                             if(targetEl) {
-                                // Efeito visual de destaque rápido
                                 targetEl.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
                                 setTimeout(() => targetEl.classList.remove('ring-2', 'ring-primary', 'ring-offset-2'), 1500);
-                                
                                 targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
                             }
                         };
@@ -559,7 +611,6 @@
                 resultsBox.classList.remove('hidden');
             });
 
-            // Fecha resultados ao clicar fora
             document.addEventListener('click', (e) => {
                 if (!document.getElementById('search-container').contains(e.target)) {
                     resultsBox.classList.add('hidden');
@@ -567,7 +618,7 @@
             });
         };
 
-        // MENU HAMBURGER (Drawer Esquerdo)
+        // MENU HAMBURGER
         const toggleMenu = () => {
             const overlay = document.getElementById('menu-overlay');
             const panel = document.getElementById('menu-panel');
@@ -584,7 +635,7 @@
             }
         };
 
-        // MODAL DE PRODUTO
+        // MODAL DE PRODUTO & CUSTOMIZAÇÃO
         const findProductById = (id) => {
             for (const category of catalogData) {
                 const product = category.items.find(item => item.id === id);
@@ -599,23 +650,88 @@
 
             currentProduct = product;
             currentQty = 1;
+            selectedVariation = product.variations ? product.variations[0] : null; // Pega o primeiro por padrão
+            selectedAddons = [];
 
+            // Reset UI
             document.getElementById('modal-img').src = product.img;
             document.getElementById('modal-title').innerText = product.name;
             document.getElementById('modal-desc').innerText = product.desc;
+            document.getElementById('modal-obs').value = '';
             
             const priceEl = document.getElementById('modal-price');
             const oldPriceEl = document.getElementById('modal-old-price');
+            const variationsContainer = document.getElementById('modal-variations-container');
+            const addonsContainer = document.getElementById('modal-addons-container');
             
-            priceEl.innerText = formatMoney(product.price);
-            if(product.oldPrice) {
-                oldPriceEl.innerText = formatMoney(product.oldPrice);
-                oldPriceEl.classList.remove('hidden');
-            } else {
+            // Renderiza Variações Obrigatórias (Radio)
+            if (product.variations && product.variations.length > 0) {
+                priceEl.innerText = "Escolha seu tamanho"; // Oculta preço base se tem variação
                 oldPriceEl.classList.add('hidden');
+                
+                let html = `
+                    <div class="bg-gray-100 px-4 py-2 flex justify-between items-center rounded-t-lg">
+                        <span class="font-bold text-sm text-text">${product.variationsName || 'Opções'}</span>
+                        <span class="bg-gray-800 text-white text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">Obrigatório</span>
+                    </div>
+                    <div class="border border-t-0 border-gray-100 rounded-b-lg p-2 space-y-1">
+                `;
+                
+                product.variations.forEach((vari, idx) => {
+                    const isChecked = idx === 0 ? 'checked' : '';
+                    html += `
+                        <label class="flex justify-between items-center p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors border border-transparent ${isChecked ? 'bg-primary/5 border-primary/20' : ''}" onclick="handleVariationSelect(this, '${vari.id}')">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="variation" value="${vari.id}" class="w-4 h-4 cursor-pointer" ${isChecked}>
+                                <span class="text-sm font-medium text-text">${vari.name}</span>
+                            </div>
+                            <span class="text-sm font-bold text-text">${formatMoney(vari.price)}</span>
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+                variationsContainer.innerHTML = html;
+                variationsContainer.classList.remove('hidden');
+            } else {
+                // Produto simples
+                priceEl.innerText = formatMoney(product.price);
+                if(product.oldPrice) {
+                    oldPriceEl.innerText = formatMoney(product.oldPrice);
+                    oldPriceEl.classList.remove('hidden');
+                } else {
+                    oldPriceEl.classList.add('hidden');
+                }
+                variationsContainer.classList.add('hidden');
+            }
+
+            // Renderiza Adicionais (Checkbox)
+            if (product.addons && product.addons.length > 0) {
+                let html = `
+                    <div class="bg-gray-100 px-4 py-2 flex justify-between items-center rounded-t-lg">
+                        <span class="font-bold text-sm text-text">Adicionais</span>
+                        <span class="text-text-light text-xs font-medium">Opcional</span>
+                    </div>
+                    <div class="border border-t-0 border-gray-100 rounded-b-lg p-2 space-y-1">
+                `;
+                
+                product.addons.forEach((addon) => {
+                    html += `
+                        <label class="flex justify-between items-center p-3 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors" onclick="handleAddonToggle(this, '${addon.id}')">
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" value="${addon.id}" class="w-4 h-4 rounded cursor-pointer pointer-events-none">
+                                <span class="text-sm font-medium text-text">${addon.name}</span>
+                            </div>
+                            <span class="text-sm font-bold text-primary">+ ${formatMoney(addon.price)}</span>
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+                addonsContainer.innerHTML = html;
+                addonsContainer.classList.remove('hidden');
+            } else {
+                addonsContainer.classList.add('hidden');
             }
             
-            document.getElementById('modal-obs').value = '';
             updateModalUI();
 
             const modal = document.getElementById('product-modal');
@@ -624,6 +740,43 @@
             modal.classList.add('fade-enter');
             content.classList.add('drawer-enter');
             document.body.style.overflow = 'hidden';
+        };
+
+        // Handlers de interação no modal
+        window.handleVariationSelect = (labelElement, variationId) => {
+            selectedVariation = currentProduct.variations.find(v => v.id === variationId);
+            
+            // Remove destaque visual de todos
+            document.querySelectorAll('input[name="variation"]').forEach(input => {
+                const parent = input.closest('label');
+                parent.classList.remove('bg-primary/5', 'border-primary/20');
+            });
+            // Adiciona destaque no clicado
+            labelElement.classList.add('bg-primary/5', 'border-primary/20');
+            
+            // O input de rádio real é selecionado via clique do label automaticamente pelo HTML, 
+            // mas forçamos visualmente via JS
+            labelElement.querySelector('input').checked = true;
+
+            updateModalUI();
+        };
+
+        window.handleAddonToggle = (labelElement, addonId) => {
+            const checkbox = labelElement.querySelector('input[type="checkbox"]');
+            const isChecked = !checkbox.checked; // inverte o estado atual
+            checkbox.checked = isChecked;
+
+            const addonObj = currentProduct.addons.find(a => a.id === addonId);
+
+            if (isChecked) {
+                selectedAddons.push(addonObj);
+                labelElement.classList.add('bg-primary/5', 'border-primary/20');
+            } else {
+                selectedAddons = selectedAddons.filter(a => a.id !== addonId);
+                labelElement.classList.remove('bg-primary/5', 'border-primary/20');
+            }
+
+            updateModalUI();
         };
 
         const closeModal = () => {
@@ -646,7 +799,14 @@
 
         const updateModalUI = () => {
             document.getElementById('modal-qty').innerText = currentQty;
-            const total = currentProduct.price * currentQty;
+            
+            // Cálculo do preço: Base (ou variação) + Soma dos Adicionais
+            let basePrice = selectedVariation ? selectedVariation.price : currentProduct.price;
+            let addonsTotal = selectedAddons.reduce((sum, item) => sum + item.price, 0);
+            
+            let finalPricePerUnit = basePrice + addonsTotal;
+            let total = finalPricePerUnit * currentQty;
+            
             document.getElementById('modal-total-btn').innerText = formatMoney(total);
         };
 
@@ -655,23 +815,32 @@
             if (!currentProduct) return;
 
             const obs = document.getElementById('modal-obs').value.trim();
-            const existingItemIndex = cart.findIndex(item => item.product.id === currentProduct.id && item.obs === obs);
+            
+            // Cria um identificador único baseando-se no produto, variação, complementos selecionados e observação
+            // Isso previne que "Burger sem bacon" se junte com "Burger com bacon"
+            const addonsIds = selectedAddons.map(a => a.id).sort().join(',');
+            const varId = selectedVariation ? selectedVariation.id : '';
+            const customKey = `${currentProduct.id}-${varId}-${addonsIds}-${obs}`;
+
+            const existingItemIndex = cart.findIndex(item => item.customKey === customKey);
             
             if (existingItemIndex !== -1) {
                 cart[existingItemIndex].qty += currentQty;
             } else {
                 cart.push({
                     product: currentProduct,
+                    variation: selectedVariation,
+                    addons: [...selectedAddons], // Cópia do array
                     qty: currentQty,
                     obs: obs,
-                    cartItemId: Date.now().toString()
+                    cartItemId: Date.now().toString(),
+                    customKey: customKey
                 });
             }
 
             closeModal();
             updateCartUI();
             
-            // Efeito visual no ícone do header
             const badge = document.getElementById('cart-badge');
             badge.classList.add('scale-150');
             setTimeout(() => badge.classList.remove('scale-150'), 300);
@@ -682,19 +851,18 @@
             const panel = document.getElementById('cart-panel');
             const isOpen = overlay.classList.contains('fade-enter');
 
-            // Se for mobile e o menu inferior estiver visível, ocultar ao abrir o painel principal
             const mobileBar = document.getElementById('mobile-cart-bar');
 
             if (isOpen) {
                 overlay.classList.remove('fade-enter');
                 panel.classList.remove('drawer-enter');
                 document.body.style.overflow = '';
-                if(cart.length > 0) mobileBar.classList.remove('translate-y-full'); // Volta barra inferior
+                if(cart.length > 0) mobileBar.classList.remove('translate-y-full'); 
             } else {
                 overlay.classList.add('fade-enter');
                 panel.classList.add('drawer-enter');
                 document.body.style.overflow = 'hidden';
-                mobileBar.classList.add('translate-y-full'); // Esconde barra inferior para não sobrepor
+                mobileBar.classList.add('translate-y-full'); 
                 updateCartUI();
             }
         };
@@ -716,7 +884,6 @@
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             let subtotal = 0;
             
-            // Header Badge
             const badge = document.getElementById('cart-badge');
             if (totalItems > 0) {
                 badge.innerText = totalItems;
@@ -725,10 +892,8 @@
                 badge.classList.add('opacity-0');
             }
 
-            // Mobile Bottom Bar (Barra fixa)
             const mobileBar = document.getElementById('mobile-cart-bar');
             if (totalItems > 0) {
-                // Só mostra se o painel lateral do carrinho não estiver aberto
                 if(!document.getElementById('cart-overlay').classList.contains('fade-enter')){
                      mobileBar.classList.remove('translate-y-full');
                 }
@@ -737,7 +902,6 @@
                 mobileBar.classList.add('translate-y-full');
             }
 
-            // Carrinho Draw Panel
             const container = document.getElementById('cart-items');
             const emptyMsg = document.getElementById('empty-cart-msg');
             const btnCheckout = document.getElementById('checkout-btn');
@@ -756,22 +920,39 @@
                 btnCheckout.classList.remove('opacity-50', 'cursor-not-allowed');
 
                 cart.forEach(item => {
-                    const itemTotal = item.product.price * item.qty;
+                    // Preço de 1 unidade = Preço base(ou variação) + soma dos adicionais
+                    let unitBase = item.variation ? item.variation.price : item.product.price;
+                    let unitAddons = item.addons.reduce((s, a) => s + a.price, 0);
+                    let itemTotal = (unitBase + unitAddons) * item.qty;
+                    
                     subtotal += itemTotal;
 
+                    // Cria os textos de personalização
+                    let customizationHtml = '';
+                    if (item.variation) {
+                        customizationHtml += `<p class="text-[11px] text-text-light leading-tight mt-1">Tamanho: <span class="text-text font-medium">${item.variation.name}</span></p>`;
+                    }
+                    if (item.addons.length > 0) {
+                        const addonNames = item.addons.map(a => a.name).join(', ');
+                        customizationHtml += `<p class="text-[11px] text-text-light leading-tight mt-0.5">+ Adicionais: <span class="text-text font-medium">${addonNames}</span></p>`;
+                    }
+                    if (item.obs) {
+                        customizationHtml += `<p class="text-[11px] text-primary italic leading-tight mt-1"><i class="fa-solid fa-comment-dots mr-1"></i>Obs: ${item.obs}</p>`;
+                    }
+
                     const div = document.createElement('div');
-                    div.className = "flex py-3 border-b border-gray-100 last:border-0";
+                    div.className = "flex py-4 border-b border-gray-100 last:border-0";
                     div.innerHTML = `
-                        <div class="flex-1">
+                        <div class="flex-1 pr-3">
                             <h4 class="text-sm font-bold text-text">${item.product.name}</h4>
-                            ${item.obs ? `<p class="text-xs text-text-light mt-1 italic"><i class="fa-solid fa-comment-dots mr-1"></i>${item.obs}</p>` : ''}
+                            ${customizationHtml}
                             <div class="font-bold text-text mt-2">${formatMoney(itemTotal)}</div>
                         </div>
-                        <div class="flex flex-col items-end justify-between ml-4">
+                        <div class="flex flex-col items-end justify-between shrink-0">
                             <div class="flex items-center bg-gray-50 border border-gray-200 rounded-md p-0.5">
-                                <button onclick="updateCartQty('${item.cartItemId}', -1)" class="w-7 h-7 text-primary font-bold hover:bg-gray-200 rounded-md transition-colors"><i class="${item.qty === 1 ? 'fa-solid fa-trash text-sm' : 'fa-solid fa-minus text-sm'}"></i></button>
+                                <button onclick="updateCartQty('${item.cartItemId}', -1)" class="w-7 h-7 text-primary font-bold hover:bg-gray-200 rounded-md transition-colors flex justify-center items-center"><i class="${item.qty === 1 ? 'fa-solid fa-trash text-xs' : 'fa-solid fa-minus text-xs'}"></i></button>
                                 <span class="w-6 text-center text-sm font-semibold">${item.qty}</span>
-                                <button onclick="updateCartQty('${item.cartItemId}', 1)" class="w-7 h-7 text-primary font-bold hover:bg-gray-200 rounded-md transition-colors"><i class="fa-solid fa-plus text-sm"></i></button>
+                                <button onclick="updateCartQty('${item.cartItemId}', 1)" class="w-7 h-7 text-primary font-bold hover:bg-gray-200 rounded-md transition-colors flex justify-center items-center"><i class="fa-solid fa-plus text-xs"></i></button>
                             </div>
                         </div>
                     `;
