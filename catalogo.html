@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Digital | Delivery</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonte Poppins (Moderna e Apetitiva) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Configuração de Cores Customizáveis -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--cor-primaria)',
+                        'primary-hover': 'var(--cor-primaria-hover)',
+                        secondary: 'var(--cor-secundaria)',
+                        background: 'var(--cor-fundo)',
+                        surface: 'var(--cor-superficie)',
+                        text: 'var(--cor-texto)',
+                        'text-light': 'var(--cor-texto-claro)',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Variáveis de Cores Principais - Edite aqui para customizar */
+        :root {
+            --cor-primaria: #ea1d2c; /* Vermelho estilo iFood */
+            --cor-primaria-hover: #cc1825;
+            --cor-secundaria: #ffebec;
+            --cor-fundo: #f7f7f7;
+            --cor-superficie: #ffffff;
+            --cor-texto: #3e3e3e;
+            --cor-texto-claro: #717171;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+
+        /* Ocultar barra de rolagem mas manter funcionalidade */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Classes de animação úteis */
+        .drawer-enter { transform: translateX(0) !important; }
+        .drawer-left-enter { transform: translateX(0) !important; }
+        .fade-enter { opacity: 1 !important; pointer-events: auto !important; }
+        .mobile-cart-enter { transform: translateY(0) !important; }
+        
+        /* Ajuste do offset âncora para não ficar escondido pelo header/categorias fixos */
+        section { scroll-margin-top: 130px; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER FIXED -->
+    <header class="bg-surface shadow-sm sticky top-0 z-40 w-full h-16 flex items-center justify-between px-4 md:px-8">
+        <!-- Esquerda: Hamburger Menu -->
+        <button onclick="toggleMenu()" class="p-2 text-primary hover:bg-gray-100 rounded-full transition-colors">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+
+        <!-- Centro: Logo / Nome -->
+        <div class="flex-1 flex items-center justify-center font-bold text-primary text-xl tracking-tight">
+            <!-- EXEMPLO DE LOGO: Descomente a linha abaixo e coloque o link da sua imagem -->
+            <!-- <img src="https://sua-logo.com/logo.png" alt="Logo" class="h-8 w-auto mr-2"> -->
+            <span>FoodMenu</span>
+        </div>
+
+        <!-- Direita: Carrinho -->
+        <button onclick="toggleCart()" class="relative p-2 text-primary hover:bg-gray-100 rounded-full transition-colors hidden md:block" id="header-cart-btn">
+            <i class="fa-solid fa-bag-shopping text-xl"></i>
+            <span id="cart-badge" class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity border border-white">0</span>
+        </button>
+        <!-- Ícone fantasma no mobile para manter alinhamento do flex -->
+        <div class="w-10 md:hidden"></div>
+    </header>
+
+    <!-- MENU LATERAL ESQUERDO (Hamburger Drawer) -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleMenu()"></div>
+    
+    <div id="menu-panel" class="fixed top-0 left-0 h-full w-4/5 sm:w-[320px] bg-surface z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col overflow-y-auto">
+        <!-- Header do Menu -->
+        <div class="bg-primary p-6 flex items-center gap-4 text-white">
+            <div class="w-12 h-12 bg-white text-primary rounded-full flex items-center justify-center text-xl font-bold">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg">Olá, Visitante</h3>
+                <p class="text-sm opacity-90">Faça login para mais vantagens</p>
+            </div>
+        </div>
+
+        <!-- Links do Menu -->
+        <div class="py-4 flex-1">
+            <a href="#" class="flex items-center gap-4 px-6 py-3 text-text hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-receipt w-5 text-center text-text-light"></i>
+                <span class="font-medium">Meus Pedidos</span>
+            </a>
+            <a href="#" class="flex items-center gap-4 px-6 py-3 text-text hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-star w-5 text-center text-primary"></i>
+                <span class="font-medium">Cartão Fidelidade</span>
+            </a>
+            <a href="#" class="flex items-center gap-4 px-6 py-3 text-text hover:bg-gray-50 transition-colors">
+                <i class="fa-solid fa-id-card w-5 text-center text-text-light"></i>
+                <span class="font-medium">Meu Cadastro</span>
+            </a>
+            <a href="#" class="flex items-center gap-4 px-6 py-3 text-text hover:bg-gray-50 transition-colors mt-2 border-t border-gray-100 pt-5">
+                <i class="fa-brands fa-whatsapp w-5 text-center text-green-500 text-lg"></i>
+                <span class="font-medium">Chamar no WhatsApp</span>
+            </a>
+            
+            <!-- Tabela de Horários -->
+            <div class="mt-6 mx-6 p-4 bg-gray-50 border border-gray-200 rounded-xl">
+                <h4 class="font-bold text-sm text-text mb-3 flex items-center gap-2">
+                    <i class="fa-regular fa-clock text-primary"></i> Horários de Funcionamento
+                </h4>
+                <ul class="text-xs text-text-light space-y-2">
+                    <li class="flex justify-between"><span>Seg a Sex:</span> <span class="font-semibold text-text">18:00 - 23:30</span></li>
+                    <li class="flex justify-between"><span>Sábado:</span> <span class="font-semibold text-text">18:00 - 00:30</span></li>
+                    <li class="flex justify-between text-primary font-medium"><span>Domingo:</span> <span>Fechado</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-gray-100">
+            <a href="#" class="flex items-center gap-4 text-text-light hover:text-primary transition-colors">
+                <i class="fa-solid fa-arrow-right-from-bracket w-5 text-center"></i>
+                <span class="font-medium">Sair</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 mt-6">
+        
+        <!-- BANNER DE PROMOÇÃO -->
+        <section id="banner-promocao" class="mb-6 relative rounded-2xl overflow-hidden bg-primary text-white shadow-md">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent opacity-90 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000&auto=format&fit=crop" alt="Promoção" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay">
+            <div class="relative z-20 p-6 md:p-8 flex flex-col items-start w-full md:w-2/3">
+                <span class="bg-white text-primary text-xs font-bold px-2 py-1 rounded mb-2 uppercase tracking-wide">Oferta Especial</span>
+                <h2 class="text-2xl md:text-3xl font-bold mb-2">Combo Família com 30% OFF!</h2>
+                <p class="text-sm md:text-base mb-4 text-white/90">Aproveite os melhores lanches com entrega grátis hoje.</p>
+                <button class="bg-white text-primary font-bold py-2 px-6 rounded-full text-sm hover:bg-gray-50 transition-colors shadow-sm">
+                    Ver Promoção
+                </button>
+            </div>
+        </section>
+
+        <!-- NAVEGAÇÃO DE CATEGORIAS FIXA (Agora abaixo do banner) -->
+        <div class="sticky top-16 z-30 bg-background/95 backdrop-blur-sm py-4 -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 border-b border-gray-200/50">
+            <div id="category-list" class="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth">
+                <!-- Gerado via JS -->
+            </div>
+        </div>
+
+        <!-- CAMPO DE BUSCA -->
+        <div class="mb-8 relative" id="search-container">
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-text-light"></i>
+                <input type="text" id="search-input" placeholder="Buscar em todo o cardápio..." class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-12 pr-4 text-text focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all shadow-sm">
+            </div>
+            <!-- Caixa de resultados da busca -->
+            <div id="search-results" class="absolute top-full left-0 right-0 bg-surface shadow-xl border border-gray-100 rounded-xl mt-2 hidden z-20 max-h-60 overflow-y-auto">
+                <!-- Gerado por JS -->
+            </div>
+        </div>
+
+        <!-- LISTAGEM DE PRODUTOS -->
+        <div id="product-container" class="space-y-10">
+            <!-- Gerado por JS -->
+        </div>
+
+    </main>
+
+    <!-- FOOTER GCM SISTEMA -->
+    <footer class="mt-8 mb-4 py-8 border-t border-gray-200 text-center">
+        <p class="text-text-light text-sm">
+            Desenvolvido por <span class="font-bold text-primary">GCM Sistema</span>
+        </p>
+    </footer>
+
+    <!-- MODAL DE PRODUTO -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- Overlay fecha modal ao clicar -->
+        <div class="absolute inset-0 bg-black/60" onclick="closeModal()"></div>
+        
+        <!-- Conteúdo do Modal -->
+        <div id="modal-content" class="bg-surface w-full sm:w-auto sm:min-w-[450px] sm:max-w-lg h-[85vh] sm:h-auto sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden relative z-10 transform translate-y-full sm:translate-y-8 transition-transform duration-300 shadow-2xl flex flex-col">
+            
+            <button onclick="closeModal()" class="absolute top-3 right-3 bg-white/80 backdrop-blur rounded-full w-8 h-8 flex items-center justify-center text-text hover:bg-gray-100 z-20 shadow-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Área de Scroll Interna (Imagem + Detalhes) -->
+            <div class="flex-1 overflow-y-auto no-scrollbar">
+                <div class="h-56 sm:h-64 relative shrink-0">
+                    <img id="modal-img" src="" alt="Produto" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                
+                <div class="p-5">
+                    <h3 id="modal-title" class="text-xl font-bold text-text mb-1">Nome do Produto</h3>
+                    <p id="modal-desc" class="text-text-light text-sm mb-4 leading-relaxed">Descrição detalhada</p>
+                    <div class="mb-6 flex items-center gap-2">
+                        <span id="modal-price" class="text-xl font-bold text-primary">R$ 0,00</span>
+                        <span id="modal-old-price" class="text-sm font-medium text-text-light line-through hidden"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="block text-sm font-semibold text-text mb-2">Alguma observação?</label>
+                        <textarea id="modal-obs" rows="2" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-400" placeholder="Ex: Tirar cebola, maionese à parte..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões Fixos no Rodapé do Modal -->
+            <div class="p-4 border-t border-gray-100 bg-surface shrink-0">
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-1">
+                        <button onclick="updateModalQty(-1)" class="w-10 h-10 flex items-center justify-center text-primary font-bold text-xl hover:bg-gray-200 rounded-md transition-colors">-</button>
+                        <span id="modal-qty" class="w-8 text-center font-semibold text-text">1</span>
+                        <button onclick="updateModalQty(1)" class="w-10 h-10 flex items-center justify-center text-primary font-bold text-xl hover:bg-gray-200 rounded-md transition-colors">+</button>
+                    </div>
+                    
+                    <button onclick="confirmAddToCart()" class="flex-1 bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-lg flex justify-between items-center transition-colors shadow-md">
+                        <span>Adicionar</span>
+                        <span id="modal-total-btn">R$ 0,00</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OVERLAY DO CARRINHO -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart()"></div>
+
+    <!-- PAINEL DO CARRINHO (Lateral Direita) -->
+    <div id="cart-panel" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-surface z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        
+        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+            <h2 class="text-xl font-bold text-text">Sua Sacola</h2>
+            <button onclick="toggleCart()" class="w-8 h-8 flex items-center justify-center text-text-light hover:text-text hover:bg-gray-100 rounded-full transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <!-- Itens do carrinho gerados por JS -->
+            <div id="empty-cart-msg" class="h-full flex flex-col items-center justify-center text-text-light opacity-60">
+                <i class="fa-solid fa-bag-shopping text-5xl mb-4 text-gray-300"></i>
+                <p>Sua sacola está vazia.</p>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-gray-100 bg-gray-50">
+            <div class="flex justify-between items-center mb-2 text-text-light text-sm">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">R$ 0,00</span>
+            </div>
+            <div class="flex justify-between items-center mb-6 text-text font-bold text-lg">
+                <span>Total</span>
+                <span id="cart-total" class="text-primary">R$ 0,00</span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-xl transition-colors shadow-lg opacity-50 cursor-not-allowed" disabled>
+                Escolher Forma de Pagamento
+            </button>
+        </div>
+    </div>
+
+    <!-- BARRA INFERIOR MOBILE (Fixo no celular igual iFood) -->
+    <div id="mobile-cart-bar" class="md:hidden fixed bottom-0 left-0 right-0 p-4 z-30 transform translate-y-full transition-transform duration-300">
+        <button onclick="toggleCart()" class="w-full bg-primary text-white rounded-lg p-4 flex items-center justify-between shadow-lg active:scale-95 transition-transform">
+            <div class="flex items-center gap-3">
+                <span id="mobile-cart-qty" class="bg-white text-primary w-8 h-8 rounded text-sm font-bold flex items-center justify-center">1</span>
+                <span class="font-medium text-sm">Ver sacola</span>
+            </div>
+            <div class="font-bold flex items-center gap-2">
+                <span id="mobile-cart-total">R$ 0,00</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // DADOS MOCK (Simulando API) com suporte a desconto (oldPrice)
+        const catalogData = [
+            {
+                id: "cat-destaques",
+                name: "Destaques",
+                items: [
+                    { id: 1, name: "Super Smash Burger", desc: "Pão brioche artesanal, 2x burger de 90g, cheddar derretido e bacon.", price: 28.90, oldPrice: 35.90, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop" },
+                    { id: 2, name: "Pizza Pepperoni (Média)", desc: "Massa de longa fermentação, molho de tomate pelati e pepperoni.", price: 45.00, img: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=400&auto=format&fit=crop" },
+                ]
+            },
+            {
+                id: "cat-lanches",
+                name: "Lanches",
+                items: [
+                    { id: 3, name: "Classic Burger", desc: "Pão tradicional, burger de 150g, alface, tomate e queijo prato.", price: 24.50, img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400&auto=format&fit=crop" },
+                    { id: 4, name: "Chicken Crispy", desc: "Frango empanado super crocante, salada coleslaw e picles.", price: 26.90, img: "https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?q=80&w=400&auto=format&fit=crop" },
+                ]
+            },
+            {
+                id: "cat-porcoes",
+                name: "Porções",
+                items: [
+                    { id: 5, name: "Batata Frita Rústica", desc: "Porção de 400g de batatas rústicas temperadas com páprica.", price: 15.00, oldPrice: 18.00, img: "https://images.unsplash.com/photo-1576107232684-1279f390859f?q=80&w=400&auto=format&fit=crop" },
+                    { id: 6, name: "Nuggets Artesanais", desc: "10 unidades de frango crocante com molho barbecue.", price: 22.00, img: "https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=400&auto=format&fit=crop" },
+                ]
+            },
+            {
+                id: "cat-bebidas",
+                name: "Bebidas",
+                items: [
+                    { id: 7, name: "Refrigerante Cola Lata", desc: "Lata 350ml gelada.", price: 6.00, img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400&auto=format&fit=crop" },
+                    { id: 8, name: "Suco de Laranja Natural", desc: "Copo de 400ml feito na hora sem açúcar adicionado.", price: 9.00, img: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=400&auto=format&fit=crop" },
+                ]
+            }
+        ];
+
+        let cart = [];
+        let currentProduct = null;
+        let currentQty = 1;
+        let isManualScrolling = false;
+
+        const formatMoney = (value) => {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        };
+
+        const init = () => {
+            renderCategories();
+            renderProducts();
+            setupScrollSpy();
+            setupSearch();
+        };
+
+        // RENDERIZAÇÃO
+        const renderCategories = () => {
+            const nav = document.getElementById('category-list');
+            catalogData.forEach((cat, index) => {
+                const isActive = index === 0;
+                const btn = document.createElement('a');
+                btn.href = `#${cat.id}`;
+                btn.id = `nav-${cat.id}`;
+                btn.className = `category-link whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-medium transition-colors border-2 ${isActive ? 'bg-primary text-white border-primary' : 'bg-surface text-text-light border-transparent hover:bg-gray-50'}`;
+                btn.innerText = cat.name;
+                
+                btn.onclick = (e) => {
+                    e.preventDefault(); // Impede o pulo bruto nativo do HTML
+
+                    // Evitar que o scrollspy sobreponha o clique imediatamente
+                    isManualScrolling = true;
+                    setTimeout(() => isManualScrolling = false, 800);
+                    
+                    document.querySelectorAll('.category-link').forEach(a => {
+                        a.classList.remove('bg-primary', 'text-white', 'border-primary');
+                        a.classList.add('bg-surface', 'text-text-light', 'border-transparent');
+                    });
+                    btn.classList.add('bg-primary', 'text-white', 'border-primary');
+                    btn.classList.remove('bg-surface', 'text-text-light', 'border-transparent');
+
+                    // Faz o scroll suave via JavaScript
+                    const targetSection = document.getElementById(cat.id);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                };
+
+                nav.appendChild(btn);
+            });
+        };
+
+        const renderProducts = () => {
+            const container = document.getElementById('product-container');
+            
+            catalogData.forEach(category => {
+                const section = document.createElement('section');
+                section.id = category.id;
+                section.className = "category-section pt-4";
+
+                const title = document.createElement('h2');
+                title.className = "text-xl font-bold text-text mb-4 px-1";
+                title.innerText = category.name;
+                section.appendChild(title);
+
+                const grid = document.createElement('div');
+                grid.className = "grid grid-cols-1 md:grid-cols-2 gap-4";
+
+                category.items.forEach(product => {
+                    const card = document.createElement('div');
+                    card.id = `prod-${product.id}`;
+                    card.className = "bg-surface p-4 rounded-xl shadow-sm border border-gray-100 flex gap-4 cursor-pointer hover:shadow-md hover:border-gray-200 transition-all active:scale-[0.98]";
+                    card.onclick = () => openModal(product.id);
+                    
+                    // Lógica para preço com desconto
+                    let priceHtml = '';
+                    if (product.oldPrice) {
+                        priceHtml = `<div class="flex flex-col">
+                                        <span class="text-text-light text-xs line-through">${formatMoney(product.oldPrice)}</span>
+                                        <span class="font-bold text-primary">${formatMoney(product.price)}</span>
+                                     </div>`;
+                    } else {
+                        priceHtml = `<span class="font-bold text-text">${formatMoney(product.price)}</span>`;
+                    }
+
+                    // Lógica para tag de desconto
+                    let tagHtml = '';
+                    if (product.oldPrice) {
+                        tagHtml = `<div class="absolute top-2 right-2 bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm"><i class="fa-solid fa-tag"></i> Oferta</div>`;
+                    }
+
+                    card.innerHTML = `
+                        <div class="flex-1 flex flex-col justify-between pr-2">
+                            <div>
+                                <h3 class="font-bold text-text text-base leading-tight mb-1">${product.name}</h3>
+                                <p class="text-text-light text-xs line-clamp-2 mb-3 leading-relaxed">${product.desc}</p>
+                            </div>
+                            ${priceHtml}
+                        </div>
+                        <div class="w-28 h-28 sm:w-32 sm:h-32 shrink-0 relative">
+                            <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover rounded-lg">
+                            ${tagHtml}
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        };
+
+        // SCROLLSPY (Destaca categoria ao rolar)
+        const setupScrollSpy = () => {
+            const sections = document.querySelectorAll('.category-section');
+            const navLinks = document.querySelectorAll('.category-link');
+            const navContainer = document.getElementById('category-list');
+
+            window.addEventListener('scroll', () => {
+                if(isManualScrolling) return;
+
+                let current = '';
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150; // Offset considerando header e menu sticky
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                // Se passou do topo mas não encontrou, seleciona a primeira
+                if(!current && scrollY < sections[0].offsetTop) current = sections[0].getAttribute('id');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('bg-primary', 'text-white', 'border-primary');
+                    link.classList.add('bg-surface', 'text-text-light', 'border-transparent');
+                    
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('bg-primary', 'text-white', 'border-primary');
+                        link.classList.remove('bg-surface', 'text-text-light', 'border-transparent');
+                        
+                        // Scroll horizontal suave do menu de categorias para focar o item ativo
+                        const linkLeft = link.offsetLeft;
+                        const containerHalfWidth = navContainer.clientWidth / 2;
+                        navContainer.scrollTo({
+                            left: linkLeft - containerHalfWidth + (link.clientWidth / 2),
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        };
+
+        // BUSCA E SCROLL SUAVE
+        const setupSearch = () => {
+            const input = document.getElementById('search-input');
+            const resultsBox = document.getElementById('search-results');
+            
+            // Reúne todos os produtos em uma lista plana para facilitar a busca
+            const allProducts = [];
+            catalogData.forEach(cat => {
+                cat.items.forEach(item => {
+                    allProducts.push({...item, catName: cat.name});
+                });
+            });
+
+            input.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                resultsBox.innerHTML = '';
+
+                if (term.length < 2) {
+                    resultsBox.classList.add('hidden');
+                    return;
+                }
+
+                const matches = allProducts.filter(p => p.name.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
+
+                if (matches.length > 0) {
+                    matches.forEach(match => {
+                        const item = document.createElement('div');
+                        item.className = "p-3 border-b border-gray-50 hover:bg-gray-50 cursor-pointer flex justify-between items-center";
+                        item.innerHTML = `
+                            <div>
+                                <h4 class="font-semibold text-sm text-text">${match.name}</h4>
+                                <span class="text-[10px] text-text-light uppercase bg-gray-100 px-1.5 py-0.5 rounded">${match.catName}</span>
+                            </div>
+                            <span class="text-primary font-bold text-sm">${formatMoney(match.price)}</span>
+                        `;
+                        
+                        item.onclick = () => {
+                            resultsBox.classList.add('hidden');
+                            input.value = '';
+                            const targetEl = document.getElementById(`prod-${match.id}`);
+                            if(targetEl) {
+                                // Efeito visual de destaque rápido
+                                targetEl.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
+                                setTimeout(() => targetEl.classList.remove('ring-2', 'ring-primary', 'ring-offset-2'), 1500);
+                                
+                                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        };
+                        
+                        resultsBox.appendChild(item);
+                    });
+                } else {
+                    resultsBox.innerHTML = `<div class="p-4 text-center text-sm text-text-light">Nenhum produto encontrado.</div>`;
+                }
+                
+                resultsBox.classList.remove('hidden');
+            });
+
+            // Fecha resultados ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (!document.getElementById('search-container').contains(e.target)) {
+                    resultsBox.classList.add('hidden');
+                }
+            });
+        };
+
+        // MENU HAMBURGER (Drawer Esquerdo)
+        const toggleMenu = () => {
+            const overlay = document.getElementById('menu-overlay');
+            const panel = document.getElementById('menu-panel');
+            const isOpen = overlay.classList.contains('fade-enter');
+
+            if (isOpen) {
+                overlay.classList.remove('fade-enter');
+                panel.classList.remove('drawer-left-enter');
+                document.body.style.overflow = '';
+            } else {
+                overlay.classList.add('fade-enter');
+                panel.classList.add('drawer-left-enter');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        // MODAL DE PRODUTO
+        const findProductById = (id) => {
+            for (const category of catalogData) {
+                const product = category.items.find(item => item.id === id);
+                if (product) return product;
+            }
+            return null;
+        };
+
+        const openModal = (id) => {
+            const product = findProductById(id);
+            if (!product) return;
+
+            currentProduct = product;
+            currentQty = 1;
+
+            document.getElementById('modal-img').src = product.img;
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-desc').innerText = product.desc;
+            
+            const priceEl = document.getElementById('modal-price');
+            const oldPriceEl = document.getElementById('modal-old-price');
+            
+            priceEl.innerText = formatMoney(product.price);
+            if(product.oldPrice) {
+                oldPriceEl.innerText = formatMoney(product.oldPrice);
+                oldPriceEl.classList.remove('hidden');
+            } else {
+                oldPriceEl.classList.add('hidden');
+            }
+            
+            document.getElementById('modal-obs').value = '';
+            updateModalUI();
+
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.add('fade-enter');
+            content.classList.add('drawer-enter');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeModal = () => {
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('fade-enter');
+            content.classList.remove('drawer-enter');
+            document.body.style.overflow = '';
+            setTimeout(() => currentProduct = null, 300);
+        };
+
+        const updateModalQty = (delta) => {
+            const newQty = currentQty + delta;
+            if (newQty >= 1 && newQty <= 99) {
+                currentQty = newQty;
+                updateModalUI();
+            }
+        };
+
+        const updateModalUI = () => {
+            document.getElementById('modal-qty').innerText = currentQty;
+            const total = currentProduct.price * currentQty;
+            document.getElementById('modal-total-btn').innerText = formatMoney(total);
+        };
+
+        // CARRINHO
+        const confirmAddToCart = () => {
+            if (!currentProduct) return;
+
+            const obs = document.getElementById('modal-obs').value.trim();
+            const existingItemIndex = cart.findIndex(item => item.product.id === currentProduct.id && item.obs === obs);
+            
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].qty += currentQty;
+            } else {
+                cart.push({
+                    product: currentProduct,
+                    qty: currentQty,
+                    obs: obs,
+                    cartItemId: Date.now().toString()
+                });
+            }
+
+            closeModal();
+            updateCartUI();
+            
+            // Efeito visual no ícone do header
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('scale-150');
+            setTimeout(() => badge.classList.remove('scale-150'), 300);
+        };
+
+        const toggleCart = () => {
+            const overlay = document.getElementById('cart-overlay');
+            const panel = document.getElementById('cart-panel');
+            const isOpen = overlay.classList.contains('fade-enter');
+
+            // Se for mobile e o menu inferior estiver visível, ocultar ao abrir o painel principal
+            const mobileBar = document.getElementById('mobile-cart-bar');
+
+            if (isOpen) {
+                overlay.classList.remove('fade-enter');
+                panel.classList.remove('drawer-enter');
+                document.body.style.overflow = '';
+                if(cart.length > 0) mobileBar.classList.remove('translate-y-full'); // Volta barra inferior
+            } else {
+                overlay.classList.add('fade-enter');
+                panel.classList.add('drawer-enter');
+                document.body.style.overflow = 'hidden';
+                mobileBar.classList.add('translate-y-full'); // Esconde barra inferior para não sobrepor
+                updateCartUI();
+            }
+        };
+
+        const updateCartQty = (cartItemId, delta) => {
+            const itemIndex = cart.findIndex(i => i.cartItemId === cartItemId);
+            if (itemIndex > -1) {
+                const newQty = cart[itemIndex].qty + delta;
+                if (newQty > 0) {
+                    cart[itemIndex].qty = newQty;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+                updateCartUI();
+            }
+        };
+
+        const updateCartUI = () => {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            let subtotal = 0;
+            
+            // Header Badge
+            const badge = document.getElementById('cart-badge');
+            if (totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('opacity-0');
+            } else {
+                badge.classList.add('opacity-0');
+            }
+
+            // Mobile Bottom Bar (Barra fixa)
+            const mobileBar = document.getElementById('mobile-cart-bar');
+            if (totalItems > 0) {
+                // Só mostra se o painel lateral do carrinho não estiver aberto
+                if(!document.getElementById('cart-overlay').classList.contains('fade-enter')){
+                     mobileBar.classList.remove('translate-y-full');
+                }
+                document.getElementById('mobile-cart-qty').innerText = totalItems;
+            } else {
+                mobileBar.classList.add('translate-y-full');
+            }
+
+            // Carrinho Draw Panel
+            const container = document.getElementById('cart-items');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const btnCheckout = document.getElementById('checkout-btn');
+            
+            Array.from(container.children).forEach(child => {
+                if(child.id !== 'empty-cart-msg') container.removeChild(child);
+            });
+
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'flex';
+                btnCheckout.disabled = true;
+                btnCheckout.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                emptyMsg.style.display = 'none';
+                btnCheckout.disabled = false;
+                btnCheckout.classList.remove('opacity-50', 'cursor-not-allowed');
+
+                cart.forEach(item => {
+                    const itemTotal = item.product.price * item.qty;
+                    subtotal += itemTotal;
+
+                    const div = document.createElement('div');
+                    div.className = "flex py-3 border-b border-gray-100 last:border-0";
+                    div.innerHTML = `
+                        <div class="flex-1">
+                            <h4 class="text-sm font-bold text-text">${item.product.name}</h4>
+                            ${item.obs ? `<p class="text-xs text-text-light mt-1 italic"><i class="fa-solid fa-comment-dots mr-1"></i>${item.obs}</p>` : ''}
+                            <div class="font-bold text-text mt-2">${formatMoney(itemTotal)}</div>
+                        </div>
+                        <div class="flex flex-col items-end justify-between ml-4">
+                            <div class="flex items-center bg-gray-50 border border-gray-200 rounded-md p-0.5">
+                                <button onclick="updateCartQty('${item.cartItemId}', -1)" class="w-7 h-7 text-primary font-bold hover:bg-gray-200 rounded-md transition-colors"><i class="${item.qty === 1 ? 'fa-solid fa-trash text-sm' : 'fa-solid fa-minus text-sm'}"></i></button>
+                                <span class="w-6 text-center text-sm font-semibold">${item.qty}</span>
+                                <button onclick="updateCartQty('${item.cartItemId}', 1)" class="w-7 h-7 text-primary font-bold hover:bg-gray-200 rounded-md transition-colors"><i class="fa-solid fa-plus text-sm"></i></button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            document.getElementById('cart-subtotal').innerText = formatMoney(subtotal);
+            document.getElementById('cart-total').innerText = formatMoney(subtotal);
+            document.getElementById('mobile-cart-total').innerText = formatMoney(subtotal);
+        };
+
+        window.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+</html>
