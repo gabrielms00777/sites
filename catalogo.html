@@ -91,10 +91,15 @@
         </button>
 
         <!-- Centro: Logo / Nome -->
-        <div class="flex-1 flex items-center justify-center font-bold text-primary text-xl tracking-tight">
-            <!-- EXEMPLO DE LOGO: Descomente a linha abaixo e coloque o link da sua imagem -->
-            <!-- <img src="https://sua-logo.com/logo.png" alt="Logo" class="h-8 w-auto mr-2"> -->
-            <span>FoodMenu</span>
+        <div class="flex-1 flex flex-col items-center justify-center">
+            <div class="font-bold text-primary text-xl tracking-tight flex items-center gap-1">
+                <!-- <img src="https://sua-logo.com/logo.png" alt="Logo" class="h-8 w-auto"> -->
+                <span>FoodMenu</span>
+            </div>
+            <div class="flex items-center gap-1 mt-0.5">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-[10px] text-text-light font-medium uppercase tracking-wider">Aberto agora</span>
+            </div>
         </div>
 
         <!-- Direita: Carrinho -->
@@ -303,8 +308,8 @@
                 <span>Total</span>
                 <span id="cart-total" class="text-primary">R$ 0,00</span>
             </div>
-            <button id="checkout-btn" class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-xl transition-colors shadow-lg opacity-50 cursor-not-allowed" disabled>
-                Escolher Forma de Pagamento
+            <button id="checkout-btn" onclick="sendOrderWhatsApp()" class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-4 rounded-xl transition-colors shadow-lg opacity-50 cursor-not-allowed flex items-center justify-center gap-2" disabled>
+                <i class="fa-brands fa-whatsapp text-xl"></i> Finalizar no WhatsApp
             </button>
         </div>
     </div>
@@ -320,6 +325,12 @@
                 <span id="mobile-cart-total">R$ 0,00</span>
             </div>
         </button>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-20 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-full text-sm font-medium shadow-2xl z-[70] transition-all duration-300 opacity-0 translate-y-[-20px] pointer-events-none flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-green-400 text-lg"></i>
+        <span id="toast-msg">Adicionado com sucesso!</span>
     </div>
 
     <!-- JAVASCRIPT -->
@@ -396,6 +407,17 @@
 
         const formatMoney = (value) => {
             return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        };
+
+        const showToast = (msg) => {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('opacity-0', 'translate-y-[-20px]');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-[-20px]');
+            }, 3000);
         };
 
         const init = () => {
@@ -496,7 +518,7 @@
                             ${priceHtml}
                         </div>
                         <div class="w-28 h-28 sm:w-32 sm:h-32 shrink-0 relative">
-                            <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover rounded-lg">
+                            <img src="${product.img}" alt="${product.name}" loading="lazy" class="w-full h-full object-cover rounded-lg">
                             ${tagHtml}
                         </div>
                     `;
@@ -841,6 +863,8 @@
             closeModal();
             updateCartUI();
             
+            showToast(`${currentProduct.name} na sacola!`);
+            
             const badge = document.getElementById('cart-badge');
             badge.classList.add('scale-150');
             setTimeout(() => badge.classList.remove('scale-150'), 300);
@@ -963,6 +987,35 @@
             document.getElementById('cart-subtotal').innerText = formatMoney(subtotal);
             document.getElementById('cart-total').innerText = formatMoney(subtotal);
             document.getElementById('mobile-cart-total').innerText = formatMoney(subtotal);
+        };
+
+        const sendOrderWhatsApp = () => {
+            if (cart.length === 0) return;
+
+            let text = `*NOVO PEDIDO* 🍔\n\n`;
+            let totalPedido = 0;
+
+            cart.forEach(item => {
+                let unitBase = item.variation ? item.variation.price : item.product.price;
+                let unitAddons = item.addons.reduce((s, a) => s + a.price, 0);
+                let itemTotal = (unitBase + unitAddons) * item.qty;
+                totalPedido += itemTotal;
+
+                text += `*${item.qty}x ${item.product.name}* - ${formatMoney(itemTotal)}\n`;
+                if (item.variation) text += `  Tamanho: ${item.variation.name}\n`;
+                if (item.addons.length > 0) text += `  Adicionais: ${item.addons.map(a => a.name).join(', ')}\n`;
+                if (item.obs) text += `  Obs: _${item.obs}_\n`;
+                text += `\n`;
+            });
+
+            text += `*TOTAL DO PEDIDO: ${formatMoney(totalPedido)}*\n\n`;
+            text += `Olá, gostaria de finalizar este pedido. Como podemos fazer o pagamento e a entrega?`;
+
+            // Substitua este número pelo WhatsApp real do estabelecimento
+            const phone = "5516981294778"; 
+            
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
         };
 
         window.addEventListener('DOMContentLoaded', init);
