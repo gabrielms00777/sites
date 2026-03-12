@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yohana Tranças | Especialista em Autoestima</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f7',  // Very light nude
+                            100: '#f7ebe8', // Soft pink/nude
+                            200: '#edd1cb',
+                            300: '#e1b2aa',
+                            400: '#d28d84', // Rose gold
+                            500: '#c26960',
+                            600: '#a34c44',
+                            700: '#873d36', // Deep elegant red/brown
+                            800: '#713530',
+                            900: '#4a2522', // Dark contrast
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .glass-header {
+            background: rgba(253, 248, 247, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        /* Smooth FAQ Reveal Trick */
+        .faq-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease-in-out;
+            background-color: white;
+        }
+
+        .faq-content.open {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-content>div {
+            overflow: hidden;
+            padding: 0;
+            opacity: 0;
+            transition: padding 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        }
+
+        .faq-content.open>div {
+            padding: 0.5rem 1.5rem 1.25rem;
+            opacity: 1;
+        }
+
+
+        /* Reveal Animations on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-brand-900 bg-brand-50 antialiased selection:bg-brand-300 selection:text-white">
+
+    <!-- Header -->
+    <header
+        class="fixed w-full top-0 z-50 glass-header border-b border-brand-200/50 shadow-sm transition-all duration-300"
+        id="header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-2 group">
+                    <span
+                        class="font-serif text-2xl font-bold text-brand-800 tracking-tight group-hover:text-brand-600 transition-colors">
+                        Yohana<span class="text-brand-400 font-light italic">Tranças</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-sm font-medium hover:text-brand-500 transition-colors">Início</a>
+                    <a href="#sobre" class="text-sm font-medium hover:text-brand-500 transition-colors">Sobre mim</a>
+                    <a href="#servicos" class="text-sm font-medium hover:text-brand-500 transition-colors">Serviços</a>
+                    <a href="#galeria" class="text-sm font-medium hover:text-brand-500 transition-colors">Galeria</a>
+                    <a href="#depoimentos"
+                        class="text-sm font-medium hover:text-brand-500 transition-colors">Depoimentos</a>
+                    <a href="#faq" class="text-sm font-medium hover:text-brand-500 transition-colors">Dúvidas</a>
+                </nav>
+
+                <!-- CTA & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/5516999999999" target="_blank" rel="noopener noreferrer"
+                        class="hidden md:flex items-center gap-2 bg-brand-800 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        Agendar
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-brand-800 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white border-b border-brand-100 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#inicio"
+                    class="block px-3 py-3 rounded-md text-base font-medium hover:bg-brand-50 hover:text-brand-600">Início</a>
+                <a href="#sobre"
+                    class="block px-3 py-3 rounded-md text-base font-medium hover:bg-brand-50 hover:text-brand-600">Sobre
+                    mim</a>
+                <a href="#servicos"
+                    class="block px-3 py-3 rounded-md text-base font-medium hover:bg-brand-50 hover:text-brand-600">Serviços</a>
+                <a href="#galeria"
+                    class="block px-3 py-3 rounded-md text-base font-medium hover:bg-brand-50 hover:text-brand-600">Galeria</a>
+                <a href="#depoimentos"
+                    class="block px-3 py-3 rounded-md text-base font-medium hover:bg-brand-50 hover:text-brand-600">Depoimentos</a>
+                <a href="#faq"
+                    class="block px-3 py-3 rounded-md text-base font-medium hover:bg-brand-50 hover:text-brand-600">Dúvidas</a>
+                <a href="https://wa.me/5516999999999" target="_blank"
+                    class="mt-4 flex items-center justify-center gap-2 bg-brand-800 text-white px-4 py-3 rounded-xl text-base font-medium hover:bg-brand-700">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    Agendar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-28 pb-20 lg:pt-32 lg:pb-28 overflow-hidden min-h-[90vh] flex items-center">
+        <!-- Background Decorative Elements -->
+        <div
+            class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-brand-200/30 rounded-full blur-3xl opacity-50 translate-x-1/3 -translate-y-1/4">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-brand-300/20 rounded-full blur-3xl opacity-50 -translate-x-1/4 translate-y-1/4">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+                <!-- Hero Content -->
+                <div class="max-w-2xl animate-fade-in-up">
+                    <span
+                        class="inline-block py-1 px-3 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wider uppercase mb-6 border border-brand-200">
+                        Arte, Identidade e Beleza
+                    </span>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-brand-900">
+                        Tranças que transformam sua <span class="text-brand-500 italic">autoestima</span> e revelam sua
+                        melhor versão.
+                    </h1>
+                    <p class="text-lg text-brand-700/80 mb-8 font-light leading-relaxed">
+                        Mais do que um estilo, uma experiência de autocuidado. Especialista em tranças nagô, box braids
+                        e designs personalizados com 3 anos de dedicação à sua beleza.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/5516999999999" target="_blank"
+                            class="inline-flex items-center justify-center gap-3 bg-brand-800 text-white px-8 py-4 rounded-full text-base font-medium hover:bg-brand-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            Agendar pelo WhatsApp
+                        </a>
+                        <a href="#galeria"
+                            class="inline-flex items-center justify-center gap-2 bg-white text-brand-800 border border-brand-200 px-8 py-4 rounded-full text-base font-medium hover:bg-brand-50 hover:border-brand-300 transition-all duration-300 w-full sm:w-auto">
+                            Ver Trabalhos
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative lg:ml-auto animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <!-- Decorative background blob -->
+                    <div class="absolute inset-0 bg-brand-200 rounded-[2rem] transform rotate-3 scale-105 opacity-50">
+                    </div>
+
+                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/5] max-w-md mx-auto">
+                        <img src="./6.png" alt="Mulher negra com tranças elegantes sorrindo"
+                            class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-brand-50">
+                        <div
+                            class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600">
+                            <i class="fas fa-star text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-brand-900">+3 Anos</p>
+                            <p class="text-xs text-brand-600">de Experiência</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Profissional -->
+    <section id="sobre" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <!-- Image Side -->
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute -inset-4 border-2 border-brand-200 rounded-[2.5rem] transform -rotate-2"></div>
+                    <img src="./6.png" alt="Yohana, Trancista Profissional"
+                        class="relative rounded-[2rem] shadow-xl w-full aspect-[3/4] object-cover">
+                </div>
+
+                <!-- Text Side -->
+                <div class="order-1 lg:order-2">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-6">
+                        Oii, gente! <br>
+                        <span class="text-brand-500 font-light italic">Me chamo Yohana.</span>
+                    </h2>
+
+                    <div class="space-y-4 text-brand-800/80 font-light text-lg leading-relaxed">
+                        <p>
+                            Tenho 16 anos e atuo como trancista há 3 anos. Minha paixão pelas tranças começou ainda na
+                            infância. Aos 4 anos, eu já me encantava ao ver minha avó trançando meu cabelo e sentia
+                            vontade de aprender também.
+                        </p>
+                        <p>
+                            Curiosa, um dia pesquisei no YouTube e tentei reproduzir em uma boneca. Quando percebi que
+                            tinha dado certo, fiquei muito feliz e logo comecei a trançar os cabelos de pessoas
+                            próximas.
+                        </p>
+                        <p>
+                            Com o tempo, deixei o dom um pouco de lado, mas aos 13 anos, ganhei de presente da minha mãe
+                            um curso profissionalizante no meu aniversário. Esse foi o pontapé que eu precisava.
+                        </p>
+                        <p>
+                            Hoje já são mais de 3 anos dedicados a transformar não apenas o visual, mas também a
+                            autoestima e a confiança das minhas clientes.
+                        </p>
+                        <p class="font-medium text-brand-900 text-xl font-serif mt-6 border-l-4 border-brand-400 pl-4">
+                            "Para mim, as tranças não são apenas um estilo: são identidade, força e beleza."
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">Como Funciona</h2>
+                <p class="text-brand-700/80 text-lg">Um processo simples e transparente para você ter a melhor
+                    experiência.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Linha conectora (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-brand-200 z-0"></div>
+
+                <!-- Passo 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div
+                        class="w-24 h-24 bg-white rounded-full border-4 border-brand-100 shadow-xl flex items-center justify-center text-brand-600 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fab fa-whatsapp text-3xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">1. Agendamento</h3>
+                    <p class="text-brand-700/70 text-sm font-light px-4">Você entra em contato pelo WhatsApp, escolhe o
+                        modelo e definimos a melhor data.</p>
+                </div>
+
+                <!-- Passo 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center group mt-8 md:mt-0">
+                    <div
+                        class="w-24 h-24 bg-white rounded-full border-4 border-brand-100 shadow-xl flex items-center justify-center text-brand-600 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-comments text-3xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">2. Avaliação</h3>
+                    <p class="text-brand-700/70 text-sm font-light px-4">No dia, avalio a saúde dos seus fios e
+                        alinhamos todos os detalhes do penteado.</p>
+                </div>
+
+                <!-- Passo 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center group mt-8 md:mt-0">
+                    <div
+                        class="w-24 h-24 bg-white rounded-full border-4 border-brand-100 shadow-xl flex items-center justify-center text-brand-600 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <i class="fa-solid fa-wand-sparkles text-3xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">3. Transformação</h3>
+                    <p class="text-brand-700/70 text-sm font-light px-4">Com muito cuidado e técnica, realizo as tranças
+                        entregando um resultado impecável.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tipos de Tranças (Serviços) -->
+    <section id="servicos" class="py-24 bg-white border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">Especialidades</h2>
+                <p class="text-brand-700/80 text-lg">Técnicas aprimoradas para garantir não apenas um visual incrível,
+                    mas também a saúde dos seus fios.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Card 1 -->
+                <div
+                    class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="./1.png" alt="Tranças Nagô"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">Tranças Nagô</h3>
+                        <p class="text-brand-700/70 text-sm font-light">Elegância e tradição. Desenhos incríveis colados
+                            ao couro cabeludo que trazem praticidade e muito estilo.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="./2-1.png" alt="Box Braids"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">Box Braids</h3>
+                        <p class="text-brand-700/70 text-sm font-light">Versatilidade pura. Tranças soltas ideais para
+                            alongamento, proteção dos fios e infinitas possibilidades de penteados.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="./3.png" alt="Tranças com Acessórios"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">Com Acessórios</h3>
+                        <p class="text-brand-700/70 text-sm font-light">Búzios, anéis, argolas e fios brilhantes para
+                            dar aquele toque exclusivo e luminoso ao seu penteado.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="./4.png" alt="Estilos Personalizados"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">Estilos Personalizados</h3>
+                        <p class="text-brand-700/70 text-sm font-light">Tem uma referência específica? Trago sua ideia
+                            para a realidade com técnicas mistas e acabamento impecável.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Trabalhos -->
+    <section id="galeria" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-2">Meu Portfólio</h2>
+                    <p class="text-brand-700/80 text-lg">Um pouco das transformações e sorrisos que ajudei a criar.</p>
+                </div>
+                <a href="https://instagram.com" target="_blank"
+                    class="hidden md:flex items-center gap-2 text-brand-600 hover:text-brand-800 font-medium transition-colors">
+                    <i class="fab fa-instagram text-xl"></i> Ver mais no Instagram
+                </a>
+            </div>
+
+            <!-- Grid Galeria -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./1.png" alt="Trabalho de Trança 1"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./2-1.png" alt="Trabalho de Trança 2"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./3.png" alt="Trabalho de Trança 3"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./4.png" alt="Trabalho de Trança 4"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./5.png" alt="Trabalho de Trança 5"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./6.png" alt="Trabalho de Trança 6"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl hidden md:block"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./1.png" alt="Trabalho de Trança 7"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div class="relative aspect-square overflow-hidden cursor-pointer group rounded-lg md:rounded-xl hidden md:block"
+                    onclick="openModal(this.querySelector('img').src)">
+                    <img src="./2-3.png" alt="Trabalho de Trança 8"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-expand text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center md:hidden">
+                <a href="https://instagram.com" target="_blank"
+                    class="inline-flex items-center justify-center gap-2 bg-brand-200 text-brand-900 px-6 py-3 rounded-full text-sm font-medium hover:bg-brand-300 transition-colors w-full">
+                    <i class="fab fa-instagram text-xl"></i> Ver mais no Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Imagem -->
+    <div id="galleryModal"
+        class="fixed inset-0 z-[60] hidden bg-black/95 items-center justify-center p-4 transition-opacity">
+        <button onclick="closeModal()"
+            class="absolute top-6 right-6 text-white/70 hover:text-white text-4xl focus:outline-none z-50">
+            &times;
+        </button>
+        <img id="modalImage" src="" alt="Imagem ampliada" class="max-h-[90vh] max-w-full object-contain rounded-lg">
+    </div>
+
+    <!-- Depoimentos Carrossel -->
+    <section id="depoimentos" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">O que dizem as clientes</h2>
+                <p class="text-brand-700/80 text-lg">A maior recompensa do meu trabalho é ver a felicidade de cada uma.
+                </p>
+            </div>
+
+            <!-- Carrossel Wrapper -->
+            <div class="relative">
+                <div id="testimonial-carousel"
+                    class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-8 pt-10 px-4 md:px-0">
+
+                    <!-- Depoimento 1 -->
+                    <div
+                        class="w-[85vw] md:w-[380px] flex-shrink-0 snap-center bg-brand-50 p-8 rounded-2xl shadow-sm border border-brand-100 relative mt-6">
+                        <div class="absolute -top-6 left-8 bg-white p-1 rounded-full shadow-md">
+                            <img src="https://ui-avatars.com/api/?name=Amanda+Silva&background=c26960&color=fff&rounded=true"
+                                alt="Amanda" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="flex text-yellow-400 mb-4 mt-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-brand-800/80 font-light italic mb-6 min-h-[100px]">"Simplesmente apaixonada pelo
+                            trabalho da Yohana! Ela tem mãos de fada, não apertou muito e o resultado ficou impecável.
+                            Minha autoestima foi lá no teto!"</p>
+                        <h4 class="font-bold text-brand-900 text-sm uppercase tracking-wider">Amanda Silva</h4>
+                    </div>
+
+                    <!-- Depoimento 2 -->
+                    <div
+                        class="w-[85vw] md:w-[380px] flex-shrink-0 snap-center bg-brand-50 p-8 rounded-2xl shadow-sm border border-brand-100 relative mt-6">
+                        <div class="absolute -top-6 left-8 bg-white p-1 rounded-full shadow-md">
+                            <img src="https://ui-avatars.com/api/?name=Letícia+Costa&background=873d36&color=fff&rounded=true"
+                                alt="Letícia" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="flex text-yellow-400 mb-4 mt-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-brand-800/80 font-light italic mb-6 min-h-[100px]">"Fiz minhas box braids pela
+                            primeira vez com ela e já virei cliente fiel. Atendimento excelente, super cuidadosa e o
+                            ambiente é muito acolhedor."</p>
+                        <h4 class="font-bold text-brand-900 text-sm uppercase tracking-wider">Letícia Costa</h4>
+                    </div>
+
+                    <!-- Depoimento 3 -->
+                    <div
+                        class="w-[85vw] md:w-[380px] flex-shrink-0 snap-center bg-brand-50 p-8 rounded-2xl shadow-sm border border-brand-100 relative mt-6">
+                        <div class="absolute -top-6 left-8 bg-white p-1 rounded-full shadow-md">
+                            <img src="https://ui-avatars.com/api/?name=Camila+Santos&background=a34c44&color=fff&rounded=true"
+                                alt="Camila" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="flex text-yellow-400 mb-4 mt-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-brand-800/80 font-light italic mb-6 min-h-[100px]">"A Yohana é uma artista! Pedi
+                            um modelo personalizado com anéis e ficou exatamente como eu queria, até melhor. Muito
+                            talentosa."</p>
+                        <h4 class="font-bold text-brand-900 text-sm uppercase tracking-wider">Camila Santos</h4>
+                    </div>
+
+                    <!-- Depoimento 4 -->
+                    <div
+                        class="w-[85vw] md:w-[380px] flex-shrink-0 snap-center bg-brand-50 p-8 rounded-2xl shadow-sm border border-brand-100 relative mt-6">
+                        <div class="absolute -top-6 left-8 bg-white p-1 rounded-full shadow-md">
+                            <img src="https://ui-avatars.com/api/?name=Beatriz+O&background=d28d84&color=fff&rounded=true"
+                                alt="Beatriz" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="flex text-yellow-400 mb-4 mt-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-brand-800/80 font-light italic mb-6 min-h-[100px]">"Primeira vez que faço e
+                            ameiii, não apertou nada na raiz. A Yohana é muito cuidadosa e o resultado durou bastante.
+                            Volto com certeza!"</p>
+                        <h4 class="font-bold text-brand-900 text-sm uppercase tracking-wider">Beatriz Oliveira</h4>
+                    </div>
+
+                    <!-- Depoimento 5 -->
+                    <div
+                        class="w-[85vw] md:w-[380px] flex-shrink-0 snap-center bg-brand-50 p-8 rounded-2xl shadow-sm border border-brand-100 relative mt-6">
+                        <div class="absolute -top-6 left-8 bg-white p-1 rounded-full shadow-md">
+                            <img src="https://ui-avatars.com/api/?name=Juliana+F&background=713530&color=fff&rounded=true"
+                                alt="Juliana" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="flex text-yellow-400 mb-4 mt-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-brand-800/80 font-light italic mb-6 min-h-[100px]">"Profissional excelente!
+                            Pontual, ambiente super agradável e as tranças nagô ficaram perfeitas. Indico de olhos
+                            fechados pra todo mundo."</p>
+                        <h4 class="font-bold text-brand-900 text-sm uppercase tracking-wider">Juliana Ferreira</h4>
+                    </div>
+
+                    <!-- Depoimento 6 -->
+                    <div
+                        class="w-[85vw] md:w-[380px] flex-shrink-0 snap-center bg-brand-50 p-8 rounded-2xl shadow-sm border border-brand-100 relative mt-6">
+                        <div class="absolute -top-6 left-8 bg-white p-1 rounded-full shadow-md">
+                            <img src="https://ui-avatars.com/api/?name=Mariana+A&background=4a2522&color=fff&rounded=true"
+                                alt="Mariana" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="flex text-yellow-400 mb-4 mt-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-brand-800/80 font-light italic mb-6 min-h-[100px]">"Sempre tive medo de colocar
+                            box braids e o cabelo pesar, mas ela soube explicar tudo e usou a quantidade ideal. Ficou
+                            leve e lindo!"</p>
+                        <h4 class="font-bold text-brand-900 text-sm uppercase tracking-wider">Mariana Alves</h4>
+                    </div>
+
+                </div>
+
+                <!-- Botões de Navegação do Carrossel -->
+                <div class="flex justify-center gap-4 mt-6">
+                    <button onclick="scrollCarousel(-1)"
+                        class="w-12 h-12 rounded-full bg-white border border-brand-200 text-brand-700 flex items-center justify-center hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-colors shadow-sm focus:outline-none">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="scrollCarousel(1)"
+                        class="w-12 h-12 rounded-full bg-white border border-brand-200 text-brand-700 flex items-center justify-center hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-colors shadow-sm focus:outline-none">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ (Perguntas Frequentes) -->
+    <section id="faq" class="py-24 bg-brand-50 border-t border-brand-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">Dúvidas Frequentes</h2>
+                <p class="text-brand-700/80 text-lg">Tudo o que você precisa saber antes de trançar com a Yohana.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Pergunta 1 -->
+                <div class="border border-brand-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center hover:bg-brand-50 transition-colors focus:outline-none z-10 relative">
+                        <span class="font-medium text-brand-900">Dói muito para fazer as tranças?</span>
+                        <i class="fas fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-5 pt-2 text-brand-700/80 font-light border-t border-brand-50 mx-4">
+                            O processo em si não deve ser insuportável. Utilizo técnicas que garantem firmeza sem causar
+                            tração excessiva no couro cabeludo, preservando a saúde do seu cabelo e o seu máximo
+                            conforto.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pergunta 2 -->
+                <div class="border border-brand-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center hover:bg-brand-50 transition-colors focus:outline-none z-10 relative">
+                        <span class="font-medium text-brand-900">Quanto tempo duram as Box Braids?</span>
+                        <i class="fas fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-5 pt-2 text-brand-700/80 font-light border-t border-brand-50 mx-4">
+                            O tempo médio recomendado é de 2 a 3 meses. Tudo vai depender do crescimento natural do seu
+                            cabelo e dos cuidados em casa (como o uso de touca de cetim e lavagem correta das raízes).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pergunta 3 -->
+                <div class="border border-brand-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <button
+                        class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center hover:bg-brand-50 transition-colors focus:outline-none z-10 relative">
+                        <span class="font-medium text-brand-900">Preciso levar o material (jumbo)?</span>
+                        <i class="fas fa-chevron-down text-brand-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content">
+                        <div class="px-6 pb-5 pt-2 text-brand-700/80 font-light border-t border-brand-50 mx-4">
+                            Trabalho com as duas opções! Você pode trazer o seu próprio material ou escolher o meu
+                            pacote completo, onde eu já incluo os pacotes de jumbo da melhor qualidade do mercado.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 bg-brand-900 text-center relative overflow-hidden">
+        <!-- Decor -->
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-50 mb-6 leading-tight">
+                Pronta para transformar seu visual e elevar sua autoestima?
+            </h2>
+            <p class="text-brand-200 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+                Garanta o seu horário. Vamos juntas revelar a sua melhor versão através da arte das tranças.
+            </p>
+            <a href="https://wa.me/5516999999999" target="_blank"
+                class="inline-flex items-center justify-center gap-3 bg-brand-400 text-white px-10 py-5 rounded-full text-lg font-bold hover:bg-brand-300 hover:shadow-[0_0_30px_rgba(210,141,132,0.4)] hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                Agendar Horário no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-950 text-brand-200 py-12 border-t border-brand-800/50" style="background-color: #2a1513;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div class="text-center md:text-left">
+                    <a href="#inicio" class="font-serif text-2xl font-bold text-white tracking-tight mb-2 block">
+                        Yohana<span class="text-brand-400 font-light italic">Tranças</span>
+                    </a>
+                    <p class="text-sm text-brand-400/80"><i class="fas fa-map-marker-alt mr-1"></i> Ribeirão Preto, SP
+                    </p>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="https://instagram.com" target="_blank"
+                        class="w-10 h-10 rounded-full bg-brand-800/50 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/5516999999999" target="_blank"
+                        class="w-10 h-10 rounded-full bg-brand-800/50 flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank"
+                        class="w-10 h-10 rounded-full bg-brand-800/50 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div
+                class="mt-8 pt-8 border-t border-brand-800/50 text-center text-sm text-brand-400/60 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Yohana Tranças. Todos os direitos reservados.</p>
+                <p>Feito com <i class="fas fa-heart text-brand-500 mx-1"></i> para valorizar sua beleza.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5516999999999" target="_blank"
+        class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_6px_25px_rgba(37,211,102,0.6)] transition-all duration-300 group">
+        <i class="fab fa-whatsapp"></i>
+        <span
+            class="absolute right-16 bg-white text-brand-900 text-sm font-medium px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 whitespace-nowrap">
+            Fale comigo!
+        </span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('glass-header', 'shadow-sm');
+            } else {
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('glass-header', 'shadow-sm');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Modal Gallery Logic
+        const modal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImage');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Carousel Scroll Logic
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('testimonial-carousel');
+            // Check screen width to determine scroll amount
+            const scrollAmount = window.innerWidth > 768 ? 404 : window.innerWidth * 0.85 + 24;
+            carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        // Smooth FAQ Toggle Logic
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+
+                // Close all others
+                document.querySelectorAll('.faq-content').forEach(otherContent => {
+                    if (otherContent !== content && otherContent.classList.contains('open')) {
+                        otherContent.classList.remove('open');
+                        otherContent.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle current
+                content.classList.toggle('open');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        document.querySelectorAll('section').forEach(el => el.classList.add('reveal'));
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+    </script>
+</body>
+
+</html>
