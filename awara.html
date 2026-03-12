@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Básico -->
+    <title>Arawá by Fátima | Boutique Premium de Moda Feminina</title>
+    <meta name="description" content="Descubra a Arawá by Fátima, sua boutique premium de moda feminina em Ribeirão Preto. Looks elegantes, exclusivos e atendimento personalizado para mulheres únicas.">
+    <meta name="keywords" content="moda feminina, boutique premium, roupas femininas, Ribeirão Preto, vestidos, looks elegantes, acessórios, Arawá by Fátima">
+    <meta name="author" content="Arawá by Fátima">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.arawabyfatima.com.br">
+
+    <!-- Open Graph / Redes Sociais (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.arawabyfatima.com.br">
+    <meta property="og:title" content="Arawá by Fátima | Boutique Premium">
+    <meta property="og:description" content="Descubra peças exclusivas que realçam a sua beleza e traduzem a sua essência com sofisticação em Ribeirão Preto.">
+    <!-- Usando a imagem do Hero como capa do link -->
+    <meta property="og:image" content="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#072718',
+                            gold: '#F7E788',
+                            light: '#f9f9f9',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Animations & Premium Effects -->
+    <style>
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #072718;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F7E788;
+            border-radius: 4px;
+        }
+
+        /* Image Hover Zoom */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 0.6s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.05);
+        }
+
+        /* Overlay Fade */
+        .overlay-fade {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .group:hover .overlay-fade {
+            opacity: 1;
+        }
+        
+        /* Gold gradient text */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #F7E788, #d4c46a, #F7E788);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-sans bg-brand-light text-brand-green antialiased selection:bg-brand-gold selection:text-brand-green">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-brand-green/95 backdrop-blur-md transition-all duration-300 border-b border-brand-gold/20" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl lg:text-3xl italic font-semibold text-brand-gold tracking-wider">
+                        Arawá <span class="text-sm font-sans font-normal tracking-normal text-white/80">by Fátima</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-white/90 hover:text-brand-gold transition-colors text-sm uppercase tracking-widest">Início</a>
+                    <a href="#colecao" class="text-white/90 hover:text-brand-gold transition-colors text-sm uppercase tracking-widest">Coleção</a>
+                    <a href="#sorteio" class="text-white/90 hover:text-brand-gold transition-colors text-sm uppercase tracking-widest">Sorteio</a>
+                    <a href="#instagram" class="text-white/90 hover:text-brand-gold transition-colors text-sm uppercase tracking-widest">Instagram</a>
+                    <a href="#contato" class="text-white/90 hover:text-brand-gold transition-colors text-sm uppercase tracking-widest">Contato</a>
+                    
+                    <a href="https://wa.me/5516999999999" target="_blank" class="ml-4 px-6 py-2.5 bg-brand-gold text-brand-green font-medium text-sm uppercase tracking-wider rounded-sm hover:bg-white transition-all transform hover:scale-105 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Comprar no WhatsApp
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" aria-label="Abrir menu" class="text-brand-gold hover:text-white focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-green border-t border-brand-gold/20 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col shadow-xl">
+                <a href="#inicio" class="mobile-link block px-3 py-3 text-white/90 hover:text-brand-gold hover:bg-white/5 uppercase text-sm tracking-widest border-b border-white/5">Início</a>
+                <a href="#colecao" class="mobile-link block px-3 py-3 text-white/90 hover:text-brand-gold hover:bg-white/5 uppercase text-sm tracking-widest border-b border-white/5">Coleção</a>
+                <a href="#sorteio" class="mobile-link block px-3 py-3 text-white/90 hover:text-brand-gold hover:bg-white/5 uppercase text-sm tracking-widest border-b border-white/5">Sorteio</a>
+                <a href="#instagram" class="mobile-link block px-3 py-3 text-white/90 hover:text-brand-gold hover:bg-white/5 uppercase text-sm tracking-widest border-b border-white/5">Instagram</a>
+                <a href="#contato" class="mobile-link block px-3 py-3 text-white/90 hover:text-brand-gold hover:bg-white/5 uppercase text-sm tracking-widest border-b border-white/5">Contato</a>
+                <a href="https://wa.me/5516999999999" target="_blank" class="mt-4 block text-center px-4 py-3 bg-brand-gold text-brand-green font-medium uppercase tracking-wider rounded-sm">
+                    <i class="fab fa-whatsapp mr-2"></i> Comprar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Adicionado a tag <main> para melhorar o SEO estrutural -->
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 w-full h-full">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" alt="Moda Feminina Elegante na Arawá by Fátima" class="w-full h-full object-cover object-center">
+                <!-- Overlay -->
+                <div class="absolute inset-0 bg-brand-green/70 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-green via-transparent to-transparent opacity-90"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 reveal">
+                <span class="block text-brand-gold text-sm md:text-base tracking-[0.3em] uppercase mb-4 font-medium">Nova Coleção</span>
+                <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
+                    Elegância e estilo <br> para <span class="text-gradient-gold italic">mulheres únicas</span>.
+                </h1>
+                <p class="text-white/80 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+                    Descubra peças exclusivas que realçam a sua beleza e traduzem a sua essência com sofisticação.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                    <a href="#colecao" class="px-8 py-4 bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-green transition-all duration-300 text-sm uppercase tracking-widest rounded-sm font-medium">
+                        Ver coleção
+                    </a>
+                    <a href="https://wa.me/5516999999999" target="_blank" class="px-8 py-4 bg-brand-gold text-brand-green hover:bg-white transition-all duration-300 text-sm uppercase tracking-widest rounded-sm font-medium flex items-center justify-center gap-2 shadow-lg shadow-brand-gold/20">
+                        <i class="fab fa-whatsapp text-lg"></i> Comprar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre a Marca -->
+        <section id="sobre" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1 reveal">
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1550639525-c97d455acf70?q=80&w=1926&auto=format&fit=crop" alt="Interior da Boutique Arawá by Fátima" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 border border-brand-gold/30 m-4 rounded-sm"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2 reveal delay-200">
+                        <h2 class="font-serif text-4xl lg:text-5xl text-brand-green mb-6">Arawá <span class="italic text-brand-gold">by Fátima</span></h2>
+                        <p class="text-gray-600 text-lg font-light mb-8 leading-relaxed">
+                            Muito mais que uma loja, somos um espaço dedicado à <strong class="text-brand-green font-medium">moda feminina e acessórios</strong> de alto padrão. Curadoria impecável para mulheres que valorizam o bom gosto, a exclusividade e um atendimento personalizado.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+                            <div>
+                                <h3 class="text-sm uppercase tracking-widest text-brand-green font-bold mb-3 flex items-center gap-2">
+                                    <i class="far fa-clock text-brand-gold"></i> Horário
+                                </h3>
+                                <ul class="text-gray-600 font-light space-y-1">
+                                    <li>Segunda a Sexta: <span class="text-brand-green font-medium">09h às 18h</span></li>
+                                    <li>Sábado: <span class="text-brand-green font-medium">09h às 15h</span></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-sm uppercase tracking-widest text-brand-green font-bold mb-3 flex items-center gap-2">
+                                    <i class="fas fa-map-marker-alt text-brand-gold"></i> Endereço
+                                </h3>
+                                <p class="text-gray-600 font-light">
+                                    R. Genoveva Onófre Barban 639<br>
+                                    Ribeirão Preto - SP
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coleção de Produtos -->
+        <section id="colecao" class="py-24 bg-brand-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-gold text-sm tracking-[0.2em] uppercase font-bold">Lançamentos</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-brand-green mt-2">Nossa Coleção</h2>
+                    <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-6"></div>
+                </div>
+
+                <!-- Grid de Produtos com Modal / Lightbox -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Produto 1 -->
+                    <div class="group cursor-pointer reveal" onclick="openModal('./1.png')">
+                        <div class="relative img-zoom-container aspect-[3/4] overflow-hidden bg-gray-200">
+                            <img src="./1.png" alt="Look Elegante 1 - Coleção Arawá by Fátima" class="img-zoom w-full h-full object-cover object-center" loading="lazy">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-brand-green/40 backdrop-blur-[2px] overlay-fade flex items-center justify-center transition-all duration-300">
+                                <span class="px-6 py-3 bg-white text-brand-green text-sm uppercase tracking-wider font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 rounded-sm flex items-center gap-2">
+                                    <i class="fas fa-search-plus"></i> Ver detalhes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 2 -->
+                    <div class="group cursor-pointer reveal delay-100" onclick="openModal('./b1.png')">
+                        <div class="relative img-zoom-container aspect-[3/4] overflow-hidden bg-gray-200">
+                            <img src="./b1.png" alt="Look Elegante 2 - Coleção Arawá by Fátima" class="img-zoom w-full h-full object-cover object-center" loading="lazy">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-brand-green/40 backdrop-blur-[2px] overlay-fade flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-brand-green text-sm uppercase tracking-wider font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 rounded-sm flex items-center gap-2">
+                                    <i class="fas fa-search-plus"></i> Ver detalhes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="group cursor-pointer reveal delay-200" onclick="openModal('./2.png')">
+                        <div class="relative img-zoom-container aspect-[3/4] overflow-hidden bg-gray-200">
+                            <img src="./2.png" alt="Look Elegante 3 - Coleção Arawá by Fátima" class="img-zoom w-full h-full object-cover object-center" loading="lazy">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-brand-green/40 backdrop-blur-[2px] overlay-fade flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-brand-green text-sm uppercase tracking-wider font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 rounded-sm flex items-center gap-2">
+                                    <i class="fas fa-search-plus"></i> Ver detalhes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Produto 4 -->
+                     <div class="group cursor-pointer reveal" onclick="openModal('./b2.png')">
+                        <div class="relative img-zoom-container aspect-[3/4] overflow-hidden bg-gray-200">
+                            <img src="./b2.png" alt="Look Elegante 4 - Coleção Arawá by Fátima" class="img-zoom w-full h-full object-cover object-center" loading="lazy">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-brand-green/40 backdrop-blur-[2px] overlay-fade flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-brand-green text-sm uppercase tracking-wider font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 rounded-sm flex items-center gap-2">
+                                    <i class="fas fa-search-plus"></i> Ver detalhes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 5 -->
+                    <div class="group cursor-pointer reveal delay-100" onclick="openModal('./3.png')">
+                        <div class="relative img-zoom-container aspect-[3/4] overflow-hidden bg-gray-200">
+                            <img src="./3.png" alt="Look Elegante 5 - Coleção Arawá by Fátima" class="img-zoom w-full h-full object-cover object-center" loading="lazy">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-brand-green/40 backdrop-blur-[2px] overlay-fade flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-brand-green text-sm uppercase tracking-wider font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 rounded-sm flex items-center gap-2">
+                                    <i class="fas fa-search-plus"></i> Ver detalhes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Produto 6 -->
+                    <div class="group cursor-pointer reveal delay-200" onclick="openModal('./b3.png')">
+                        <div class="relative img-zoom-container aspect-[3/4] overflow-hidden bg-gray-200">
+                            <img src="./b3.png" alt="Look Elegante 6 - Coleção Arawá by Fátima" class="img-zoom w-full h-full object-cover object-center" loading="lazy">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-brand-green/40 backdrop-blur-[2px] overlay-fade flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-brand-green text-sm uppercase tracking-wider font-medium transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 rounded-sm flex items-center gap-2">
+                                    <i class="fas fa-search-plus"></i> Ver detalhes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="text-center mt-12 reveal">
+                    <a href="https://wa.me/5516999999999" target="_blank" class="inline-block px-8 py-3 border-b-2 border-brand-green text-brand-green hover:text-brand-gold hover:border-brand-gold transition-colors font-medium uppercase tracking-widest text-sm">
+                        Ver catálogo completo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sorteio Especial -->
+        <section id="sorteio" class="py-24 bg-brand-green relative overflow-hidden">
+            <!-- Decoration elements -->
+            <div class="absolute top-0 left-0 w-64 h-64 border border-brand-gold/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 border border-brand-gold/10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center reveal">
+                <div class="border border-brand-gold/30 p-8 md:p-16 bg-brand-green/80 backdrop-blur-sm relative">
+                    <!-- Golden Badge -->
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-green px-6 py-2 uppercase tracking-widest text-xs font-bold shadow-lg">
+                        Sorteio
+                    </div>
+
+                    <h2 class="font-serif text-3xl md:text-5xl text-brand-gold mb-4 mt-4">Especial Dia da Mulher</h2>
+                    
+                    <p class="text-white/90 text-lg md:text-xl font-light mb-8 max-w-2xl mx-auto leading-relaxed">
+                        Estamos sorteando um <strong class="text-brand-gold font-normal italic">Bride Kit incrível</strong> para uma mulher maravilhosa… e pode ser você!
+                    </p>
+
+                    <div class="bg-white/5 inline-block px-8 py-4 mb-8 border-l-2 border-brand-gold">
+                        <p class="text-white text-sm uppercase tracking-widest">Resultado</p>
+                        <p class="text-brand-gold font-serif text-3xl">08/03</p>
+                    </div>
+
+                    <div class="text-left max-w-md mx-auto mb-10">
+                        <h3 class="text-brand-gold uppercase tracking-widest text-sm font-bold mb-4 border-b border-brand-gold/20 pb-2">Como participar:</h3>
+                        <ul class="space-y-4 text-white/80 font-light">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-gold"></i>
+                                <span>Siga <a href="https://instagram.com/arawa_byfatima" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brand-gold underline decoration-brand-gold/50 underline-offset-4">@arawa_byfatima</a></span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-gold"></i>
+                                <span>Curta o post oficial do sorteio</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-gold"></i>
+                                <span>Marque uma amiga nos comentários</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://instagram.com/arawa_byfatima" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-gold text-brand-green hover:bg-white transition-all duration-300 text-sm uppercase tracking-widest rounded-sm font-bold shadow-lg shadow-brand-gold/10 hover:-translate-y-1">
+                        <i class="fab fa-instagram text-xl"></i> Ver no Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria Instagram -->
+        <section id="instagram" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 reveal">
+                    <i class="fab fa-instagram text-3xl text-brand-green mb-4"></i>
+                    <h2 class="font-serif text-3xl md:text-4xl text-brand-green">Siga @arawa_byfatima</h2>
+                    <p class="text-gray-500 mt-2 font-light">Acompanhe as novidades e inspirações diárias.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 reveal delay-100">
+                    <!-- IG Photo 1 -->
+                    <a href="https://www.instagram.com/p/DO_OK5DjdJP" target="_blank" rel="noopener noreferrer" class="group relative aspect-square overflow-hidden bg-gray-100 block">
+                        <img src="./4.png" alt="Foto Instagram 1 - Arawá by Fátima" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-brand-green/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fab fa-instagram text-white text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"></i>
+                        </div>
+                    </a>
+                    
+                    <!-- IG Photo 2 -->
+                    <a href="https://www.instagram.com/p/DOj0Lp0Enj4/?img_index=1" target="_blank" rel="noopener noreferrer" class="group relative aspect-square overflow-hidden bg-gray-100 block">
+                        <img src="./5.png" alt="Foto Instagram 2 - Arawá by Fátima" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-brand-green/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fab fa-instagram text-white text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"></i>
+                        </div>
+                    </a>
+
+                    <!-- IG Photo 3 -->
+                    <a href="https://www.instagram.com/p/DOjz_XEEk-o/?img_index=1" target="_blank" rel="noopener noreferrer" class="group relative aspect-square overflow-hidden bg-gray-100 block">
+                        <img src="./6.png" alt="Foto Instagram 3 - Arawá by Fátima" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-brand-green/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fab fa-instagram text-white text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"></i>
+                        </div>
+                    </a>
+
+                    <!-- IG Photo 4 -->
+                    <a href="https://www.instagram.com/p/DOjzl2nkq4n/?img_index=1" target="_blank" rel="noopener noreferrer" class="group relative aspect-square overflow-hidden bg-gray-100 block">
+                        <img src="./7.png" alt="Foto Instagram 4 - Arawá by Fátima" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                        <div class="absolute inset-0 bg-brand-green/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i class="fab fa-instagram text-white text-3xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Localização & Contato -->
+        <section id="contato" class="py-24 bg-brand-light border-t border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-8 md:p-12 shadow-xl rounded-sm reveal flex flex-col md:flex-row items-center justify-between gap-10">
+                    <div class="flex-1 text-center md:text-left">
+                        <h2 class="font-serif text-3xl text-brand-green mb-4">Visite nossa Boutique</h2>
+                        <p class="text-gray-600 font-light mb-6">
+                            Venha conhecer nosso espaço físico, experimentar nossos looks e receber uma consultoria de estilo exclusiva.
+                        </p>
+                        <div class="flex items-start gap-4 justify-center md:justify-start">
+                            <div class="mt-1 w-10 h-10 rounded-full bg-brand-green/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-brand-green"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="font-medium text-brand-green uppercase tracking-wider text-sm mb-1">Endereço</h4>
+                                <p class="text-gray-600 font-light">R. Genoveva Onófre Barban 639</p>
+                                <p class="text-gray-600 font-light">Ribeirão Preto - SP</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-full md:w-auto">
+                        <a href="https://maps.google.com/?q=R.+Genoveva+Onófre+Barban+639,+Ribeirão+Preto+-+SP" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto px-8 py-4 bg-brand-green text-white hover:bg-brand-gold hover:text-brand-green transition-all duration-300 text-sm uppercase tracking-widest rounded-sm font-medium flex items-center justify-center gap-2">
+                            <i class="fas fa-map text-lg"></i> Abrir no Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-24 bg-brand-green text-center px-4 relative overflow-hidden">
+            <!-- Textura/Padrão sutil -->
+            <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#F7E788 1px, transparent 1px); background-size: 24px 24px;"></div>
+            
+            <div class="relative z-10 max-w-3xl mx-auto reveal">
+                <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight">
+                    Venha descobrir looks incríveis e se sentir <span class="italic text-brand-gold">única</span>.
+                </h2>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+                    <a href="https://wa.me/5516999999999" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-brand-gold text-brand-green hover:bg-white transition-all duration-300 text-sm uppercase tracking-widest rounded-sm font-bold flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Comprar no WhatsApp
+                    </a>
+                    <a href="https://instagram.com/arawa_byfatima" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-green transition-all duration-300 text-sm uppercase tracking-widest rounded-sm font-bold flex items-center justify-center gap-2">
+                        <i class="fab fa-instagram text-lg"></i> Visitar Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#04160d] text-white/70 py-16 border-t border-brand-gold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                
+                <!-- Logo & Descrição -->
+                <div>
+                    <a href="#" class="inline-block font-serif text-3xl italic font-semibold text-brand-gold mb-6">
+                        Arawá <span class="text-sm font-sans font-normal tracking-normal text-white/50">by Fátima</span>
+                    </a>
+                    <p class="font-light text-sm max-w-xs mx-auto md:mx-0">
+                        Elegância, exclusividade e estilo. Moda feminina e acessórios para mulheres únicas.
+                    </p>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Contato</h4>
+                    <ul class="space-y-3 font-light text-sm">
+                        <li>R. Genoveva Onófre Barban 639</li>
+                        <li>Ribeirão Preto - SP</li>
+                        <li class="pt-2">
+                            <a href="https://wa.me/5516999999999" class="hover:text-brand-gold transition-colors flex items-center justify-center md:justify-start gap-2">
+                                <i class="fab fa-whatsapp"></i> (16) 99999-9999
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Horário & Redes -->
+                <div>
+                    <h4 class="text-white uppercase tracking-widest text-sm font-bold mb-6">Atendimento</h4>
+                    <ul class="space-y-3 font-light text-sm mb-6">
+                        <li>Seg a Sex: 09h às 18h</li>
+                        <li>Sábado: 09h às 15h</li>
+                    </ul>
+                    <a href="https://instagram.com/arawa_byfatima" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Arawá by Fátima" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-green transition-all duration-300">
+                        <i class="fab fa-instagram text-lg"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-white/10 text-center font-light text-xs text-white/40 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2024 Arawá by Fátima. Todos os direitos reservados.</p>
+                <p class="mt-2 md:mt-0">Feito com elegância.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal / Lightbox de Imagem -->
+    <div id="image-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#072718]/95 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300" onclick="closeModal(event)">
+        <!-- Botão Fechar -->
+        <button onclick="closeModal(event)" class="absolute top-6 right-6 text-white/70 hover:text-brand-gold text-4xl focus:outline-none z-50 transition-colors" aria-label="Fechar galeria">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Container da Imagem -->
+        <div class="relative max-w-5xl max-h-[90vh] w-full flex items-center justify-center">
+            <img id="modal-image" src="" alt="Look Ampliado" class="max-w-full max-h-[90vh] object-contain shadow-2xl rounded-sm transform scale-95 transition-transform duration-300 border border-brand-gold/20">
+        </div>
+        
+        <!-- Dica para usuário -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white/50 text-sm font-light tracking-widest uppercase">
+            Clique fora para fechar
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Mobile Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: unobserve after revealing if you only want it to happen once
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Change navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // ----------------------------------------------------
+        // Lógica do Lightbox (Modal de Imagens)
+        // ----------------------------------------------------
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+
+        function openModal(imageSrc) {
+            modalImg.src = imageSrc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Força a reflow para a animação funcionar
+            void modal.offsetWidth;
+            
+            modal.classList.remove('opacity-0');
+            modalImg.classList.remove('scale-95');
+            modalImg.classList.add('scale-100');
+            
+            // Impede o scroll da página de fundo
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(e) {
+            // Se o evento existir, verifica se clicou exatamente na imagem. Se sim, não fecha.
+            if (e && e.target === modalImg) return;
+            
+            modal.classList.add('opacity-0');
+            modalImg.classList.remove('scale-100');
+            modalImg.classList.add('scale-95');
+            
+            // Aguarda a animação terminar antes de ocultar o elemento
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = ''; // Restaura o scroll
+            }, 300);
+        }
+
+        // Fechar modal com a tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
