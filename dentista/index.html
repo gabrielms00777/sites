@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odontológica</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Configuração Dinâmica -->
+    <script>
+        const CONFIG = {
+            cores: {
+                primaria: "#0ea5e9", // Azul Odonto
+                secundaria: "#f8fafc", // Fundo claro
+                destaque: "#22c55e", // Verde WhatsApp/CTA
+                textoEscuro: "#0f172a",
+                textoClaro: "#64748b"
+            },
+            empresa: {
+                nome: "Sorriso Bello",
+                descricao: "Com mais de 10 anos de experiência, nossa clínica oferece tratamentos de ponta num ambiente acolhedor. A nossa missão é devolver a sua autoestima através de um sorriso perfeito e saudável. Contamos com especialistas em diversas áreas da odontologia para garantir um atendimento completo e seguro para si e para a sua família.",
+                whatsapp: "5511999999999",
+                telefone: "(11) 99999-9999",
+                endereco: "Av. Paulista, 1000 - Bela Vista, São Paulo - SP",
+                horario: "Segunda a Sexta, das 8h às 19h | Sábados, das 8h às 12h"
+            },
+            banners: [
+                {
+                    titulo: "O seu sorriso merece o melhor cuidado",
+                    descricao: "Atendimento moderno, seguro e humanizado para toda a família.",
+                    imagem: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1920"
+                },
+                {
+                    titulo: "Tecnologia de Ponta a seu favor",
+                    descricao: "Equipamentos de última geração para tratamentos precisos e indolores.",
+                    imagem: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1920"
+                },
+                {
+                    titulo: "Especialistas em Implantes e Ortodontia",
+                    descricao: "Recupere a sua confiança com a nossa equipa altamente qualificada.",
+                    imagem: "https://images.unsplash.com/photo-1598256989800-fea5f6f15fb4?auto=format&fit=crop&q=80&w=1920"
+                }
+            ],
+            servicos: [
+                { nome: "Limpeza Profilática", descricao: "Higienização completa para prevenir cáries e doenças gengivais.", icone: "<i class='fa-solid fa-teeth text-primary'></i>" },
+                { nome: "Clareamento a Laser", descricao: "Técnicas modernas para um sorriso mais branco e iluminado.", icone: "<i class='fa-solid fa-wand-magic-sparkles text-primary'></i>" },
+                { nome: "Ortodontia Invisível", descricao: "Aparelhos estéticos e alinhadores para um sorriso perfeito.", icone: "<i class='fa-solid fa-face-smile-beam text-primary'></i>" },
+                { nome: "Implantes Dentários", descricao: "Recupere a funcionalidade e estética com implantes seguros.", icone: "<i class='fa-solid fa-tooth text-primary'></i>" },
+                { nome: "Tratamento de Canal", descricao: "Endodontia sem dor com tecnologia e microscopia.", icone: "<i class='fa-solid fa-microscope text-primary'></i>" },
+                { nome: "Odontopediatria", descricao: "Cuidado especial e lúdico para a saúde bucal das crianças.", icone: "<i class='fa-solid fa-baby text-primary'></i>" }
+            ],
+            diferenciais: [
+                { titulo: "Atendimento Humanizado", descricao: "Foco no seu bem-estar e conforto em cada etapa da consulta.", icone: "<i class='fa-solid fa-hand-holding-heart'></i>" },
+                { titulo: "Equipamentos Modernos", descricao: "Diagnósticos precisos com raio-x digital e scanner 3D.", icone: "<i class='fa-solid fa-laptop-medical'></i>" },
+                { titulo: "Equipa Especializada", descricao: "Profissionais qualificados e em constante atualização.", icone: "<i class='fa-solid fa-user-doctor'></i>" },
+                { titulo: "Ambiente Seguro", descricao: "Rigorosos protocolos de biossegurança e esterilização.", icone: "<i class='fa-solid fa-shield-halved'></i>" }
+            ],
+            depoimentos: [
+                { nome: "Mariana Silva", texto: "Atendimento incrível! Perdi o medo de ir ao dentista. A clínica é linda e a equipa é muito atenciosa.", estrelas: 5 },
+                { nome: "João Pedro Alves", texto: "Fiz o meu tratamento ortodôntico e o resultado foi além das expectativas. Recomendo de olhos fechados.", estrelas: 5 },
+                { nome: "Ana Carolina Costa", texto: "Profissionais excelentes. A limpeza e o clareamento ficaram perfeitos. Recuperei a minha autoestima!", estrelas: 5 }
+            ]
+        };
+    </script>
+
+    <!-- Tailwind CSS (Carregar antes da configuração) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuração Dinâmica do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: CONFIG.cores.primaria,
+                        secondary: CONFIG.cores.secundaria,
+                        accent: CONFIG.cores.destaque,
+                        dark: CONFIG.cores.textoEscuro,
+                        light: CONFIG.cores.textoClaro,
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Classes de Animação e Utilitários */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .carousel-item {
+            transition: opacity 0.7s ease-in-out;
+        }
+
+        /* Ocultar barra de rolagem mas manter funcionalidade */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--tw-color-primary, #0ea5e9);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-secondary text-dark antialiased overflow-x-hidden">
+
+    <div id="app"></div>
+
+    <script>
+        // ==========================================
+        // COMPONENTES DE RENDERIZAÇÃO
+        // ==========================================
+
+        const renderHeader = () => `
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="bg-primary/10 w-10 h-10 flex items-center justify-center rounded-xl group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fa-solid fa-tooth text-2xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl text-dark tracking-tighter group-hover:text-primary transition-colors">
+                        ${CONFIG.empresa.nome}
+                    </span>
+                </div>
+                
+                <nav class="hidden md:flex items-center space-x-10">
+                    <a href="#sobre" class="text-gray-600 hover:text-primary font-semibold transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all">Sobre</a>
+                    <a href="#servicos" class="text-gray-600 hover:text-primary font-semibold transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all">Tratamentos</a>
+                    <a href="#diferenciais" class="text-gray-600 hover:text-primary font-semibold transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all">Diferenciais</a>
+                    <a href="#depoimentos" class="text-gray-600 hover:text-primary font-semibold transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all">Pacientes</a>
+                </nav>
+
+                <div class="hidden md:flex">
+                    <a href="https://wa.me/${CONFIG.empresa.whatsapp}" target="_blank" 
+                       class="bg-primary hover:bg-primary/90 text-white px-7 py-3 rounded-full font-bold transition-all shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:scale-95 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        Agendar Consulta
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="w-10 h-10 flex items-center justify-center text-dark hover:bg-gray-100 rounded-lg transition-all">
+                        <i class="fa-solid fa-bars-staggered text-2xl pointer-events-none"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-[60] h-screen bg-black/20 backdrop-blur-sm transition-opacity">
+            <div class="bg-white w-[80%] h-full p-6 shadow-2xl flex flex-col transform transition-transform duration-300 -translate-x-full">
+                <div class="flex items-center justify-between mb-8">
+                    <span class="font-bold text-xl text-primary">${CONFIG.empresa.nome}</span>
+                    <button id="close-menu" class="p-2 text-gray-400 hover:text-dark">
+                        <i class="fa-solid fa-xmark text-2xl"></i>
+                    </button>
+                </div>
+
+                <nav class="flex flex-col gap-2">
+                    <a href="#sobre" class="mobile-link flex items-center gap-4 px-4 py-4 text-lg font-semibold text-dark hover:bg-primary/5 rounded-xl transition-all">
+                        <i class="fa-solid fa-circle-info text-primary/40"></i> Sobre Nós
+                    </a>
+                    <a href="#servicos" class="mobile-link flex items-center gap-4 px-4 py-4 text-lg font-semibold text-dark hover:bg-primary/5 rounded-xl transition-all">
+                        <i class="fa-solid fa-stethoscope text-primary/40"></i> Tratamentos
+                    </a>
+                    <a href="#diferenciais" class="mobile-link flex items-center gap-4 px-4 py-4 text-lg font-semibold text-dark hover:bg-primary/5 rounded-xl transition-all">
+                        <i class="fa-solid fa-star text-primary/40"></i> Diferenciais
+                    </a>
+                    <a href="#depoimentos" class="mobile-link flex items-center gap-4 px-4 py-4 text-lg font-semibold text-dark hover:bg-primary/5 rounded-xl transition-all">
+                        <i class="fa-solid fa-comments text-primary/40"></i> Pacientes
+                    </a>
+                </nav>
+
+                <div class="mt-auto pb-10">
+                    <a href="https://wa.me/${CONFIG.empresa.whatsapp}" target="_blank" 
+                       class="flex items-center justify-center gap-3 w-full bg-green-500 text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-green-200">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        Agendar no WhatsApp
+                    </a>
+                    <p class="text-center text-gray-400 text-sm mt-4">Atendimento imediato</p>
+                </div>
+            </div>
+        </div>
+    </header>
+`;
+
+        const renderHero = () => {
+            const slides = CONFIG.banners.map((banner, index) => `
+                <div class="carousel-item absolute inset-0 w-full h-full ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}">
+                    <div class="absolute inset-0 bg-black/50 z-10"></div>
+                    <img src="${banner.imagem}" alt="${banner.titulo}" class="absolute inset-0 w-full h-full object-cover" />
+                    <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
+                        <div class="max-w-3xl reveal active">
+                            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">${banner.titulo}</h1>
+                            <p class="text-lg md:text-2xl text-gray-200 mb-10 drop-shadow-md">${banner.descricao}</p>
+                            <a href="https://wa.me/${CONFIG.empresa.whatsapp}" target="_blank" class="inline-block bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(14,165,233,0.4)]">
+                                Agende a sua Avaliação
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const dots = CONFIG.banners.map((_, index) => `
+                <button class="carousel-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-primary w-8' : 'bg-white/50 hover:bg-white/80'}" data-index="${index}"></button>
+            `).join('');
+
+            return `
+                <section id="inicio" class="relative w-full h-[100vh] md:h-[90vh] overflow-hidden mt-20">
+                    ${slides}
+                    
+                    <!-- Controles -->
+                    <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/20 hover:bg-black/40 text-white p-3 rounded-full backdrop-blur-sm transition-all w-12 h-12 flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/20 hover:bg-black/40 text-white p-3 rounded-full backdrop-blur-sm transition-all w-12 h-12 flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Indicadores -->
+                    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+                        ${dots}
+                    </div>
+                </section>
+            `;
+        };
+
+        const renderSobre = () => `
+            <section id="sobre" class="py-20 bg-white">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col lg:flex-row items-center gap-12">
+                        <div class="lg:w-1/2 reveal">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800" alt="Nossa Clínica" class="rounded-2xl shadow-2xl z-10 relative">
+                                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl -z-10"></div>
+                                <div class="absolute -top-6 -left-6 w-32 h-32 bg-accent/10 rounded-full blur-2xl -z-10"></div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 reveal delay-200">
+                            <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-2">Conheça a ${CONFIG.empresa.nome}</h2>
+                            <h3 class="text-3xl md:text-4xl font-bold text-dark mb-6 leading-tight">Excelência em Odontologia para sorrir com confiança</h3>
+                            <p class="text-light text-lg mb-6 leading-relaxed">
+                                ${CONFIG.empresa.descricao}
+                            </p>
+                            <div class="flex items-center gap-4 mt-8 bg-secondary p-4 rounded-xl inline-flex border border-gray-100">
+                                <div class="bg-white w-12 h-12 flex items-center justify-center rounded-full shadow-sm text-xl text-primary">
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-light font-medium">Ligue-nos</p>
+                                    <p class="text-dark font-bold text-lg">${CONFIG.empresa.telefone}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const renderServicos = () => {
+    const cards = CONFIG.servicos.map((servico, i) => `
+        <div class="group relative bg-white p-10 rounded-3xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-primary/20 hover:shadow-[0_20px_50px_-20px_rgba(14,165,233,0.15)] hover:-translate-y-3 transition-all duration-500 reveal" style="transition-delay: ${i * 100}ms">
+            
+            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/5 to-transparent rounded-tr-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div class="w-20 h-20 bg-gradient-to-br from-primary/10 to-primary/5 text-4xl flex items-center justify-center rounded-2xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                ${servico.icone}
+            </div>
+
+            <h4 class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors duration-300">
+                ${servico.nome}
+            </h4>
+            
+            <p class="text-gray-500 leading-relaxed mb-6">
+                ${servico.descricao}
+            </p>
+
+            <div class="flex items-center text-primary font-semibold text-sm gap-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300">
+                Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+            </div>
+        </div>
+    `).join('');
+
+    return `
+        <section id="servicos" class="py-28 bg-[#fcfdfe]">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20 reveal">
+                    <div class="max-w-2xl">
+                        <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-bold tracking-wider uppercase text-xs rounded-full mb-4">
+                            Nossas Especialidades
+                        </span>
+                        <h3 class="text-4xl md:text-5xl font-extrabold text-dark leading-tight">
+                            Cuidado completo para a sua <span class="text-primary">saúde bucal</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-500 text-lg max-w-md">
+                        Oferecemos soluções odontológicas de alta performance com foco no seu conforto e bem-estar.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    ${cards}
+                </div>
+            </div>
+        </section>
+    `;
+};
+
+        const renderDiferenciais = () => {
+            const itens = CONFIG.diferenciais.map((dif, i) => `
+                <div class="flex flex-col items-center text-center p-6 reveal" style="transition-delay: ${i * 150}ms">
+                    <div class="w-20 h-20 bg-white/10 flex items-center justify-center rounded-full text-3xl text-white mb-6 backdrop-blur-sm">
+                        ${dif.icone}
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">${dif.titulo}</h4>
+                    <p class="text-blue-100 leading-relaxed">${dif.descricao}</p>
+                </div>
+            `).join('');
+
+            return `
+                <section id="diferenciais" class="py-20 bg-primary relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+                        <svg class="absolute w-96 h-96 -top-20 -left-20" fill="white" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>
+                        <svg class="absolute w-[40rem] h-[40rem] -bottom-40 -right-40" fill="white" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>
+                    </div>
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div class="text-center mb-16 reveal">
+                            <h2 class="text-white font-bold tracking-wide uppercase text-sm mb-2 opacity-90">Porquê escolher-nos?</h2>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white">Os Nossos Diferenciais</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
+                            ${itens}
+                        </div>
+                    </div>
+                </section>
+            `;
+        };
+
+        const renderDepoimentos = () => {
+            const stars = `<i class="fa-solid fa-star text-yellow-400"></i>`;
+
+            const cards = CONFIG.depoimentos.map((dep, i) => `
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 reveal" style="transition-delay: ${i * 150}ms">
+                    <div class="flex gap-1 mb-4 text-sm">${stars.repeat(dep.estrelas)}</div>
+                    <p class="text-dark italic mb-6 leading-relaxed">"${dep.texto}"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-bold text-xl uppercase">
+                            ${dep.nome.charAt(0)}
+                        </div>
+                        <div>
+                            <p class="font-bold text-dark">${dep.nome}</p>
+                            <p class="text-sm text-light">Paciente</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <section id="depoimentos" class="py-24 bg-secondary">
+                    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                            <h2 class="text-primary font-bold tracking-wide uppercase text-sm mb-2">Depoimentos</h2>
+                            <h3 class="text-3xl md:text-4xl font-bold text-dark">O que dizem os nossos pacientes</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${cards}
+                        </div>
+                    </div>
+                </section>
+            `;
+        };
+
+        const renderCTA = () => `
+            <section class="py-20 bg-gradient-to-br from-slate-900 via-blue-950 to-black text-white text-center reveal">
+                <div class="container mx-auto px-4 max-w-4xl">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Pronto para transformar o seu sorriso?</h2>
+                    <p class="text-xl text-blue-100/80 mb-10">Agende agora a sua avaliação e descubra o plano de tratamento ideal para si.</p>
+                    <a href="https://wa.me/${CONFIG.empresa.whatsapp}?text=Olá! Gostaria de agendar uma avaliação." target="_blank" 
+                    class="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-10 py-5 rounded-full font-bold text-xl transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(34,197,94,0.4)]">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        Falar no WhatsApp
+                    </a>
+                </div>
+            </section>
+        `;
+
+        const renderLocalizacao = () => `
+            <section id="localizacao" class="py-20 bg-white reveal">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col lg:flex-row gap-12 bg-secondary rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+                        <div class="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                            <h2 class="text-3xl font-bold text-dark mb-6">A Nossa Localização</h2>
+                            
+                            <div class="space-y-6 mb-8">
+                                <div class="flex gap-4">
+                                    <div class="text-primary text-2xl mt-1 w-8 text-center">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-dark">Morada</h4>
+                                        <p class="text-light">${CONFIG.empresa.endereco}</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="text-primary text-2xl mt-1 w-8 text-center">
+                                        <i class="fa-regular fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-dark">Horário de Funcionamento</h4>
+                                        <p class="text-light">${CONFIG.empresa.horario}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.empresa.endereco)}" target="_blank" 
+                               class="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full font-bold transition-colors w-fit">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                Abrir no Google Maps
+                            </a>
+                        </div>
+                        <div class="lg:w-1/2 min-h-[400px] relative bg-gray-200">
+                            <!-- Mapa simples usando iframe embutido do Google -->
+                            <iframe 
+                                src="https://maps.google.com/maps?q=${encodeURIComponent(CONFIG.empresa.endereco)}&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                                width="100%" height="100%" frameborder="0" style="border:0; position:absolute; inset:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const renderFooter = () => `
+            <footer class="bg-dark text-gray-400 py-12 border-t border-gray-800">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 border-b border-gray-800 pb-8">
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fa-solid fa-tooth text-3xl text-primary"></i>
+                                <span class="font-bold text-2xl text-white">${CONFIG.empresa.nome}</span>
+                            </div>
+                            <p class="text-sm mb-4 leading-relaxed">${CONFIG.empresa.descricao}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
+                            <ul class="space-y-2">
+                                <li><a href="#sobre" class="hover:text-primary transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Sobre Nós</a></li>
+                                <li><a href="#servicos" class="hover:text-primary transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Tratamentos</a></li>
+                                <li><a href="#depoimentos" class="hover:text-primary transition-colors"><i class="fa-solid fa-angle-right text-xs mr-2"></i>Depoimentos</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-4">Contacto</h4>
+                            <p class="mb-3 flex items-center gap-3"><i class="fa-solid fa-phone text-primary"></i> ${CONFIG.empresa.telefone}</p>
+                            <p class="mb-3 flex items-center gap-3"><i class="fa-brands fa-whatsapp text-primary"></i> ${CONFIG.empresa.whatsapp}</p>
+                            <p class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-primary mt-1"></i> <span>${CONFIG.empresa.endereco}</span></p>
+                        </div>
+                    </div>
+                    <div class="text-center text-sm">
+                        <p>&copy; ${new Date().getFullYear()} ${CONFIG.empresa.nome}. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </footer>
+        `;
+
+        // ==========================================
+        // LÓGICA DA APLICAÇÃO
+        // ==========================================
+
+        function initApp() {
+            // Renderiza o HTML
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                ${renderHeader()}
+                <main>
+                    ${renderHero()}
+                    ${renderSobre()}
+                    ${renderServicos()}
+                    ${renderDiferenciais()}
+                    ${renderDepoimentos()}
+                    ${renderCTA()}
+                    ${renderLocalizacao()}
+                </main>
+                ${renderFooter()}
+            `;
+
+            // Inicializa Funcionalidades
+            setupCarousel();
+            setupScrollAnimations();
+            setupMobileMenu();
+        }
+
+        // --- Lógica do Carousel ---
+        function setupCarousel() {
+            const slides = document.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentSlide = 0;
+            let slideInterval;
+
+            if (slides.length === 0) return;
+
+            const showSlide = (index) => {
+                slides.forEach(s => { s.classList.remove('opacity-100', 'z-10'); s.classList.add('opacity-0', 'z-0'); });
+                dots.forEach(d => { d.classList.remove('bg-primary', 'w-8'); d.classList.add('bg-white/50'); });
+
+                slides[index].classList.remove('opacity-0', 'z-0');
+                slides[index].classList.add('opacity-100', 'z-10');
+                dots[index].classList.remove('bg-white/50');
+                dots[index].classList.add('bg-primary', 'w-8');
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            };
+
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            };
+
+            document.getElementById('nextSlide')?.addEventListener('click', () => { nextSlide(); resetInterval(); });
+            document.getElementById('prevSlide')?.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = idx;
+                    showSlide(currentSlide);
+                    resetInterval();
+                });
+            });
+
+            const startInterval = () => { slideInterval = setInterval(nextSlide, 5000); };
+            const resetInterval = () => { clearInterval(slideInterval); startInterval(); };
+
+            startInterval();
+        }
+
+        // --- Lógica de Animações ao Scroll ---
+        function setupScrollAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Anima apenas uma vez
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            reveals.forEach(element => observer.observe(element));
+        }
+
+        // --- Lógica do Menu Mobile ---
+        function setupMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu');
+    const menu = document.getElementById('mobile-menu');
+    const menuContent = menu?.querySelector('div'); // O painel branco interno
+    const links = document.querySelectorAll('.mobile-link');
+
+    const openMenu = () => {
+        menu.classList.remove('hidden');
+        // Pequeno delay para o navegador processar a remoção do 'hidden' 
+        // antes de iniciar a transição de movimento
+        setTimeout(() => {
+            menuContent.classList.remove('-translate-x-full');
+            menu.classList.add('opacity-100');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+    };
+
+    const closeMenu = () => {
+        menuContent.classList.add('-translate-x-full');
+        menu.classList.remove('opacity-100');
+        
+        // Espera a transição de 300ms terminar para esconder o container
+        setTimeout(() => {
+            menu.classList.add('hidden');
+            document.body.style.overflow = ''; // Libera o scroll
+        }, 300);
+    };
+
+    // Eventos
+    btn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+
+    // Fecha ao clicar no fundo escuro (overlay)
+    menu?.addEventListener('click', (e) => {
+        if (e.target === menu) closeMenu();
+    });
+
+    // Fecha ao clicar em qualquer link
+    links.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+}
+
+        // Inicializa ao carregar a página
+        document.addEventListener('DOMContentLoaded', initApp);
+
+    </script>
+</body>
+
+</html>
