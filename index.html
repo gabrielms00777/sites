@@ -300,8 +300,8 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal">
         <div>
-          <span class="text-brand-blue font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-briefcase"></i> Casos de Sucesso</span>
-          <h2 class="text-4xl font-extrabold mt-3 text-brand-black">Projetos em <span class="text-brand-blue">produção</span></h2>
+          <span class="text-brand-blue font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-briefcase"></i> Nosso Portfólio</span>
+          <h2 class="text-4xl font-extrabold mt-3 text-brand-black">Projetos & <span class="text-brand-blue">Modelos Exclusivos</span></h2>
         </div>
         <a href="#contato" class="mt-6 md:mt-0 text-brand-black font-semibold hover:text-brand-blue transition-colors flex items-center gap-2">
           Quero um projeto assim <i class="fa-solid fa-arrow-right"></i>
@@ -310,52 +310,136 @@
 
       <div class="grid lg:grid-cols-3 gap-10">
         
-        <!-- Card Portfólio 1 -->
+        <!-- 1. Caramella Maria Páscoa -->
         <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal">
-          <!-- A imagem de background (alta) que rola ao passar o mouse -->
-          <div class="portfolio-img-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="p-8">
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="bg-blue-50 text-brand-blue text-xs px-3 py-1 rounded-full font-bold">React</span>
-              <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-bold">Node.js</span>
+          <div onclick="openModal('https://i.ibb.co/XxkJKCN1/screencapture-caramellamariapascoa-pages-dev-2026-03-18-12-47-34.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/XxkJKCN1/screencapture-caramellamariapascoa-pages-dev-2026-03-18-12-47-34.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Dashboard de Logística</h3>
-            <p class="text-gray-600 text-sm mb-6">Sistema desenvolvido do zero para roteamento e rastreio de cargas, reduzindo o tempo de operação em 40%.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
-              <i class="fa-solid fa-link"></i> Ver ao vivo
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Página de Vendas Sazonal</h3>
+            <p class="text-gray-600 text-sm mb-6">Página de alta conversão focada em campanhas de produtos sazonais. Design atraente que valoriza o produto e facilita a jornada de compra.</p>
+            <a href="https://caramellamariapascoa.pages.dev" target="_blank" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver site ao vivo
             </a>
           </div>
         </div>
 
-        <!-- Card Portfólio 2 -->
+        <!-- 2. Site Massoterapeuta -->
         <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal delay-100">
-          <div class="portfolio-img-bg" style="background-image: url('https://images.unsplash.com/photo-1607004468138-c7e4f29e5814?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="p-8">
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full font-bold">Next.js</span>
-              <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-bold">Tailwind</span>
+          <div onclick="openModal('https://i.ibb.co/ZpMJKS9D/site-massagem.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/ZpMJKS9D/site-massagem.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold mb-3">E-commerce de Moda</h3>
-            <p class="text-gray-600 text-sm mb-6">Loja virtual de altíssima performance visual com checkout transparente e tempo de carregamento < 1s.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
-              <i class="fa-solid fa-link"></i> Ver ao vivo
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Clínica de Massoterapia</h3>
+            <p class="text-gray-600 text-sm mb-6">Site elegante e relaxante, desenvolvido para atrair clientes locais e simplificar o contato para o agendamento de sessões de massagem.</p>
+            <a href="https://gabrielms00777.github.io/sites/massagem/" target="_blank" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver site ao vivo
             </a>
           </div>
         </div>
 
-        <!-- Card Portfólio 3 -->
+        <!-- 3. Site Catálogo/Cardápio -->
         <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal delay-200">
-          <div class="portfolio-img-bg" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-          <div class="p-8">
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded-full font-bold">Python</span>
-              <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-bold">WhatsApp API</span>
+          <div onclick="openModal('https://i.ibb.co/zVZ1kvqj/site-catalogo.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/zVZ1kvqj/site-catalogo.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Automação de Atendimento</h3>
-            <p class="text-gray-600 text-sm mb-6">Bot inteligente integrado via IA que atende, filtra leads e agenda reuniões diretamente no calendário da equipe.</p>
-            <a href="#" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
-              <i class="fa-solid fa-link"></i> Ver Case
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Cardápio Inteligente (Delivery)</h3>
+            <p class="text-gray-600 text-sm mb-6">Catálogo digital interativo onde o cliente monta o seu carrinho e o pedido chega formatado diretamente no WhatsApp da loja.</p>
+            <a href="https://gabrielms00777.github.io/sites/catalogo.html" target="_blank" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver site ao vivo
             </a>
+          </div>
+        </div>
+
+        <!-- 4. Site Academia -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal">
+          <div onclick="openModal('https://i.ibb.co/twFH1bz8/site-academia.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/twFH1bz8/site-academia.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Landing Page Academia</h3>
+            <p class="text-gray-600 text-sm mb-6">Layout de alta energia para academias esportivas, destacando a infraestrutura, diferenciais e planos para captura de novos alunos.</p>
+            <span class="inline-flex items-center gap-2 text-gray-400 font-bold">
+              <i class="fa-solid fa-palette"></i> Template Exclusivo
+            </span>
+          </div>
+        </div>
+
+        <!-- 5. Site Pilates -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal delay-100">
+          <div onclick="openModal('https://i.ibb.co/WvsBrNGP/site-pilates.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/WvsBrNGP/site-pilates.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Estúdio de Pilates</h3>
+            <p class="text-gray-600 text-sm mb-6">Design leve, focado no bem-estar e equilíbrio. Ideal para estúdios de pilates e yoga que querem transmitir profissionalismo e paz.</p>
+            <span class="inline-flex items-center gap-2 text-gray-400 font-bold">
+              <i class="fa-solid fa-palette"></i> Template Exclusivo
+            </span>
+          </div>
+        </div>
+
+        <!-- 6. Site Dentista -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal delay-200">
+          <div onclick="openModal('https://i.ibb.co/Xf9y0KF2/site-dentista.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/Xf9y0KF2/site-dentista.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Consultório Odontológico</h3>
+            <p class="text-gray-600 text-sm mb-6">Site institucional e refinado que passa confiança e autoridade para dentistas e clínicas, com fortes chamadas para agendamentos de avaliações.</p>
+            <a href="https://gabrielms00777.github.io/sites/dentista/" target="_blank" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver site ao vivo
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Site Restaurante -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal">
+          <div onclick="openModal('https://i.ibb.co/23rg78Sw/site-restuarante.png')" class="block relative group cursor-pointer" title="Clique para ampliar a imagem completa">
+            <div class="portfolio-img-bg" style="background-image: url('https://i.ibb.co/23rg78Sw/site-restuarante.png');"></div>
+            <div class="absolute inset-0 bg-brand-blue/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="bg-brand-black/80 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm shadow-xl">
+                <i class="fa-solid fa-expand text-white text-xl"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-3">Restaurante Gourmet</h3>
+            <p class="text-gray-600 text-sm mb-6">Design incrivelmente apetitoso para restaurantes de alto padrão. Grande valorização fotográfica e seções estratégicas para cardápio e reservas.</p>
+            <span class="inline-flex items-center gap-2 text-gray-400 font-bold">
+              <i class="fa-solid fa-palette"></i> Template Exclusivo
+            </span>
           </div>
         </div>
 
@@ -489,6 +573,21 @@
     </div>
   </footer>
 
+  <!-- MODAL DE IMAGEM COM ZOOM -->
+  <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-md overflow-y-auto transition-opacity duration-300" onclick="closeModal(event)">
+    <div class="min-h-screen p-4 md:p-10 flex flex-col items-center justify-start relative w-full wrapper-modal">
+      <button class="fixed top-6 right-6 text-white text-4xl hover:text-brand-blue z-[110] transition-transform hover:scale-110 bg-black/50 w-12 h-12 rounded-full flex items-center justify-center btn-close">&times;</button>
+      
+      <div class="w-full max-w-5xl relative mt-16 md:mt-8 flex justify-center">
+        <img id="modalImage" src="" alt="Imagem Ampliada do Portfólio" class="w-full h-auto object-contain cursor-zoom-in rounded-xl shadow-2xl transition-all duration-300 max-h-[85vh]" onclick="toggleZoom(event)">
+      </div>
+      
+      <div id="zoomText" class="text-gray-400 mt-4 text-sm animate-pulse hidden md:block select-none pointer-events-none transition-opacity">
+        <i class="fa-solid fa-magnifying-glass-plus"></i> Clique na imagem para expandir
+      </div>
+    </div>
+  </div>
+
   <!-- JS -->
   <script>
     // Configuração Scroll Reveal (Animações ao rolar a página)
@@ -579,11 +678,55 @@
       }
 
       // Inicia a rotina apenas uma vez ao carregar
-      runTerminal();
+    runTerminal();
     }
     
     // Chama a função do terminal quando o DOM estiver carregado
     document.addEventListener("DOMContentLoaded", initTerminalAnimation);
+
+    // ======== Lógica do Modal com Zoom ========
+    function openModal(imgSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const zoomText = document.getElementById('zoomText');
+      
+      modalImg.src = imgSrc;
+      
+      // Reseta o estado do zoom ao abrir
+      modalImg.classList.add('max-h-[85vh]', 'cursor-zoom-in');
+      modalImg.classList.remove('cursor-zoom-out');
+      zoomText.innerHTML = '<i class="fa-solid fa-magnifying-glass-plus"></i> Clique na imagem para expandir';
+      
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Bloqueia a rolagem do site atrás do modal
+    }
+
+    function closeModal(e) {
+      // Fecha caso o usuário clique na área de fora (wrapper), no botão fechar ou no background
+      if (e.target.id === 'imageModal' || e.target.classList.contains('wrapper-modal') || e.target.closest('.btn-close')) {
+        document.getElementById('imageModal').classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Restaura a rolagem do site
+      }
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation(); // Evita que o clique feche o modal acidentalmente
+      const img = document.getElementById('modalImage');
+      const zoomText = document.getElementById('zoomText');
+      
+      if (img.classList.contains('max-h-[85vh]')) {
+        // Expandir (Zoom-in) - remove a limitação de altura para mostrar o site todo podendo rolar
+        img.classList.remove('max-h-[85vh]', 'cursor-zoom-in');
+        img.classList.add('cursor-zoom-out');
+        zoomText.innerHTML = '<i class="fa-solid fa-magnifying-glass-minus"></i> Clique para afastar';
+      } else {
+        // Reduzir (Zoom-out) - volta a travar na altura da tela
+        img.classList.add('max-h-[85vh]', 'cursor-zoom-in');
+        img.classList.remove('cursor-zoom-out');
+        zoomText.innerHTML = '<i class="fa-solid fa-magnifying-glass-plus"></i> Clique na imagem para expandir';
+      }
+    }
+    // ==========================================
 
     // Envio do formulário para o WhatsApp
     (function() {
