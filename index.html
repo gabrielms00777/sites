@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSolutions • Automação & Sistemas Web</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#0a0a0a',
+              blue: '#0055ff',
+              darkblue: '#003bb3',
+              light: '#f8fafc'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Animações e Efeitos Base */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: float 5s ease-in-out infinite;
+    }
+    
+    .hover-glow:hover {
+      box-shadow: 0 10px 30px -10px rgba(0, 85, 255, 0.4);
+      transform: translateY(-5px);
+    }
+    .transition-all-custom {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Efeito de Scroll na Imagem do Portfólio */
+    .portfolio-img-bg {
+      height: 320px;
+      background-size: cover;
+      background-position: top center;
+      transition: background-position 4s ease-in-out;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .card-portfolio:hover .portfolio-img-bg {
+      /* Ao passar o mouse, a imagem rola até o final */
+      background-position: bottom center;
+    }
+
+    /* Gradiente Textual Premium */
+    .text-gradient {
+      background: linear-gradient(135deg, #0055ff 0%, #000000 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="bg-brand-light text-gray-900 antialiased selection:bg-brand-blue selection:text-white">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-2xl font-bold tracking-tighter">
+        dev<span class="text-brand-blue">.</span>sol
+      </a>
+      <div class="hidden md:flex space-x-8 text-sm font-semibold text-gray-600">
+        <a href="#solucoes" class="hover:text-brand-blue transition-colors">Soluções</a>
+        <a href="#processo" class="hover:text-brand-blue transition-colors">Processo</a>
+        <a href="#portfolio" class="hover:text-brand-blue transition-colors">Portfólio</a>
+        <a href="#infraestrutura" class="hover:text-brand-blue transition-colors">Infraestrutura</a>
+      </div>
+      <a href="#contato" class="bg-brand-black text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-blue transition-all-custom shadow-lg hover:shadow-brand-blue/30 flex items-center gap-2">
+        <i class="fa-solid fa-paper-plane"></i> Orçamento
+      </a>
+    </div>
+  </nav>
+  <div class="h-20"></div>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-7xl mx-auto px-6 py-20 md:py-32 grid md:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-brand-blue text-xs font-bold tracking-widest uppercase mb-6">
+        <i class="fa-solid fa-microchip"></i> Automação & Web
+      </div>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-brand-black">
+        Acelere seus resultados com <span class="text-gradient">tecnologia de ponta</span>.
+      </h1>
+      <p class="text-lg text-gray-600 mt-6 leading-relaxed max-w-lg">
+        Sistemas sob medida, sites de alta conversão e automações inteligentes. Pare de perder tempo com processos manuais e foque no crescimento da sua empresa.
+      </p>
+      
+      <div class="flex flex-wrap gap-4 mt-10">
+        <a href="#contato" class="bg-brand-black text-white px-8 py-3.5 rounded-full font-medium hover:bg-brand-blue transition-all-custom shadow-xl hover:shadow-brand-blue/40 flex items-center gap-2">
+          <i class="fa-solid fa-rocket"></i> Iniciar Projeto
+        </a>
+        <a href="#portfolio" class="bg-white border border-gray-200 text-gray-800 px-8 py-3.5 rounded-full font-medium hover:border-brand-blue hover:text-brand-blue transition-all-custom flex items-center gap-2">
+          <i class="fa-solid fa-desktop"></i> Ver Trabalhos
+        </a>
+      </div>
+
+      <div class="flex items-center gap-6 mt-12 text-sm text-gray-500 font-medium">
+        <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Alta Performance</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Código Limpo</span>
+        <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-blue"></i> Foco em Conversão</span>
+      </div>
+    </div>
+
+    <!-- Right Image / Animated Terminal -->
+    <div class="relative reveal delay-200">
+      <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-black rounded-[2.5rem] transform rotate-3 scale-105 opacity-20 blur-2xl"></div>
+      
+      <div class="relative animate-float">
+        <!-- Janela de Terminal -->
+        <div class="bg-brand-black rounded-[2rem] h-[400px] flex flex-col overflow-hidden border border-gray-800 shadow-2xl relative">
+          <!-- Terminal Header -->
+          <div class="bg-gray-900/80 px-5 py-4 flex items-center gap-2 border-b border-gray-800">
+            <div class="w-3.5 h-3.5 rounded-full bg-red-500"></div>
+            <div class="w-3.5 h-3.5 rounded-full bg-yellow-500"></div>
+            <div class="w-3.5 h-3.5 rounded-full bg-green-500"></div>
+            <div class="ml-4 text-xs text-gray-400 font-mono tracking-wider">server@devsol:~</div>
+          </div>
+          
+          <!-- Terminal Body (Animado via Vanilla JS) -->
+          <div class="p-6 md:p-8 flex-1 font-mono text-sm md:text-base text-left flex flex-col relative z-10" id="terminal-container">
+            <div id="term-line-1" class="text-green-400 mb-2 min-h-[1.5rem]"></div>
+            <div id="term-line-2" class="text-gray-400 hidden mb-1"></div>
+            <div id="term-line-3" class="text-gray-400 hidden mb-1"></div>
+            <div id="term-line-4" class="text-gray-400 hidden mb-1"></div>
+            <div id="term-line-5" class="text-green-400 hidden mt-3 mb-1"></div>
+            <div id="term-line-6" class="text-brand-blue hidden mb-4"></div>
+            <div id="term-cursor" class="text-gray-500 hidden mt-2">$ <span class="animate-pulse">█</span></div>
+          </div>
+          
+          <!-- Decorative blur do terminal escuro -->
+          <div class="absolute bottom-0 right-0 w-64 h-64 bg-brand-blue opacity-[0.05] rounded-full blur-3xl -z-0 pointer-events-none"></div>
+        </div>
+      </div>
+      
+      <!-- Floating Badge -->
+      <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-4 border border-gray-100">
+        <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center text-green-600 text-xl">
+          <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
+        <div>
+          <p class="text-xs text-gray-500 font-semibold uppercase">Desempenho</p>
+          <p class="text-lg font-bold text-gray-900">+42% Conversão</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRÉVIA GRATUITA (Lead Magnet) -->
+  <section class="max-w-7xl mx-auto px-6 py-10 reveal">
+    <div class="bg-gradient-to-r from-brand-black to-brand-darkblue rounded-[2rem] p-8 md:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      
+      <div class="max-w-2xl relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-bold tracking-widest uppercase mb-4">
+          <i class="fa-solid fa-gift text-yellow-400"></i> Oferta Exclusiva
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Quer ver como seu site vai ficar antes de pagar?</h2>
+        <p class="text-gray-300 text-lg">
+          Entre em contato, preencha um breve formulário sobre a sua empresa e <strong>em até 24h entregamos uma prévia funcional e gratuita</strong> do seu novo site. Sem compromisso.
+        </p>
+      </div>
+      <div class="relative z-10 shrink-0">
+        <a href="#contato" class="bg-white text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg flex items-center gap-2 hover:scale-105">
+          <i class="fa-solid fa-stopwatch"></i> Solicitar Prévia 24h
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSSAS SOLUÇÕES -->
+  <section id="solucoes" class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="text-brand-blue font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-layer-group"></i> O que oferecemos</span>
+        <h2 class="text-4xl font-extrabold mt-3 text-brand-black">Soluções que <span class="text-gradient">transformam</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">Desenvolvemos ferramentas para eliminar o trabalho braçal e escalar seus ganhos de forma inteligente.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="bg-brand-light rounded-3xl p-8 border border-gray-100 transition-all-custom hover-glow reveal">
+          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-brand-blue text-2xl mb-6 shadow-sm">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-brand-black">Automação de Processos</h3>
+          <p class="text-gray-600 leading-relaxed">Integrações de APIs, RPA, disparos automáticos de WhatsApp/E-mail. Chega de planilhas complexas e tarefas repetitivas manuais.</p>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="bg-brand-light rounded-3xl p-8 border border-gray-100 transition-all-custom hover-glow reveal delay-100">
+          <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-sm">
+            <i class="fa-solid fa-cubes"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-brand-black">Sistemas Sob Medida</h3>
+          <p class="text-gray-600 leading-relaxed">CRMs, ERPs e painéis de gestão desenvolvidos exclusivamente para a regra de negócio da sua empresa. Tudo na nuvem e fácil de usar.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-brand-light rounded-3xl p-8 border border-gray-100 transition-all-custom hover-glow reveal delay-200">
+          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-brand-blue text-2xl mb-6 shadow-sm">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 text-brand-black">Sites de Alta Performance</h3>
+          <p class="text-gray-600 leading-relaxed">Landing pages, e-commerces e sites institucionais ultra rápidos, otimizados para o Google (SEO) e focados inteiramente em conversão.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA (Processo) -->
+  <section id="processo" class="py-24 bg-brand-light border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <span class="text-brand-blue font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-route"></i> Nosso Método</span>
+        <h2 class="text-4xl font-extrabold mt-3 text-brand-black">Do planejamento à <span class="text-brand-blue">entrega</span></h2>
+        <p class="text-gray-600 max-w-2xl mx-auto mt-4 text-lg">Um processo transparente e ágil para garantir que o resultado final supere suas expectativas.</p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 relative">
+        <!-- Linha conectora (Desktop) -->
+        <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-blue-100 via-brand-blue to-blue-100 z-0"></div>
+
+        <!-- Passo 1 -->
+        <div class="relative z-10 text-center reveal">
+          <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-brand-light shadow-xl flex items-center justify-center text-3xl text-brand-black mb-6">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-2">1. Imersão</h4>
+          <p class="text-sm text-gray-500">Reunião para levantamento de requisitos e entendimento profundo da sua dor.</p>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="relative z-10 text-center reveal delay-100">
+          <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-brand-light shadow-xl flex items-center justify-center text-3xl text-brand-blue mb-6">
+            <i class="fa-solid fa-object-group"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-2">2. Design & Prévia</h4>
+          <p class="text-sm text-gray-500">Criação da interface (UI/UX) e entrega da prévia gratuita para aprovação visual.</p>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="relative z-10 text-center reveal delay-200">
+          <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-brand-light shadow-xl flex items-center justify-center text-3xl text-brand-black mb-6">
+            <i class="fa-solid fa-code-branch"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-2">3. Desenvolvimento</h4>
+          <p class="text-sm text-gray-500">Escrita de código limpo e otimizado com as melhores tecnologias do mercado.</p>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="relative z-10 text-center reveal delay-300">
+          <div class="w-24 h-24 mx-auto bg-brand-blue rounded-full border-4 border-brand-light shadow-xl flex items-center justify-center text-3xl text-white mb-6 transform hover:scale-110 transition-transform">
+            <i class="fa-solid fa-flag-checkered"></i>
+          </div>
+          <h4 class="text-xl font-bold mb-2">4. Lançamento</h4>
+          <p class="text-sm text-gray-500">Deploy em servidores robustos, testes finais e entrega do projeto rodando.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFÓLIO (Com efeito hover de scroll na imagem) -->
+  <section id="portfolio" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal">
+        <div>
+          <span class="text-brand-blue font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-briefcase"></i> Casos de Sucesso</span>
+          <h2 class="text-4xl font-extrabold mt-3 text-brand-black">Projetos em <span class="text-brand-blue">produção</span></h2>
+        </div>
+        <a href="#contato" class="mt-6 md:mt-0 text-brand-black font-semibold hover:text-brand-blue transition-colors flex items-center gap-2">
+          Quero um projeto assim <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-10">
+        
+        <!-- Card Portfólio 1 -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal">
+          <!-- A imagem de background (alta) que rola ao passar o mouse -->
+          <div class="portfolio-img-bg" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="p-8">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-blue-50 text-brand-blue text-xs px-3 py-1 rounded-full font-bold">React</span>
+              <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-bold">Node.js</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Dashboard de Logística</h3>
+            <p class="text-gray-600 text-sm mb-6">Sistema desenvolvido do zero para roteamento e rastreio de cargas, reduzindo o tempo de operação em 40%.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver ao vivo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card Portfólio 2 -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal delay-100">
+          <div class="portfolio-img-bg" style="background-image: url('https://images.unsplash.com/photo-1607004468138-c7e4f29e5814?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="p-8">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full font-bold">Next.js</span>
+              <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-bold">Tailwind</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">E-commerce de Moda</h3>
+            <p class="text-gray-600 text-sm mb-6">Loja virtual de altíssima performance visual com checkout transparente e tempo de carregamento < 1s.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver ao vivo
+            </a>
+          </div>
+        </div>
+
+        <!-- Card Portfólio 3 -->
+        <div class="bg-white border border-gray-200 rounded-[2rem] overflow-hidden card-portfolio transition-all-custom hover:shadow-2xl hover:-translate-y-2 reveal delay-200">
+          <div class="portfolio-img-bg" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="p-8">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-green-50 text-green-700 text-xs px-3 py-1 rounded-full font-bold">Python</span>
+              <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-bold">WhatsApp API</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Automação de Atendimento</h3>
+            <p class="text-gray-600 text-sm mb-6">Bot inteligente integrado via IA que atende, filtra leads e agenda reuniões diretamente no calendário da equipe.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-black font-bold hover:text-brand-blue transition-colors">
+              <i class="fa-solid fa-link"></i> Ver Case
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INFRAESTRUTURA E HOSPEDAGEM (Novo) -->
+  <section id="infraestrutura" class="py-20 bg-brand-black text-white reveal">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-brand-blue font-bold text-sm tracking-widest uppercase mb-2 block"><i class="fa-solid fa-server"></i> Zero Dor de Cabeça</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Nós cuidamos da <span class="text-brand-blue">Infraestrutura</span> para você.</h2>
+        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+          Esqueça problemas com servidores caindo, configurações complexas de domínio ou atualizações de segurança. Por uma <strong>mensalidade baixíssima</strong>, garantimos que seu site ou sistema rode 24/7.
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center gap-3 text-gray-300"><i class="fa-solid fa-check text-green-400"></i> Certificado SSL (Cadeado Seguro) Gratuito</li>
+          <li class="flex items-center gap-3 text-gray-300"><i class="fa-solid fa-check text-green-400"></i> Backups Diários e Monitoramento</li>
+          <li class="flex items-center gap-3 text-gray-300"><i class="fa-solid fa-check text-green-400"></i> Suporte Técnico Direto (Sem robôs)</li>
+        </ul>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors">
+          <i class="fa-brands fa-aws text-5xl mb-3 text-gray-200"></i>
+          <span class="font-semibold text-sm">Amazon AWS</span>
+        </div>
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors">
+          <i class="fa-brands fa-digital-ocean text-5xl mb-3 text-blue-500"></i>
+          <span class="font-semibold text-sm">Digital Ocean</span>
+        </div>
+        <div class="bg-white/5 border border-white/10 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white/10 transition-colors col-span-2">
+          <i class="fa-brands fa-cloudflare text-5xl mb-3 text-orange-500"></i>
+          <span class="font-semibold text-sm">Cloudflare (Segurança & CDN)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS (Números) -->
+  <section class="py-24 bg-brand-light reveal">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-sm text-center transition-transform hover:-translate-y-2">
+          <div class="w-16 h-16 bg-blue-50 text-brand-blue rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="text-4xl font-extrabold mb-2 text-brand-black">Até 70%</h3>
+          <p class="text-gray-500 font-medium">Mais rapidez operacional eliminando tarefas manuais.</p>
+        </div>
+        <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-sm text-center transition-transform hover:-translate-y-2">
+          <div class="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </div>
+          <h3 class="text-4xl font-extrabold mb-2 text-brand-black">+42%</h3>
+          <p class="text-gray-500 font-medium">Aumento médio de conversão com nosso design focado.</p>
+        </div>
+        <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-sm text-center transition-transform hover:-translate-y-2">
+          <div class="w-16 h-16 bg-blue-50 text-brand-blue rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3 class="text-4xl font-extrabold mb-2 text-brand-black">Suporte</h3>
+          <p class="text-gray-500 font-medium">Atendimento direto, humanizado e focado na resolução rápida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO E ORÇAMENTO -->
+  <section id="contato" class="py-24 bg-white relative overflow-hidden reveal">
+    <!-- Decoração -->
+    <div class="absolute top-0 left-0 w-full h-1/2 bg-brand-light -z-10 rounded-b-[4rem]"></div>
+    
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-brand-blue font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-paper-plane"></i> Fale Conosco</span>
+        <h2 class="text-4xl font-extrabold mt-3 text-brand-black">Vamos construir o <span class="text-brand-blue">futuro</span> do seu negócio?</h2>
+        <p class="text-gray-600 mt-4 text-lg">Preencha o formulário para solicitar seu orçamento ou sua <strong>prévia gratuita em 24h</strong>.</p>
+      </div>
+
+      <div class="bg-white shadow-2xl shadow-blue-900/5 rounded-[2.5rem] p-8 md:p-12 border border-gray-100">
+        <form id="contatoForm" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="text-sm font-bold text-gray-700 block mb-2"><i class="fa-regular fa-user mr-1 text-gray-400"></i> Nome completo</label>
+              <input type="text" id="nome" name="nome" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3.5 focus:bg-white focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+            </div>
+            <div>
+              <label class="text-sm font-bold text-gray-700 block mb-2"><i class="fa-brands fa-whatsapp mr-1 text-gray-400"></i> WhatsApp</label>
+              <input type="text" id="telefone" name="telefone" placeholder="(16) 99999-9999" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3.5 focus:bg-white focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+            </div>
+          </div>
+          <div>
+            <label class="text-sm font-bold text-gray-700 block mb-2"><i class="fa-regular fa-envelope mr-1 text-gray-400"></i> E-mail corporativo</label>
+            <input type="email" id="email" name="email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3.5 focus:bg-white focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all">
+          </div>
+          <div>
+            <label class="text-sm font-bold text-gray-700 block mb-2"><i class="fa-regular fa-comment-dots mr-1 text-gray-400"></i> Sobre o projeto (ou peça sua prévia)</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3.5 focus:bg-white focus:ring-2 focus:ring-brand-blue focus:border-transparent outline-none transition-all" placeholder="Conte-nos um pouco sobre a sua empresa e o que precisa..."></textarea>
+          </div>
+          
+          <button type="submit" class="w-full bg-brand-black text-white font-bold py-4 rounded-xl text-lg hover:bg-brand-blue transition-all shadow-xl hover:shadow-brand-blue/30 flex items-center justify-center gap-3 group">
+            <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
+            Enviar mensagem via WhatsApp
+          </button>
+          <p class="text-xs text-gray-400 text-center flex items-center justify-center gap-1">
+            <i class="fa-solid fa-lock"></i> Seus dados estão seguros conosco.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-100 py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+      <div class="text-xl font-bold tracking-tighter mb-4 md:mb-0">
+        dev<span class="text-brand-blue">.</span>sol
+      </div>
+      <p class="text-sm text-gray-500 text-center md:text-left">
+        © 2026 DevSolutions. Transformando empresas com tecnologia. <br class="md:hidden"> Suporte: (16) 9 8129-4478
+      </p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-blue hover:border-brand-blue transition-colors">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-blue hover:border-brand-blue transition-colors">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Configuração Scroll Reveal (Animações ao rolar a página)
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+      });
+    });
+
+    // Sombra no Navbar ao fazer scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        nav.classList.add('shadow-sm');
+      } else {
+        nav.classList.remove('shadow-sm');
+      }
+    });
+
+    // Lógica do Terminal Animado (Vanilla JS)
+    function initTerminalAnimation() {
+      const lines = [
+        { id: 'term-line-1', text: '$ cloud deploy my-app', type: 'type' },
+        { id: 'term-line-2', text: '→ Provisioning VPS...', type: 'show', delay: 600 },
+        { id: 'term-line-3', text: '→ Installing dependencies...', type: 'show', delay: 600 },
+        { id: 'term-line-4', text: '→ Configuring firewall...', type: 'show', delay: 600 },
+        { id: 'term-line-5', text: '✓ Deploy complete in 47s', type: 'show', delay: 1200 },
+        { id: 'term-line-6', text: '→ https://devsol.com.br', type: 'show', delay: 400 }
+      ];
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function runTerminal() {
+        // Reset
+        for (let i = 1; i <= 6; i++) {
+          const el = document.getElementById(`term-line-${i}`);
+          if(el) { el.innerHTML = ''; el.classList.add('hidden'); }
+        }
+        const cursorEl = document.getElementById('term-cursor');
+        if(cursorEl) cursorEl.classList.add('hidden');
+
+        // Digitar o primeiro comando (Letra por Letra)
+        const line1El = document.getElementById('term-line-1');
+        line1El.classList.remove('hidden');
+        let currentText = '';
+        
+        for (let char of lines[0].text) {
+          currentText += char;
+          line1El.innerHTML = currentText + '<span class="animate-pulse">█</span>';
+          await sleep(Math.random() * 50 + 50); // Velocidade de digitação
+        }
+        line1El.innerHTML = currentText; // Remove o cursor da linha 1
+        
+        await sleep(400);
+
+        // Mostrar as outras linhas sequencialmente
+        for (let i = 1; i < lines.length; i++) {
+          const lineDef = lines[i];
+          const el = document.getElementById(lineDef.id);
+          el.innerHTML = lineDef.text;
+          el.classList.remove('hidden');
+          await sleep(lineDef.delay);
+        }
+
+        // Mostrar cursor final aguardando
+        if(cursorEl) cursorEl.classList.remove('hidden');
+
+        // Reiniciar após alguns segundos
+        await sleep(5000);
+        runTerminal();
+      }
+
+      // Inicia a rotina apenas uma vez ao carregar
+      runTerminal();
+    }
+    
+    // Chama a função do terminal quando o DOM estiver carregado
+    document.addEventListener("DOMContentLoaded", initTerminalAnimation);
+
+    // Envio do formulário para o WhatsApp
+    (function() {
+      const form = document.getElementById('contatoForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const nome = document.getElementById('nome').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const telefone = document.getElementById('telefone').value.trim();
+          const mensagem = document.getElementById('mensagem').value.trim();
+
+          if (!nome || !telefone || !mensagem) {
+            alert('Por favor, preencha os campos obrigatórios.');
+            return;
+          }
+
+          const numero = '5516981294478'; 
+          const texto = `🚀 *NOVO LEAD - DevSolutions*%0A%0A*Nome:* ${nome}%0A*E-mail:* ${email}%0A*WhatsApp:* ${telefone}%0A%0A*Detalhes do Projeto:*%0A${mensagem}%0A%0A_Gostaria de saber mais sobre a prévia de 24h ou solicitar um orçamento._`;
+
+          const url = `https://wa.me/${numero}?text=${texto}`;
+          window.open(url, '_blank');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
