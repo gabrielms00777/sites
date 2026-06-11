@@ -85,13 +85,33 @@
   .floaty.d3{ animation-delay:2.4s } .floaty.d4{ animation-delay:3.2s }
 
   /* ----- Reveal on scroll ----- */
-  .reveal { opacity:0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal { opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
   .reveal.in { opacity:1; transform:none; }
+
+  /* reveal em cascata: os filhos entram em sequência */
+  .stagger > * { opacity:0; transform: translateY(24px); transition: opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
+  .stagger.in > * { opacity:1; transform:none; }
+
+  /* detalhes que entram com leve escala (bolas, selos) */
+  .pop { opacity:0; transform: scale(.92); transition: opacity .6s ease, transform .6s cubic-bezier(.34,1.56,.64,1); }
+  .pop.in { opacity:1; transform:none; }
 
   /* nav link underline */
   .navlink { position:relative; }
   .navlink::after{ content:''; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:#f7a823; transition:width .25s ease; border-radius:2px;}
   .navlink:hover::after{ width:100%; }
+
+  /* ----- Menu mobile animado ----- */
+  #mobileMenu { overflow:hidden; max-height:0; opacity:0; transition: max-height .42s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
+  #mobileMenu.open { max-height: 560px; opacity:1; }
+  #mobileMenu nav > * { opacity:0; transform: translateY(-10px); transition: opacity .35s ease, transform .35s ease; }
+  #mobileMenu.open nav > * { opacity:1; transform:none; }
+  #mobileMenu.open nav > *:nth-child(1){ transition-delay:.06s } #mobileMenu.open nav > *:nth-child(2){ transition-delay:.10s }
+  #mobileMenu.open nav > *:nth-child(3){ transition-delay:.14s } #mobileMenu.open nav > *:nth-child(4){ transition-delay:.18s }
+  #mobileMenu.open nav > *:nth-child(5){ transition-delay:.22s } #mobileMenu.open nav > *:nth-child(6){ transition-delay:.26s }
+  #mobileMenu.open nav > *:nth-child(7){ transition-delay:.30s } #mobileMenu.open nav > *:nth-child(8){ transition-delay:.34s }
+  #menuBtn svg { transition: transform .3s ease; }
+  #menuBtn[aria-expanded="true"] svg { transform: rotate(90deg); }
 
   .marquee { display:flex; gap:2.5rem; white-space:nowrap; animation: scrollx 28s linear infinite; }
   @keyframes scrollx { from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
@@ -106,7 +126,8 @@
   @media (prefers-reduced-motion: reduce) {
     .floaty, .marquee { animation: none !important; }
     html { scroll-behavior:auto; }
-    .reveal { opacity:1; transform:none; transition:none; }
+    .reveal, .stagger > *, .pop { opacity:1 !important; transform:none !important; transition:none !important; }
+    #mobileMenu, #mobileMenu nav > * { transition:none !important; }
   }
 </style>
 </head>
@@ -160,14 +181,14 @@
       <a href="https://wa.me/5516999990000" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-sorte-500 hover:bg-sorte-600 transition text-brand-deep font-semibold text-sm px-5 py-2.5 shadow-card">
         <i data-lucide="ticket" class="w-4 h-4"></i> Fazer minha fezinha
       </a>
-      <button id="menuBtn" class="lg:hidden grid place-items-center w-11 h-11 rounded-xl border border-brand-100 text-brand-deep" aria-label="Abrir menu">
+      <button id="menuBtn" class="lg:hidden grid place-items-center w-11 h-11 rounded-xl border border-brand-100 text-brand-deep" aria-label="Abrir menu" aria-expanded="false">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
   </div>
 
   <!-- NAV mobile -->
-  <div id="mobileMenu" class="lg:hidden hidden border-t border-brand-100 bg-white">
+  <div id="mobileMenu" class="lg:hidden border-t border-brand-100 bg-white">
     <nav class="mx-auto max-w-7xl px-6 py-4 flex flex-col text-[16px] font-medium text-brand-ink/85">
       <a href="#inicio" class="py-2.5 border-b border-brand-100/70">Início</a>
       <a href="#sobre" class="py-2.5 border-b border-brand-100/70">A Lotérica</a>
@@ -195,7 +216,7 @@
 
   <div class="relative mx-auto max-w-7xl px-6 pt-14 md:pt-20 pb-28 md:pb-36 grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center">
     <!-- TEXTO -->
-    <div class="reveal">
+    <div class="stagger">
       <p class="font-display text-[12px] sm:text-[13px] font-semibold uppercase tracking-[.24em] text-sorte-400">
         Lotérica oficial &middot; no coração de Franca&#8209;SP
       </p>
@@ -231,9 +252,9 @@
     </div>
 
     <!-- VISUAL: bolas -->
-    <div class="relative h-[360px] sm:h-[420px] reveal">
+    <div class="relative h-[360px] sm:h-[420px]">
       <div class="absolute inset-0 grid place-items-center">
-        <div class="relative w-[300px] h-[300px]">
+        <div class="relative w-[300px] h-[300px] stagger">
           <span class="ball floaty   absolute left-0 top-6   w-24 h-24 text-2xl">04</span>
           <span class="ball floaty d1 absolute left-28 top-0  w-20 h-20 text-xl">17</span>
           <span class="ball floaty d2 absolute right-0 top-10 w-28 h-28 text-3xl" style="color:#138a4e">23</span>
@@ -243,7 +264,7 @@
         </div>
       </div>
       <!-- etiqueta concurso -->
-      <div class="absolute bottom-0 right-0 bg-white text-brand-ink rounded-2xl shadow-lift px-5 py-4 max-w-[230px]">
+      <div class="pop absolute bottom-0 right-0 bg-white text-brand-ink rounded-2xl shadow-lift px-5 py-4 max-w-[230px]">
         <div class="flex items-center gap-2 text-trevo-600 text-xs font-semibold uppercase tracking-wide"><i data-lucide="trending-up" class="w-4 h-4"></i> Mega-Sena acumulada</div>
         <div class="font-display font-extrabold text-2xl mt-1">R$ 65 milhões</div>
         <div class="text-xs text-brand-ink/60 mt-1">Próximo sorteio: sábado, 20h</div>
@@ -255,7 +276,7 @@
 <!-- ============ FAIXA DE STATS ============ -->
 <section class="relative z-10 -mt-16 md:-mt-20">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="rounded-3xl bg-white shadow-lift ring-1 ring-black/5 overflow-hidden">
+    <div class="reveal rounded-3xl bg-white shadow-lift ring-1 ring-black/5 overflow-hidden">
       <div class="h-1 w-full bg-gradient-to-r from-sorte-500 via-sorte-400 to-trevo-500"></div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-brand-100">
         <div class="bg-white p-7 sm:p-8 text-center">
@@ -331,7 +352,7 @@
       <p class="mt-4 text-brand-ink/65">Escolha seus números da sorte ou deixe a surpresinha por nossa conta. Toque em um jogo para apostar pelo WhatsApp.</p>
     </div>
 
-    <div id="gamesGrid" class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 reveal">
+    <div id="gamesGrid" class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 stagger">
       <!-- cards injetados via JS -->
     </div>
   </div>
@@ -351,9 +372,9 @@
       </a>
     </div>
 
-    <div class="mt-12 grid md:grid-cols-3 gap-6">
+    <div class="mt-12 grid md:grid-cols-3 gap-6 stagger">
       <!-- Bolão 1 -->
-      <article class="group rounded-3xl bg-white ring-1 ring-brand-100 shadow-card overflow-hidden hover:shadow-lift transition reveal">
+      <article class="group rounded-3xl bg-white ring-1 ring-brand-100 shadow-card overflow-hidden hover:shadow-lift transition">
         <div class="p-6 bg-gradient-to-br from-[#1e9e5a] to-[#0f6b3a] text-white">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wide bg-white/15 rounded-full px-3 py-1">Mega-Sena</span>
@@ -377,7 +398,7 @@
       </article>
 
       <!-- Bolão 2 -->
-      <article class="group rounded-3xl bg-white ring-1 ring-brand-100 shadow-card overflow-hidden hover:shadow-lift transition reveal">
+      <article class="group rounded-3xl bg-white ring-1 ring-brand-100 shadow-card overflow-hidden hover:shadow-lift transition">
         <div class="p-6 bg-gradient-to-br from-[#930989] to-[#5e0557] text-white">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wide bg-white/15 rounded-full px-3 py-1">Lotofácil</span>
@@ -401,7 +422,7 @@
       </article>
 
       <!-- Bolão 3 -->
-      <article class="group rounded-3xl bg-white ring-1 ring-brand-100 shadow-card overflow-hidden hover:shadow-lift transition reveal">
+      <article class="group rounded-3xl bg-white ring-1 ring-brand-100 shadow-card overflow-hidden hover:shadow-lift transition">
         <div class="p-6 bg-gradient-to-br from-[#260085] to-[#160050] text-white">
           <div class="flex items-center justify-between">
             <span class="text-xs font-semibold uppercase tracking-wide bg-white/15 rounded-full px-3 py-1">Quina</span>
@@ -436,8 +457,8 @@
       <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-3">Apostar leva menos de 1 minuto</h2>
     </div>
 
-    <ol class="mt-14 grid md:grid-cols-3 gap-8">
-      <li class="reveal relative">
+    <ol class="mt-14 grid md:grid-cols-3 gap-8 stagger">
+      <li class="relative">
         <span class="font-display font-extrabold text-6xl text-white/15">01</span>
         <div class="-mt-7 relative">
           <div class="grid place-items-center w-12 h-12 rounded-2xl bg-sorte-500 text-brand-deep mb-4"><i data-lucide="list-checks" class="w-6 h-6"></i></div>
@@ -445,7 +466,7 @@
           <p class="mt-2 text-brand-100/75">Diga as dezenas ou deixe a surpresinha. Em bolão, é só escolher quantas cotas quer.</p>
         </div>
       </li>
-      <li class="reveal relative">
+      <li class="relative">
         <span class="font-display font-extrabold text-6xl text-white/15">02</span>
         <div class="-mt-7 relative">
           <div class="grid place-items-center w-12 h-12 rounded-2xl bg-sorte-500 text-brand-deep mb-4"><i data-lucide="qr-code" class="w-6 h-6"></i></div>
@@ -453,7 +474,7 @@
           <p class="mt-2 text-brand-100/75">Confirma pelo WhatsApp e paga como preferir. Rápido, sem complicação.</p>
         </div>
       </li>
-      <li class="reveal relative">
+      <li class="relative">
         <span class="font-display font-extrabold text-6xl text-white/15">03</span>
         <div class="-mt-7 relative">
           <div class="grid place-items-center w-12 h-12 rounded-2xl bg-sorte-500 text-brand-deep mb-4"><i data-lucide="party-popper" class="w-6 h-6"></i></div>
@@ -476,9 +497,9 @@
       <span class="text-sm text-brand-ink/55 inline-flex items-center gap-2"><i data-lucide="info" class="w-4 h-4"></i> Resultados ilustrativos — atualizados após cada concurso.</span>
     </div>
 
-    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
       <!-- Resultado: Mega -->
-      <div class="rounded-3xl bg-white ring-1 ring-brand-100 shadow-card p-6 reveal">
+      <div class="rounded-3xl bg-white ring-1 ring-brand-100 shadow-card p-6">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#1e9e5a"></span><span class="font-display font-bold text-brand-deep">Mega-Sena</span></div>
           <span class="text-xs text-brand-ink/50">Concurso 2820</span>
@@ -491,7 +512,7 @@
       </div>
 
       <!-- Resultado: Lotofácil -->
-      <div class="rounded-3xl bg-white ring-1 ring-brand-100 shadow-card p-6 reveal">
+      <div class="rounded-3xl bg-white ring-1 ring-brand-100 shadow-card p-6">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#930989"></span><span class="font-display font-bold text-brand-deep">Lotofácil</span></div>
           <span class="text-xs text-brand-ink/50">Concurso 3290</span>
@@ -505,7 +526,7 @@
       </div>
 
       <!-- Resultado: Quina -->
-      <div class="rounded-3xl bg-white ring-1 ring-brand-100 shadow-card p-6 reveal">
+      <div class="rounded-3xl bg-white ring-1 ring-brand-100 shadow-card p-6">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#260085"></span><span class="font-display font-bold text-brand-deep">Quina</span></div>
           <span class="text-xs text-brand-ink/50">Concurso 6610</span>
@@ -536,7 +557,7 @@
         </a>
       </div>
 
-      <div class="grid sm:grid-cols-3 gap-4 reveal">
+      <div class="grid sm:grid-cols-3 gap-4 stagger">
         <div class="rounded-2xl bg-white p-5 shadow-card"><span class="grid place-items-center w-11 h-11 rounded-xl bg-brand-100 text-brand-700 mb-3"><i data-lucide="receipt" class="w-6 h-6"></i></span><h3 class="font-semibold text-brand-deep">Pagamento de contas</h3><p class="text-sm text-brand-ink/60 mt-1">Água, luz, boletos e tributos.</p></div>
         <div class="rounded-2xl bg-white p-5 shadow-card"><span class="grid place-items-center w-11 h-11 rounded-xl bg-brand-100 text-brand-700 mb-3"><i data-lucide="smartphone" class="w-6 h-6"></i></span><h3 class="font-semibold text-brand-deep">Recarga de celular</h3><p class="text-sm text-brand-ink/60 mt-1">Todas as operadoras.</p></div>
         <div class="rounded-2xl bg-white p-5 shadow-card"><span class="grid place-items-center w-11 h-11 rounded-xl bg-brand-100 text-brand-700 mb-3"><i data-lucide="banknote" class="w-6 h-6"></i></span><h3 class="font-semibold text-brand-deep">Saque e depósito</h3><p class="text-sm text-brand-ink/60 mt-1">Conta Caixa e poupança.</p></div>
@@ -699,11 +720,18 @@
   // ---- ícones ----
   lucide.createIcons();
 
-  // ---- menu mobile ----
+  // ---- menu mobile (animado) ----
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+  const setMenu = (open) => {
+    mobileMenu.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    menuBtn.innerHTML = `<i data-lucide="${open ? 'x' : 'menu'}" class="w-6 h-6"></i>`;
+    lucide.createIcons();
+  };
+  menuBtn.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
   // ---- header sombra ao rolar ----
   const header = document.getElementById('header');
@@ -746,15 +774,23 @@
     requestAnimationFrame(step);
   };
 
-  // ---- reveal + contadores via IntersectionObserver ----
+  // ---- reveal / stagger / contadores via IntersectionObserver ----
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      if (e.target.classList.contains('reveal')) e.target.classList.add('in');
-      if (e.target.classList.contains('count')) { animateCount(e.target); io.unobserve(e.target); }
+      const el = e.target;
+      if (el.classList.contains('stagger')) {
+        Array.from(el.children).forEach((c, i) => { c.style.transitionDelay = (i * 75) + 'ms'; });
+        el.classList.add('in');
+        io.unobserve(el);
+      }
+      if (el.classList.contains('reveal') || el.classList.contains('pop')) {
+        el.classList.add('in'); io.unobserve(el);
+      }
+      if (el.classList.contains('count')) { animateCount(el); io.unobserve(el); }
     });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.reveal, .count').forEach(el => io.observe(el));
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal, .stagger, .pop, .count').forEach(el => io.observe(el));
 
   // ---- depoimentos ----
   const depo = [
